@@ -3,9 +3,11 @@
 **Audit date:** 2026-11-05  
 **Scope:** Read-only code/configuration audit and representative official-source scan. No production systems accessed; no files outside this report changed.
 
+**Subsequent status:** The isolated application was deployed by explicit user approval to the independent `acting-class-directory` Worker and D1. The Headshot Scout resources identified during this audit were not used or modified.
+
 ## Executive summary
 
-At the time of this audit, the repository was a functioning Headshot Scout copy, not an isolated acting directory. The audited copy had production Cloudflare, GitHub, analytics, advertising, email, domain and deployment configuration. Those values have since been removed; this report intentionally omits their identifiers. Do not use any prior external resource. Current development is local-only.
+At the time of this audit, the repository was a functioning Headshot Scout copy, not an isolated acting directory. The audited copy had production Cloudflare, GitHub, analytics, advertising, email, domain and deployment configuration. Those values have since been removed; this report intentionally omits their identifiers. Do not use any prior external resource. The acting directory now uses only its independently provisioned resources documented in the current Wrangler configuration.
 
 The most reusable pieces are React/Vite/Cloudflare Worker delivery, responsive listing UI patterns, URL/query and sorting utilities, SEO prerendering patterns, submission validation, secure one-use approval links, transactional D1 writes, email delivery status tracking, audit records, and duplicate handling. Existing photographer data, branding, taxonomies, submission records, routes, templates, and all account/resource configuration are not reusable as product data or infrastructure.
 
@@ -17,7 +19,7 @@ The most reusable pieces are React/Vite/Cloudflare Worker delivery, responsive l
 | Data | Static photographer directory and branding (`src/data/photographers.js`, `photographer-branding.js`); worker publication reads that directory for duplicate detection | Do not copy listing records. Replace static import with acting directory seed records in a new schema; retain source URL and verification metadata |
 | Worker/API | `src/worker.js` exposed photographer submission/listing/photo APIs and hard-coded original-brand paths | Rework as acting-specific providers, offerings, instructor relationships, submissions, claims, updates and public profile APIs |
 | D1 | The audited `wrangler.jsonc` named the original submissions database and included its production ID | Create a brand-new D1 database and fresh migration history. Never apply the old migrations remotely; use only the independent acting-directory migration |
-| Cloudflare | The audited config included the original account ID, Worker name and custom domains | New account/resource values and a new domain are needed. No such configuration is present in the local-only foundation |
+| Cloudflare | The audited config included the original account ID, Worker name and custom domains | The acting directory now has its own Worker and D1; a custom domain is still undecided |
 | GitHub | `.git/config` pointed at the original repository and contained copied history | The old history was detached and a new repository is configured as the only remote |
 | Email | Original recipient, domain, OAuth mailbox and Resend sender identifiers were embedded in source/config | New dedicated inbox/project and sender are required only if email is approved later. No email credentials are configured |
 | Gmail polling | Approval/audit tables and Gmail OAuth helper exist, but no `scheduled()` Worker handler, Gmail polling implementation, or cron trigger is present in current source/config | Treat polling as not implemented in this copy. If desired, build it independently after deciding whether tokenized approve/reject email links already meet the admin need |
@@ -136,4 +138,4 @@ Retain description/teaching approach, raw and normalized training specialties, i
 6. **Images/SEO:** safe image lookup/manual override, prerender/profile metadata, sitemap and robots.
 7. **Verification/deployment:** test approved flows, inspect isolation references and produce a final isolation report; deploy only after approval of named infrastructure.
 
-Primary risks are accidental deployment or remote migration with inherited Wrangler settings; accidental push to the original GitHub remote; copied secrets/config hidden outside the repo; stale provider schedule/pricing; ambiguous total-vs-per-session prices; insufficient coverage behind expanded filters; and image copyright/availability. Current repository confirms several production identifiers in tracked files; it cannot prove whether external accounts contain additional credentials or resources. The next implementation gate should be approval of the architecture and research-backed secondary filter candidates, followed by an explicit new-resource configuration review before any deployment.
+Primary ongoing risks are stale provider schedule/pricing; ambiguous total-vs-per-session prices; insufficient coverage behind expanded filters; and image copyright/availability. The new Worker uses an admin secret stored outside Git. The project cannot prove whether unrelated external resources or credentials exist in the account.
