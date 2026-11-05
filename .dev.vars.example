@@ -1,5 +1,2 @@
-# Local placeholder names only. Do not add real credentials here.
-# Reserved for future, separately authorized integrations.
-ADMIN_NOTIFICATION_EMAIL=replace-with-local-placeholder
-RESEND_API_KEY=replace-with-local-placeholder
-RESEND_FROM=replace-with-local-placeholder
+# Used only by the local editor review queue. Replace the value in your ignored .dev.vars file.
+ADMIN_REVIEW_KEY=replace-with-local-placeholder

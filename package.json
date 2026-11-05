@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "wrangler dev --local --ip 127.0.0.1",
+    "test": "node --test",
+    "preview": "vite preview --host 127.0.0.1",
     "db:migrate:local": "wrangler d1 migrations apply acting-class-directory-local --local"
   },
   "dependencies": {

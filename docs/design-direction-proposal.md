@@ -1,4 +1,6 @@
-# Design direction and page structure proposal
+# Design direction and page structure
+
+**Status:** Direction implemented in the local application following approval.
 
 The current local page is a visual foundation specimen, not the finished homepage or directory. It establishes a distinct editorial direction for review before those product surfaces are built.
 
@@ -31,6 +33,6 @@ The current local page is a visual foundation specimen, not the finished homepag
 - Profile pages share provider identity and source evidence; classes remain distinct offerings and link to studios and instructors.
 - Further filters such as level, schedule, duration, instruction mode and admission requirements wait for measured seed coverage.
 
-## Review gate
+## Implemented foundation
 
-Please review the working name, palette, typography, and page hierarchy before the complete homepage and directory are implemented. No full homepage, listing directory or seeded provider profiles are included in this foundation stage.
+The homepage, directory, listing type routes, filters, provider/offering profiles, submissions, claims, and local admin review are now implemented using this direction. Image areas use branded placeholders; only sourced text and URLs are seeded. Full feature development is paused for the user's next approval.

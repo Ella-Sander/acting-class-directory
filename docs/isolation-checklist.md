@@ -10,7 +10,7 @@ Status: Phase 2A foundation complete; local-only. Recheck this document before a
 - [x] Removed inherited analytics, ad tags, domain canonicals, mailbox identity, OAuth helper, Gmail approval flow, and Resend usage from application source.
 - [x] Removed copied photographer records, branding data, photographer migrations and tests.
 - [x] Added `.dev.vars.example` with placeholder names only; no secret values are present.
-- [x] Set page robots metadata and `robots.txt` to disallow indexing while this is a foundation preview.
+- [x] Public page metadata, canonical profile URLs and structured data are generated from the current local origin; `robots.txt` and sitemap are served dynamically.
 - [x] Checked tracked application files for inherited production identifiers and endpoint strings.
 - [ ] Before any production work: choose the public brand/domain, provision separate Cloudflare resources, and review a concrete isolated configuration.
 - [ ] Before any email integration: separately authorize a new mailbox/sender and create new credentials; Gmail polling is out of scope.
