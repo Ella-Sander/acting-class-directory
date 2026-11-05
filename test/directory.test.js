@@ -49,4 +49,32 @@ test('submission validation requires contact details, provider sources and clear
   assert.match(validateSubmission({ type: 'provider', name: 'Studio', listing_type: 'studio', description: 'Acting classes', contact_email: 'actor@example.com' }), /official website/i);
   assert.match(validateSubmission({ type: 'offering', name: 'Class', description: 'Group class', registration_url: 'https://studio.example/register', contact_email: 'actor@example.com', price_min: 100 }), /what the published price covers/i);
   assert.equal(validateSubmission({ type: 'claim', provider_id: 'provider-1', contact_name: 'Actor', contact_email: 'actor@example.com', verification_information: 'I manage this studio.' }), null);
+  assert.equal(validateSubmission({ type: 'claim', target_kind: 'teacher', target_id: 'teacher-1', contact_name: 'Teacher', contact_email: 'teacher@example.com', verification_information: 'This is my profile.' }), null);
+  assert.match(validateSubmission({ type: 'claim', target_kind: 'teacher', contact_name: 'Teacher', contact_email: 'teacher@example.com', verification_information: 'This is my profile.' }), /profile to claim/i);
+});
+
+
+test('individual teachers become the browseable records while affiliations and offerings remain contextual', () => {
+  const profile = { id: 'teacher-1', slug: 'teacher-one', name: 'Teacher One', kind: 'teacher', description: 'On-camera acting and self-tape coaching.',
+    affiliations: [{ name: 'Studio One' }], terms: [verifiedTerm('training_type', 'on-camera-acting', 'On-camera acting')],
+    locations: [{ borough: 'Manhattan', verified: true }], offerings: [{ name: 'Self-tape coaching', price_min: 100, price_basis: 'hourly', currency: 'USD', priceVerified: true, format: 'online', formatVerified: true }] };
+  const listings = mergeListings({ teachers: [profile], ...sample });
+  assert.deepEqual(listings.map(item => item.id), ['teacher-1']);
+  assert.deepEqual(filterListings(listings, { type: 'all', training: 'on-camera-acting', location: 'Manhattan', format: 'online', budget: '100-250' }).map(item => item.name), ['Teacher One']);
+  assert.deepEqual(filterListings(listings, { type: 'all', training: 'meisner' }), []);
+  assert.equal(priceLabel(profile), '$100 / hour');
+});
+
+test('teacher specialty, format and budget filters ignore unverified details', () => {
+  const teacher = { id: 'teacher-2', kind: 'teacher', name: 'Teacher Two', terms: [verifiedTerm('specialty', 'dialect-coaching', 'Dialect coaching')],
+    offerings: [{ price_min: 50, price_basis: 'hourly', priceVerified: false, format: 'online', formatVerified: false }] };
+  assert.equal(priceLabel(teacher), 'Ask for pricing');
+  assert.deepEqual(filterListings([teacher], { type: 'all', training: 'dialect-coaching' }).map(item => item.id), ['teacher-2']);
+  assert.deepEqual(filterListings([teacher], { type: 'all', format: 'online' }), []);
+  assert.deepEqual(filterListings([teacher], { type: 'all', budget: 'under-100' }), []);
+});
+
+test('teacher submissions require an official profile source and contact email', () => {
+  assert.equal(validateSubmission({ type: 'teacher', name: 'An Actor Teacher', professional_title: 'Acting teacher', description: 'Teaches private scene study.', website_url: 'https://teacher.example', contact_email: 'actor@example.com' }), null);
+  assert.match(validateSubmission({ type: 'teacher', name: 'An Actor Teacher', description: 'Teaches acting.', contact_email: 'actor@example.com' }), /official professional|teaching profile/i);
 });

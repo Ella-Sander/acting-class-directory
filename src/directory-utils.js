@@ -22,17 +22,21 @@ export function cleanText(value = '') {
 
 export function searchBlob(item) {
   return cleanText([
-    item.name, item.description, item.providerName, item.locationLabel,
+    item.name, item.description, item.biography, item.teaching_experience, item.providerName, item.provider_name, item.locationLabel,
     ...(item.terms || []).map(term => term.term), ...(item.instructors || []).map(person => person.name),
+    ...(item.affiliations || []).map(provider => provider.name),
+    ...(item.offerings || []).flatMap(offering => [offering.name, offering.description, offering.provider_name]),
   ].join(' '));
 }
 
 export function getCollectionType(item) {
+  if (item.kind === 'teacher') return 'coach';
   if (item.kind === 'provider') return item.listing_type === 'coach' ? 'coach' : 'studio';
   return item.instruction_mode === 'private' ? 'coach' : 'class';
 }
 
 export function mergeListings(data) {
+  if (Array.isArray(data?.teachers)) return data.teachers.map(teacher => ({ ...teacher, kind: 'teacher' }));
   const providers = (data?.providers || []).map(provider => ({ ...provider, kind: 'provider' }));
   const offerings = (data?.offerings || []).map(offering => ({ ...offering, kind: 'offering' }));
   return [...providers, ...offerings];
@@ -84,10 +88,12 @@ export function filterListings(listings, filters) {
       const borough = locations.some(location => location.borough === filters.location && location.verified);
       if (filters.location === 'Online' ? !online : !borough) return false;
     }
-    if (filters.training && !(item.terms || []).some(term => term.taxonomy === 'training_type' && term.slug === filters.training && term.verification_status === 'verified')) return false;
+    if (filters.training && !(item.terms || []).some(term => ['training_type', 'specialty'].includes(term.taxonomy) && term.slug === filters.training && term.verification_status === 'verified')) return false;
     if (filters.technique && !(item.terms || []).some(term => term.taxonomy === 'technique' && term.slug === filters.technique && term.verification_status === 'verified')) return false;
     if (filters.format) {
-      const formats = item.kind === 'provider'
+      const formats = item.kind === 'teacher'
+        ? (item.offerings || []).some(offering => offering.formatVerified && offering.format === filters.format)
+        : item.kind === 'provider'
         ? (item.offerings || []).some(offering => offering.formatVerified && offering.format === filters.format)
         : item.formatVerified && item.format === filters.format;
       if (!formats) return false;
@@ -107,6 +113,12 @@ export function filterListings(listings, filters) {
 }
 
 export function priceLabel(item, { prefix = false } = {}) {
+  if (item.kind === 'teacher') {
+    const values = (item.offerings || []).filter(offering => offering.priceVerified && offering.price_min != null);
+    if (!values.length) return 'Ask for pricing';
+    const cheapest = values.reduce((a, b) => a.price_min <= b.price_min ? a : b);
+    return `${prefix ? 'From ' : ''}${formatPrice(cheapest.price_min, cheapest.currency)} ${basisLabel(cheapest.price_basis)}`.trim();
+  }
   if (item.kind !== 'offering') {
     const values = (item.offerings || []).filter(o => o.price_min != null);
     if (!values.length) return 'Contact for pricing';

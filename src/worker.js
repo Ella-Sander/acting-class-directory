@@ -40,6 +40,30 @@ const OFFERINGS_SQL = `SELECT o.*, p.name AS provider_name, p.slug AS provider_s
   FROM offerings o LEFT JOIN providers p ON p.id = o.provider_id
   WHERE o.listing_status = 'published' ORDER BY o.name COLLATE NOCASE`;
 
+const TEACHERS_SQL = `SELECT i.*,
+  (SELECT MAX(fe.verified_at) FROM field_evidence fe WHERE fe.entity_type = 'instructor' AND fe.entity_id = i.id AND fe.verification_status = 'verified') AS last_verified,
+  (SELECT json_group_array(json_object('id',p.id,'name',p.name,'website_url',p.website_url,'source_url',p.source_url))
+    FROM provider_instructors pi JOIN providers p ON p.id = pi.provider_id
+    WHERE pi.instructor_id = i.id AND p.listing_status = 'published' AND p.listing_type != 'coach') AS affiliations_json,
+  (SELECT json_group_array(json_object('id',o.id,'slug',o.slug,'name',o.name,'description',o.description,
+      'provider_id',o.provider_id,'provider_name',p.name,'registration_url',o.registration_url,'enrollment_url',o.enrollment_url,
+      'source_url',o.source_url,'format',o.format,'price_min',o.price_min,'price_max',o.price_max,'currency',o.currency,
+      'price_basis',o.price_basis,'schedule_text',o.schedule_text,'skill_level',o.skill_level,'instruction_mode',o.instruction_mode,
+      'duration_minutes',o.duration_minutes,'session_count',o.session_count,
+      'priceVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='price' AND fe.verification_status='verified'),
+      'formatVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='format' AND fe.verification_status='verified')))
+    FROM offering_instructors oi JOIN offerings o ON o.id = oi.offering_id
+    LEFT JOIN providers p ON p.id = o.provider_id
+    WHERE oi.instructor_id = i.id AND o.listing_status = 'published') AS offerings_json,
+  (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,
+      'verification_status',it.verification_status,'source_url',it.source_url,'verified_at',it.verified_at))
+    FROM instructor_terms it JOIN taxonomy_terms tt ON tt.id = it.term_id WHERE it.instructor_id = i.id) AS terms_json,
+  (SELECT json_group_array(json_object('label',l.label,'city',l.city,'region',l.region,'borough',l.borough,'neighborhood',l.neighborhood,
+      'postal_address',l.postal_address,'is_online',l.is_online,
+      'verified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified')))
+    FROM instructor_locations il JOIN locations l ON l.id = il.location_id WHERE il.instructor_id = i.id) AS locations_json
+  FROM instructors i WHERE i.profile_status='published' ORDER BY i.name COLLATE NOCASE`;
+
 function normalizeProvider(row) {
   return {
     ...row,
@@ -56,27 +80,39 @@ function normalizeOffering(row) {
   };
 }
 
+function normalizeTeacher(row) {
+  return {
+    ...row, kind: 'teacher',
+    affiliations: parseArray(row.affiliations_json), offerings: parseArray(row.offerings_json),
+    terms: parseArray(row.terms_json), locations: parseArray(row.locations_json),
+  };
+}
+
 async function getDirectory(env) {
   if (!env.DIRECTORY_DB) throw new Error('The local directory database binding is missing.');
-  const [providers, offerings] = await Promise.all([
+  const [providers, offerings, teachers] = await Promise.all([
     env.DIRECTORY_DB.prepare(PROVIDERS_SQL).all(),
     env.DIRECTORY_DB.prepare(OFFERINGS_SQL).all(),
+    env.DIRECTORY_DB.prepare(TEACHERS_SQL).all(),
   ]);
   return {
     providers: (providers.results || []).map(normalizeProvider),
     offerings: (offerings.results || []).map(normalizeOffering),
+    teachers: (teachers.results || []).map(normalizeTeacher),
   };
 }
 
 function safeJson(data) { return JSON.stringify(data).replace(/</g, '\\u003c'); }
 
-function addProfileMetadata(html, url, listing, isOffering) {
-  const title = `${listing.name} | Acting Class Directory`;
+function addProfileMetadata(html, url, listing, isOffering, kind = 'provider') {
+  const title = `${listing.name} | Acting Teachers of New York`;
   const description = clean(listing.description || `Explore ${listing.name} in the New York acting education directory.`, 180);
-  const canonical = new URL(url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`, url.origin).href;
+  const canonical = kind === 'teacher'
+    ? new URL(`/?listing=${encodeURIComponent(listing.slug)}`, url.origin).href
+    : new URL(url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`, url.origin).href;
   const schema = isOffering
     ? { '@context': 'https://schema.org', '@type': 'Course', name: listing.name, description, url: canonical, provider: listing.provider_name ? { '@type': 'Organization', name: listing.provider_name } : undefined, offers: listing.priceVerified && listing.price_min != null ? { '@type': 'Offer', price: listing.price_min, priceCurrency: listing.currency || 'USD', url: listing.enrollment_url || listing.registration_url } : undefined }
-    : { '@context': 'https://schema.org', '@type': listing.listing_type === 'coach' ? 'Person' : 'EducationalOrganization', name: listing.name, description, url: listing.website_url || canonical, sameAs: listing.instagram_url ? [listing.instagram_url] : undefined };
+    : { '@context': 'https://schema.org', '@type': kind === 'teacher' || listing.listing_type === 'coach' ? 'Person' : 'EducationalOrganization', name: listing.name, description, url: canonical, sameAs: [listing.website_url, listing.instagram_url].filter(Boolean) };
   html = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeHtml(title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*("\s*\/?>)/i, `$1${escapeHtml(description)}$2`)
     .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="index, follow" />')
@@ -88,18 +124,38 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character =>
 
 async function seoProfile(request, env, slug, kind) {
   const directory = await getDirectory(env);
+  const teacher = kind === 'teacher' ? directory.teachers.find(item => item.slug === slug) : null;
   const offering = kind === 'offering' ? directory.offerings.find(item => item.slug === slug) : null;
   const provider = kind === 'provider' ? directory.providers.find(item => item.slug === slug) : null;
-  const listing = offering || provider;
+  const listing = teacher || offering || provider;
   if (!listing) {
     const missing = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
-    const html = (await missing.text()).replace(/<title>[^<]*<\/title>/i, '<title>Listing not found | Acting Class Directory</title>')
+    const html = (await missing.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Acting Teachers of New York</title>')
       .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="noindex, nofollow" />');
     return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
   }
   const response = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
   if (!response.ok) return response;
-  return new Response(addProfileMetadata(await response.text(), new URL(request.url), listing, Boolean(offering)), {
+  return new Response(addProfileMetadata(await response.text(), new URL(request.url), listing, Boolean(offering), kind), {
+    status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=120' },
+  });
+}
+
+async function seoQueryProfile(request, env, slug) {
+  const directory = await getDirectory(env);
+  const teacher = directory.teachers.find(item => item.slug === slug);
+  const offering = directory.offerings.find(item => item.slug === slug);
+  const provider = directory.providers.find(item => item.slug === slug);
+  const listing = teacher || offering || provider;
+  if (!listing) {
+    const response = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
+    const html = (await response.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Acting Teachers of New York</title>')
+      .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="noindex, nofollow" />');
+    return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+  }
+  const response = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
+  if (!response.ok) return response;
+  return new Response(addProfileMetadata(await response.text(), new URL(request.url), listing, Boolean(offering), teacher ? 'teacher' : offering ? 'offering' : 'provider'), {
     status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=120' },
   });
 }
@@ -110,6 +166,8 @@ async function getPublicListing(request, env) {
     const { pathname } = new URL(request.url);
     const providerMatch = pathname.match(/^\/api\/providers\/([a-z0-9-]+)$/i);
     const offeringMatch = pathname.match(/^\/api\/offerings\/([a-z0-9-]+)$/i);
+    const teacherMatch = pathname.match(/^\/api\/teachers\/([a-z0-9-]+)$/i);
+    if (teacherMatch) return json(directory.teachers.find(item => item.slug === teacherMatch[1]) || null, directory.teachers.some(item => item.slug === teacherMatch[1]) ? 200 : 404);
     if (providerMatch) return json(directory.providers.find(item => item.slug === providerMatch[1]) || null, directory.providers.some(item => item.slug === providerMatch[1]) ? 200 : 404);
     if (offeringMatch) return json(directory.offerings.find(item => item.slug === offeringMatch[1]) || null, directory.offerings.some(item => item.slug === offeringMatch[1]) ? 200 : 404);
     return json(directory);
@@ -123,9 +181,7 @@ async function sitemap(request, env) {
   try {
     const directory = await getDirectory(env);
     const origin = new URL(request.url).origin;
-    const paths = ['/','/directory/','/studios/','/classes/','/coaches/',
-      ...directory.providers.map(item => `/providers/${item.slug}/`),
-      ...directory.offerings.map(item => `/classes/${item.slug}/`)];
+    const paths = ['/', ...directory.teachers.map(item => `/?listing=${encodeURIComponent(item.slug)}`)];
     const urls = paths.map(path => `  <url><loc>${escapeHtml(`${origin}${path}`)}</loc></url>`).join('\n');
     return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`, {
       headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, max-age=300' },
@@ -142,19 +198,20 @@ function robots(request) {
 
 export function validateSubmission(body) {
   const type = clean(body?.type, 30);
-  const allowed = ['provider', 'offering', 'claim', 'profile_update'];
+  const allowed = ['provider', 'offering', 'teacher', 'claim', 'profile_update'];
   if (!allowed.includes(type)) return 'Choose a valid submission type.';
   const contactEmail = clean(body.contact_email, 254);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail)) return 'Enter a valid contact email.';
   const name = clean(body.name, 160);
   if (type !== 'claim' && !name) return 'Enter a name.';
-  if (['provider', 'offering', 'profile_update'].includes(type) && !clean(body.description, 3000)) return 'Add a short description or update note.';
+  if (['provider', 'offering', 'teacher', 'profile_update'].includes(type) && !clean(body.description, 3000)) return 'Add a short description or update note.';
   if (type === 'claim' && (!clean(body.contact_name, 160) || !clean(body.verification_information, 2000))) return 'Add your contact name and a verification detail.';
   if (type === 'provider' && !['studio', 'school', 'coach'].includes(body.listing_type)) return 'Choose a listing type.';
   if (type === 'offering' && !clean(body.registration_url, 500) && !clean(body.website_url, 500)) return 'Add an official website or registration link.';
   if (type === 'provider' && !clean(body.website_url, 500)) return 'Add the provider’s official website.';
-  if (type === 'claim' && !clean(body.provider_id, 120)) return 'Choose a profile to claim.';
-  if (type === 'profile_update' && !clean(body.provider_id, 120)) return 'Choose the profile to update.';
+  if (type === 'teacher' && !clean(body.website_url, 500)) return 'Add an official professional website or teaching profile.';
+  if (type === 'claim' && !clean(body.provider_id, 120) && !(body.target_kind === 'teacher' && clean(body.target_id, 120))) return 'Choose a profile to claim.';
+  if (type === 'profile_update' && !clean(body.provider_id, 120) && !(body.target_kind === 'teacher' && clean(body.target_id, 120))) return 'Choose the profile to update.';
   if (type === 'offering' && body.price_min != null && body.price_min !== '' && !['per_session', 'hourly', 'full_course', 'workshop', 'other'].includes(body.price_basis)) return 'Choose what the published price covers.';
   if (type === 'offering' && body.price_max != null && body.price_max !== '' && Number(body.price_max) < Number(body.price_min)) return 'The maximum price cannot be less than the minimum.';
   if (body.website_url && !siteHost(body.website_url)) return 'Enter a valid website URL.';
@@ -183,17 +240,26 @@ async function submit(request, env) {
   const data = { ...body, name, contact_email: email, website_url: clean(body.website_url, 500), registration_url: clean(body.registration_url, 500) };
 
   let claimProvider = null;
+  let claimTeacher = null;
   if (type === 'claim') {
-    claimProvider = await env.DIRECTORY_DB.prepare(`SELECT id, name, claim_status FROM providers WHERE id = ? AND listing_status = 'published'`).bind(clean(body.provider_id, 120)).first();
-    if (!claimProvider) return json({ error: 'That published profile could not be found.' }, 404);
-    if (claimProvider.claim_status !== 'unclaimed') return json({ error: 'This profile already has an active or approved claim.' }, 409);
+    if (body.target_kind === 'teacher') {
+      claimTeacher = await env.DIRECTORY_DB.prepare(`SELECT id, name, claim_status FROM instructors WHERE id = ? AND profile_status = 'published'`).bind(clean(body.target_id, 120)).first();
+      if (!claimTeacher) return json({ error: 'That published profile could not be found.' }, 404);
+      if (claimTeacher.claim_status !== 'unclaimed') return json({ error: 'This profile already has an active or approved claim.' }, 409);
+    } else {
+      claimProvider = await env.DIRECTORY_DB.prepare(`SELECT id, name, claim_status FROM providers WHERE id = ? AND listing_status = 'published'`).bind(clean(body.provider_id, 120)).first();
+      if (!claimProvider) return json({ error: 'That published profile could not be found.' }, 404);
+      if (claimProvider.claim_status !== 'unclaimed') return json({ error: 'This profile already has an active or approved claim.' }, 409);
+    }
   }
 
-  if (['provider', 'offering'].includes(type) && website) {
+  if (['provider', 'offering', 'teacher'].includes(type) && website) {
     const websiteHost = siteHost(website);
     const existing = type === 'provider'
       ? await env.DIRECTORY_DB.prepare(`SELECT id FROM providers WHERE lower(replace(replace(website_url,'https://',''),'http://','')) LIKE ? LIMIT 1`).bind(`%${websiteHost}%`).first()
-      : await env.DIRECTORY_DB.prepare(`SELECT id FROM offerings WHERE lower(name) = lower(?) AND (registration_url = ? OR source_url = ?) LIMIT 1`).bind(name, website, website).first();
+      : type === 'teacher'
+        ? await env.DIRECTORY_DB.prepare(`SELECT id FROM instructors WHERE lower(name)=lower(?) OR lower(replace(replace(website_url,'https://',''),'http://','')) LIKE ? LIMIT 1`).bind(name, `%${websiteHost}%`).first()
+        : await env.DIRECTORY_DB.prepare(`SELECT id FROM offerings WHERE lower(name) = lower(?) AND (registration_url = ? OR source_url = ?) LIMIT 1`).bind(name, website, website).first();
     if (existing) return json({ error: 'A matching listing already exists. Use the profile claim or update option instead.' }, 409);
   }
   const duplicate = await env.DIRECTORY_DB.prepare(`SELECT id FROM submissions WHERE status = 'pending' AND lower(contact_email) = ? AND (
@@ -206,10 +272,17 @@ async function submit(request, env) {
     const statements = [env.DIRECTORY_DB.prepare(`INSERT INTO submissions (id, submission_type, status, contact_name, contact_email, website_url, payload_json)
       VALUES (?, ?, 'pending', ?, ?, ?, ?)`).bind(id, type, clean(body.contact_name || body.name, 160), email, website || null, JSON.stringify(data))];
     if (type === 'claim') {
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO claims (id, provider_id, submission_id, provider_name, contact_name, business_email, website_url, instagram_url, verification_information)
+      if (claimTeacher) {
+        statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_claims (id, instructor_id, submission_id, instructor_name, contact_name, business_email, website_url, instagram_url, verification_information)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`).bind(crypto.randomUUID(), claimTeacher.id, id, claimTeacher.name, clean(body.contact_name, 160), email,
+            clean(body.website_url, 500) || null, clean(body.instagram_url, 300) || null, clean(body.verification_information, 2000) || null));
+        statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET claim_status = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND claim_status = 'unclaimed'`).bind(claimTeacher.id));
+      } else {
+        statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO claims (id, provider_id, submission_id, provider_name, contact_name, business_email, website_url, instagram_url, verification_information)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`).bind(crypto.randomUUID(), claimProvider.id, id, claimProvider.name, clean(body.contact_name, 160), email,
           clean(body.website_url, 500) || null, clean(body.instagram_url, 300) || null, clean(body.verification_information, 2000) || null));
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND claim_status = 'unclaimed'`).bind(claimProvider.id));
+        statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND claim_status = 'unclaimed'`).bind(claimProvider.id));
+      }
     }
     if (type === 'profile_update') {
       const provider = await env.DIRECTORY_DB.prepare(`SELECT id FROM providers WHERE id = ? AND listing_status = 'published'`).bind(clean(body.provider_id, 120)).first();
@@ -249,6 +322,42 @@ async function decideSubmission(request, env) {
   if (!submission) return json({ error: 'Pending submission not found.' }, 404);
   const payload = JSON.parse(submission.payload_json || '{}');
   const statements = [];
+
+  if (action === 'approved' && submission.submission_type === 'teacher') {
+    const teacherId = crypto.randomUUID();
+    const slug = slugify(payload.name);
+    const title = ['Acting teacher', 'Acting coach', 'On-camera coach', 'Audition coach', 'Voice or movement coach', 'Other teacher'].includes(payload.professional_title)
+      ? payload.professional_title : 'Acting teacher';
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructors
+      (id, slug, name, description, biography, teaching_experience, website_url, instagram_url, booking_url, professional_title, profile_status, last_verified_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', date('now'))`)
+      .bind(teacherId, `${slug}-${teacherId.slice(0, 6)}`, clean(payload.name, 160), clean(payload.description, 3000),
+        clean(payload.biography, 5000) || null, clean(payload.teaching_experience, 3000) || null,
+        clean(payload.website_url, 500), clean(payload.instagram_url, 300) || null, clean(payload.booking_url, 500) || null, title));
+    const affiliationId = clean(payload.affiliation_provider_id, 120);
+    if (affiliationId) statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_instructors (provider_id, instructor_id)
+      SELECT id, ? FROM providers WHERE id = ? AND listing_status = 'published' AND listing_type != 'coach'`).bind(teacherId, affiliationId));
+    for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || [])]) {
+      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_terms (instructor_id, term_id, verification_status, source_url)
+        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE slug = ?`).bind(teacherId, clean(payload.website_url, 500), slugTerm));
+    }
+    const borough = clean(payload.borough, 80);
+    if (borough) {
+      const locationId = crypto.randomUUID();
+      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO locations (id, label, city, region, borough) VALUES (?, ?, 'New York', 'NY', ?)`)
+        .bind(locationId, `${borough}, New York`, borough));
+      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_locations (instructor_id, location_id) VALUES (?, ?)`)
+        .bind(teacherId, locationId));
+      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
+        VALUES ('location', ?, 'borough', 'unverified', ?)`).bind(locationId, clean(payload.website_url, 500)));
+    }
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
+      VALUES ('instructor', ?, 'profile', 'verified', ?)`)
+      .bind(teacherId, clean(payload.website_url, 500)));
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO research_sources (entity_type, entity_id, source_url, source_type, verification_status, checked_at, note)
+      VALUES ('instructor', ?, ?, 'official_website', 'verified', date('now'), 'Official professional or teaching profile reviewed by directory editor.')`)
+      .bind(teacherId, clean(payload.website_url, 500)));
+  }
 
   if (action === 'approved' && submission.submission_type === 'provider') {
     const providerId = crypto.randomUUID();
@@ -306,20 +415,36 @@ async function decideSubmission(request, env) {
   }
 
   if (action === 'approved' && submission.submission_type === 'claim') {
-    statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
-    statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
+    if (payload.target_kind === 'teacher') {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructor_claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.target_id));
+    } else {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
+    }
   }
   if (submission.submission_type === 'claim' && action === 'rejected') {
-    statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
-    statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
+    if (payload.target_kind === 'teacher') {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructor_claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.target_id));
+    } else {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
+    }
   }
 
   if (action === 'approved' && submission.submission_type === 'profile_update') {
-    const fields = ['name', 'description', 'teaching_approach', 'website_url', 'instagram_url'];
-    const values = fields.map(field => clean(payload[field], field === 'description' || field === 'teaching_approach' ? 3000 : 500));
-    statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET name = COALESCE(NULLIF(?,''),name), description = COALESCE(NULLIF(?,''),description),
-      teaching_approach = COALESCE(NULLIF(?,''),teaching_approach), website_url = COALESCE(NULLIF(?,''),website_url), instagram_url = COALESCE(NULLIF(?,''),instagram_url), updated_at = CURRENT_TIMESTAMP WHERE id = ?`)
-      .bind(...values, payload.provider_id));
+    if (payload.target_kind === 'teacher' && clean(payload.target_id, 120)) {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET description = COALESCE(NULLIF(?,''),description),
+        website_url = COALESCE(NULLIF(?,''),website_url), updated_at = CURRENT_TIMESTAMP WHERE id = ?`)
+        .bind(clean(payload.description, 3000), clean(payload.website_url, 500), clean(payload.target_id, 120)));
+    } else {
+      const fields = ['name', 'description', 'teaching_approach', 'website_url', 'instagram_url'];
+      const values = fields.map(field => clean(payload[field], field === 'description' || field === 'teaching_approach' ? 3000 : 500));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET name = COALESCE(NULLIF(?,''),name), description = COALESCE(NULLIF(?,''),description),
+        teaching_approach = COALESCE(NULLIF(?,''),teaching_approach), website_url = COALESCE(NULLIF(?,''),website_url), instagram_url = COALESCE(NULLIF(?,''),instagram_url), updated_at = CURRENT_TIMESTAMP WHERE id = ?`)
+        .bind(...values, payload.provider_id));
+    }
     statements.push(env.DIRECTORY_DB.prepare(`UPDATE provider_update_suggestions SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
   }
   if (submission.submission_type === 'profile_update' && action === 'rejected') {
@@ -342,17 +467,28 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === '/api/health') return json({ ok: true, service: 'acting-class-directory', databaseConfigured: Boolean(env.DIRECTORY_DB) });
+    const legacyTypes = { '/directory': 'all', '/studios': 'studios', '/classes': 'classes', '/coaches': 'coaches' };
+    if (legacyTypes[url.pathname] && request.method === 'GET') {
+      const target = new URL('/', url);
+      for (const [key, value] of url.searchParams) target.searchParams.set(key, value);
+      if (legacyTypes[url.pathname] === 'all') target.searchParams.delete('type');
+      else target.searchParams.set('type', legacyTypes[url.pathname]);
+      return Response.redirect(target, 302);
+    }
     if (url.pathname === '/api/directory' && request.method === 'GET') return getPublicListing(request, env);
-    if (url.pathname.startsWith('/api/providers/') || url.pathname.startsWith('/api/offerings/')) return getPublicListing(request, env);
+    if (url.pathname.startsWith('/api/providers/') || url.pathname.startsWith('/api/offerings/') || url.pathname.startsWith('/api/teachers/')) return getPublicListing(request, env);
     if (url.pathname === '/api/submissions') return submit(request, env);
     if (url.pathname === '/api/admin/submissions' && request.method === 'GET') return adminSubmissions(request, env);
     if (url.pathname === '/api/admin/decision') return decideSubmission(request, env);
     if (url.pathname === '/sitemap.xml' && request.method === 'GET') return sitemap(request, env);
     if (url.pathname === '/robots.txt' && request.method === 'GET') return robots(request);
+    if (url.pathname === '/' && url.searchParams.has('listing')) return seoQueryProfile(request, env, clean(url.searchParams.get('listing'), 160));
     const providerMatch = url.pathname.match(/^\/providers\/([a-z0-9-]+)\/?$/i);
     if (providerMatch && request.method === 'GET') return seoProfile(request, env, providerMatch[1], 'provider');
     const offeringMatch = url.pathname.match(/^\/classes\/([a-z0-9-]+)\/?$/i);
     if (offeringMatch && request.method === 'GET') return seoProfile(request, env, offeringMatch[1], 'offering');
+    const teacherMatch = url.pathname.match(/^\/teachers\/([a-z0-9-]+)\/?$/i);
+    if (teacherMatch && request.method === 'GET') return seoProfile(request, env, teacherMatch[1], 'teacher');
     return env.ASSETS.fetch(request);
   },
 };
