@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "acting-class-directory-local",
+  "compatibility_date": "2026-10-23",
+  "main": "src/worker.js",
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": false },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "d1_databases": [
+    {
+      "binding": "DIRECTORY_DB",
+      "database_name": "acting-class-directory-local",
+      "database_id": "local-development-only",
+      "remote": false,
+      "migrations_dir": "migrations"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "acting-class-directory",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "wrangler dev --local --ip 127.0.0.1",
+    "db:migrate:local": "wrangler d1 migrations apply acting-class-directory-local --local"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.66.0",
+    "wrangler": "^4.156.0"
+  }
+}
