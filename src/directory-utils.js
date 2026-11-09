@@ -1,13 +1,19 @@
-export const LOCATIONS = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Online'];
+export const LOCATIONS = ['NYC', 'Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Online'];
 export const TRAINING_TYPES = [
-  ['acting-classes', 'Acting classes'], ['on-camera-acting', 'On-camera acting'], ['scene-study', 'Scene study'],
-  ['improv', 'Improv'], ['audition-technique', 'Audition technique'], ['voice-and-movement', 'Voice & movement'],
-  ['workshops-and-intensives', 'Workshops & intensives'],
+  ['voice-lessons', 'Voice lessons'], ['vocal-coaching', 'Vocal coaching'],
+  ['audition-repertoire-coaching', 'Audition & repertoire'], ['acting-coaching', 'Acting through song'],
+  ['group-singing-classes', 'Group singing classes'], ['voice-teacher-training', 'Voice pedagogy'],
 ];
 export const TECHNIQUES = [
-  ['meisner', 'Meisner'], ['stanislavski', 'Stanislavski'], ['method-acting', 'Method acting'],
-  ['uta-hagen', 'Uta Hagen'], ['michael-chekhov', 'Michael Chekhov'], ['other', 'Other'],
-  ['stella-adler', 'Stella Adler'],
+  ['vocal-technique', 'Vocal technique'], ['classical-vocal-technique', 'Classical technique'],
+  ['contemporary-voice-technique', 'Contemporary voice technique'], ['mix-and-belt', 'Mix & belt'],
+  ['repertoire-coaching', 'Repertoire coaching'], ['acting-through-song', 'Acting through song'],
+];
+export const VOICE_STYLES = [
+  ['musical-theatre', 'Musical theatre'], ['classical-opera', 'Classical / opera'],
+  ['pop', 'Pop'], ['rock', 'Rock'], ['r-and-b-soul', 'R&B / soul'],
+  ['jazz-cabaret', 'Jazz / cabaret'], ['gospel', 'Gospel'],
+  ['country-folk-world', 'Country / folk / world'], ['latin', 'Latin'],
 ];
 export const FORMATS = [['in_person', 'In person'], ['online', 'Online'], ['hybrid', 'Hybrid']];
 export const PRICE_BASES = [['per_session', 'Per session'], ['hourly', 'Hourly'], ['full_course', 'Full course'], ['workshop', 'Workshop / intensive'], ['other', 'Other']];
@@ -23,6 +29,7 @@ export function cleanText(value = '') {
 export function searchBlob(item) {
   return cleanText([
     item.name, item.description, item.biography, item.teaching_experience, item.providerName, item.provider_name, item.locationLabel,
+    item.professional_title, item.source_label,
     ...(item.terms || []).map(term => term.term), ...(item.instructors || []).map(person => person.name),
     ...(item.affiliations || []).map(provider => provider.name),
     ...(item.offerings || []).flatMap(offering => [offering.name, offering.description, offering.provider_name]),
@@ -36,7 +43,10 @@ export function getCollectionType(item) {
 }
 
 export function mergeListings(data) {
-  if (Array.isArray(data?.teachers)) return data.teachers.map(teacher => ({ ...teacher, kind: 'teacher' }));
+  if (Array.isArray(data?.teachers)) return [
+    ...data.teachers.map(teacher => ({ ...teacher, kind: 'teacher' })),
+    ...(data.offerings || []).map(offering => ({ ...offering, kind: 'offering' })),
+  ];
   const providers = (data?.providers || []).map(provider => ({ ...provider, kind: 'provider' }));
   const offerings = (data?.offerings || []).map(offering => ({ ...offering, kind: 'offering' }));
   return [...providers, ...offerings];
@@ -79,20 +89,22 @@ export function filterListings(listings, filters) {
     const collectionType = getCollectionType(item);
     if (filters.type === 'studios' && !(item.kind === 'provider' && collectionType === 'studio')) return false;
     if (filters.type === 'classes' && !(item.kind === 'offering' && collectionType === 'class')) return false;
-    if (filters.type === 'coaches' && !(item.kind === 'provider' && collectionType === 'coach')) return false;
+    if (filters.type === 'coaches' && !(collectionType === 'coach' && ['teacher', 'provider', 'offering'].includes(item.kind))) return false;
 
     if (filters.q && !searchBlob(item).includes(cleanText(filters.q))) return false;
     if (filters.location) {
       const locations = item.locations || [];
       const online = locations.some(location => Boolean(location.is_online) && location.verified);
       const borough = locations.some(location => location.borough === filters.location && location.verified);
-      if (filters.location === 'Online' ? !online : !borough) return false;
+      const nyc = locations.some(location => location.city === 'New York' && location.verified);
+      if (filters.location === 'Online' ? !online : filters.location === 'NYC' ? !nyc : !borough) return false;
     }
     if (filters.training && !(item.terms || []).some(term => ['training_type', 'specialty'].includes(term.taxonomy) && term.slug === filters.training && term.verification_status === 'verified')) return false;
     if (filters.technique && !(item.terms || []).some(term => term.taxonomy === 'technique' && term.slug === filters.technique && term.verification_status === 'verified')) return false;
+    if (filters.style && !(item.terms || []).some(term => term.taxonomy === 'genre' && term.slug === filters.style && term.verification_status === 'verified')) return false;
     if (filters.format) {
       const formats = item.kind === 'teacher'
-        ? (item.offerings || []).some(offering => offering.formatVerified && offering.format === filters.format)
+        ? (item.formats || []).some(format => format.verification_status === 'verified' && format.format === filters.format)
         : item.kind === 'provider'
         ? (item.offerings || []).some(offering => offering.formatVerified && offering.format === filters.format)
         : item.formatVerified && item.format === filters.format;

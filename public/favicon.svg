@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="32" fill="#f5f2eb"/>
-  <circle cx="32" cy="32" r="29" fill="none" stroke="#653d43" stroke-width="1.5"/>
-  <text x="32" y="39" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#653d43">AC</text>
+  <rect width="64" height="64" rx="12" fill="#f7f3e9"/>
+  <g fill="none" stroke="#34312c" stroke-width="1" opacity=".52">
+    <path d="M8 21h48M8 27h48M8 33h48M8 39h48M8 45h48"/>
+  </g>
+  <ellipse cx="28" cy="34" rx="5.5" ry="3.5" transform="rotate(-24 28 34)" fill="#6e2938"/>
+  <path d="M33 33V17l15-3v17" fill="none" stroke="#6e2938" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+  <ellipse cx="43" cy="32" rx="5.5" ry="3.5" transform="rotate(-24 43 32)" fill="#6e2938"/>
 </svg>

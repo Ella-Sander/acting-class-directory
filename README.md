@@ -1,8 +1,8 @@
-# Acting Class Directory
+# Voxline NYC
 
-An independent directory of acting studios, schools, classes, workshops and private coaches in New York City.
+An independent directory of vocal coaches, voice teachers and singing classes in New York City. Listings focus on source-backed lesson specialties, singing styles, verified teaching formats and published prices.
 
-The public Worker is live at [acting-class-directory.ellasanderella.workers.dev](https://acting-class-directory.ellasanderella.workers.dev). Its only database binding is the separately provisioned `acting-class-directory` D1 database.
+The existing public Worker is live at [acting-class-directory.ellasanderella.workers.dev](https://acting-class-directory.ellasanderella.workers.dev). Its deployment and D1 resource names are retained during the product transition.
 
 ## Local development
 
@@ -24,17 +24,17 @@ Set `ADMIN_REVIEW_KEY` in your ignored `.dev.vars` file for local `/admin/review
 
 ## Database
 
-`migrations/0001_acting_directory_schema.sql` defines the independent acting education schema. `0002_seed_reviewed_nyc_listings.sql` adds a small source-linked starter directory. Apply migrations to local D1 only:
+`migrations/0001_acting_directory_schema.sql` defines the original schema. Migrations `0002`–`0005` add source evidence, individual teacher profiles and related features. `0006_nyc_voice_directory.sql` archives the acting-only starter listings, adds verified voice-teaching formats and vocal taxonomies, and seeds 20 source-backed NYC voice-teacher profiles plus one sourced group-singing-class listing. It preserves the archived acting records rather than deleting them. Apply migrations to local D1 only:
 
 ```sh
 npm run db:migrate:local
 ```
 
-The databases contain no photographer records. Starter listings include source URLs and verification evidence; check current schedules and prices with providers before enrolling. Both migrations have been applied to the dedicated production D1 for this deployment. Do not apply further remote migrations without reviewing the change and target.
+The seeded coach profiles draw from New York Vocal Coaching's official staff roster and the New York Singing Teachers' Association's teacher directory. Association directory listings are labeled as such because personal websites and booking details were not available from that source. Schedules and prices are not invented; confirm current availability and details with each coach or school. The earlier acting-directory migrations were applied to the dedicated production D1. Do not apply `0006` or any further remote migration without explicitly reviewing the change and target.
 
 ## Local editorial workflow
 
-Provider, class and coach suggestions, claims and profile updates are saved as pending in D1. Open `/admin/review` and enter the appropriate review key to approve or reject them. Approval publishes a listing; submitted details remain marked unverified until checked against an official source. No mail integration is configured.
+Voice-school, class and coach suggestions, claims and profile updates are saved as pending in D1. Open `/admin/review` and enter the appropriate review key to approve or reject them. Approval publishes a listing; submitted details remain marked unverified until checked against an official source. No mail integration is configured.
 
 ## Directory routes
 

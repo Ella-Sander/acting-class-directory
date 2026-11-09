@@ -58,6 +58,8 @@ const TEACHERS_SQL = `SELECT i.*,
   (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,
       'verification_status',it.verification_status,'source_url',it.source_url,'verified_at',it.verified_at))
     FROM instructor_terms it JOIN taxonomy_terms tt ON tt.id = it.term_id WHERE it.instructor_id = i.id) AS terms_json,
+  (SELECT json_group_array(json_object('format',ifm.format,'verification_status',ifm.verification_status,'source_url',ifm.source_url,'verified_at',ifm.verified_at))
+    FROM instructor_formats ifm WHERE ifm.instructor_id = i.id) AS formats_json,
   (SELECT json_group_array(json_object('label',l.label,'city',l.city,'region',l.region,'borough',l.borough,'neighborhood',l.neighborhood,
       'postal_address',l.postal_address,'is_online',l.is_online,
       'verified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified')))
@@ -84,7 +86,7 @@ function normalizeTeacher(row) {
   return {
     ...row, kind: 'teacher',
     affiliations: parseArray(row.affiliations_json), offerings: parseArray(row.offerings_json),
-    terms: parseArray(row.terms_json), locations: parseArray(row.locations_json),
+    terms: parseArray(row.terms_json), formats: parseArray(row.formats_json), locations: parseArray(row.locations_json),
   };
 }
 
@@ -105,8 +107,8 @@ async function getDirectory(env) {
 function safeJson(data) { return JSON.stringify(data).replace(/</g, '\\u003c'); }
 
 function addProfileMetadata(html, url, listing, isOffering, kind = 'provider') {
-  const title = `${listing.name} | Acting Teachers of New York`;
-  const description = clean(listing.description || `Explore ${listing.name} in the New York acting education directory.`, 180);
+  const title = `${listing.name} | Voxline NYC`;
+  const description = clean(listing.description || `Explore ${listing.name} on Voxline NYC.`, 180);
   const canonical = kind === 'teacher'
     ? new URL(`/?listing=${encodeURIComponent(listing.slug)}`, url.origin).href
     : new URL(url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`, url.origin).href;
@@ -130,7 +132,7 @@ async function seoProfile(request, env, slug, kind) {
   const listing = teacher || offering || provider;
   if (!listing) {
     const missing = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
-    const html = (await missing.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Acting Teachers of New York</title>')
+    const html = (await missing.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Voxline NYC</title>')
       .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="noindex, nofollow" />');
     return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
   }
@@ -149,7 +151,7 @@ async function seoQueryProfile(request, env, slug) {
   const listing = teacher || offering || provider;
   if (!listing) {
     const response = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
-    const html = (await response.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Acting Teachers of New York</title>')
+    const html = (await response.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Voxline NYC</title>')
       .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="noindex, nofollow" />');
     return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
   }
@@ -326,18 +328,18 @@ async function decideSubmission(request, env) {
   if (action === 'approved' && submission.submission_type === 'teacher') {
     const teacherId = crypto.randomUUID();
     const slug = slugify(payload.name);
-    const title = ['Acting teacher', 'Acting coach', 'On-camera coach', 'Audition coach', 'Voice or movement coach', 'Other teacher'].includes(payload.professional_title)
-      ? payload.professional_title : 'Acting teacher';
+    const title = ['Voice teacher', 'Vocal coach', 'Singing teacher', 'Vocal pedagogue', 'Speech and voice coach', 'Other voice teacher'].includes(payload.professional_title)
+      ? payload.professional_title : 'Voice teacher';
     statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructors
-      (id, slug, name, description, biography, teaching_experience, website_url, instagram_url, booking_url, professional_title, profile_status, last_verified_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', date('now'))`)
+      (id, slug, name, description, biography, teaching_experience, website_url, source_url, instagram_url, booking_url, professional_title, profile_status, last_verified_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', date('now'))`)
       .bind(teacherId, `${slug}-${teacherId.slice(0, 6)}`, clean(payload.name, 160), clean(payload.description, 3000),
         clean(payload.biography, 5000) || null, clean(payload.teaching_experience, 3000) || null,
-        clean(payload.website_url, 500), clean(payload.instagram_url, 300) || null, clean(payload.booking_url, 500) || null, title));
+        clean(payload.website_url, 500), clean(payload.website_url, 500), clean(payload.instagram_url, 300) || null, clean(payload.booking_url, 500) || null, title));
     const affiliationId = clean(payload.affiliation_provider_id, 120);
     if (affiliationId) statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_instructors (provider_id, instructor_id)
       SELECT id, ? FROM providers WHERE id = ? AND listing_status = 'published' AND listing_type != 'coach'`).bind(teacherId, affiliationId));
-    for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || [])]) {
+    for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || []), ...(payload.genres || [])]) {
       statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_terms (instructor_id, term_id, verification_status, source_url)
         SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE slug = ?`).bind(teacherId, clean(payload.website_url, 500), slugTerm));
     }
@@ -381,6 +383,10 @@ async function decideSubmission(request, env) {
       statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
         SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'technique' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
     }
+    for (const slugTerm of payload.genres || []) {
+      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
+        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'genre' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
+    }
     statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
       VALUES ('provider', ?, 'submission', 'unverified', ?)`).bind(providerId, payload.website_url || null));
   }
@@ -409,6 +415,10 @@ async function decideSubmission(request, env) {
     for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || [])]) {
       statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offering_terms (offering_id, term_id, verification_status, source_url)
         SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE slug = ?`).bind(offeringId, payload.website_url || payload.registration_url || null, slugTerm));
+    }
+    for (const slugTerm of payload.genres || []) {
+      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offering_terms (offering_id, term_id, verification_status, source_url)
+        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'genre' AND slug = ?`).bind(offeringId, payload.website_url || payload.registration_url || null, slugTerm));
     }
     statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
       VALUES ('offering', ?, 'submission', 'unverified', ?)`).bind(offeringId, payload.website_url || payload.registration_url || null));
