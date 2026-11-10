@@ -103,12 +103,7 @@ export function filterListings(listings, filters) {
     if (filters.technique && !(item.terms || []).some(term => term.taxonomy === 'technique' && term.slug === filters.technique && term.verification_status === 'verified')) return false;
     if (filters.style && !(item.terms || []).some(term => term.taxonomy === 'genre' && term.slug === filters.style && term.verification_status === 'verified')) return false;
     if (filters.format) {
-      const formats = item.kind === 'teacher'
-        ? (item.formats || []).some(format => format.verification_status === 'verified' && format.format === filters.format)
-        : item.kind === 'provider'
-        ? (item.offerings || []).some(offering => offering.formatVerified && offering.format === filters.format)
-        : item.formatVerified && item.format === filters.format;
-      if (!formats) return false;
+      if (!verifiedFormats(item).includes(filters.format)) return false;
     }
     if ((filters.budget || filters.priceBasis || filters.minPrice !== '' && filters.minPrice != null || filters.maxPrice !== '' && filters.maxPrice != null) && !priceMatches(item, filters)) return false;
     return true;
@@ -124,17 +119,69 @@ export function filterListings(listings, filters) {
   return results;
 }
 
+export function buildFilterChoices(listings) {
+  const terms = taxonomy => {
+    const map = new Map();
+    for (const item of listings) for (const term of item.terms || []) {
+      if (term.taxonomy === taxonomy && term.verification_status === 'verified') map.set(term.slug, [term.slug, term.term]);
+    }
+    return [...map.values()];
+  };
+  const locations = [...new Set(listings.flatMap(item => (item.locations || []).filter(location => location.verified)
+    .map(location => location.is_online ? 'Online' : location.borough || 'NYC').filter(Boolean)))].map(value => [value, value]);
+  const verifiedOffers = listings.flatMap(item => item.kind === 'offering' ? [item] : (item.offerings || []));
+  const formats = FORMATS.filter(([value]) => listings.some(item => verifiedFormats(item).includes(value)) ||
+    verifiedOffers.some(offering => offering.formatVerified && offering.format === value));
+  const budgets = BUDGETS.filter(([, , min, max]) => {
+    const amounts = listings.flatMap(item => item.kind === 'offering'
+      ? (item.priceVerified && item.price_min != null ? [Number(item.price_min)] : [])
+      : (item.offerings || []).filter(offering => offering.priceVerified && offering.price_min != null).map(offering => Number(offering.price_min)));
+    return amounts.some(price => price >= min && price <= max);
+  }).map(([slug, label]) => [slug, label]);
+  const priceBases = PRICE_BASES.filter(([value]) => verifiedOffers.some(offering => offering.priceVerified && offering.price_min != null && offering.price_basis === value));
+  return {
+    locations,
+    training: [...new Map([...terms('training_type'), ...terms('specialty')].map(term => [term[0], term])).values()],
+    techniques: terms('technique'),
+    styles: terms('genre'),
+    formats,
+    budgets,
+    priceBases,
+  };
+}
+
+export function cheapestVerifiedOffering(item, { verifiedOnly = true } = {}) {
+  const values = (item.offerings || []).filter(o => o.price_min != null && (!verifiedOnly || o.priceVerified));
+  if (!values.length) return null;
+  return values.reduce((a, b) => a.price_min <= b.price_min ? a : b);
+}
+
+export function verifiedFormats(item) {
+  if (item.kind === 'teacher') {
+    return (item.formats || []).filter(entry => entry.verification_status === 'verified').map(entry => entry.format).filter(Boolean);
+  }
+  if (item.kind === 'provider') {
+    return (item.offerings || []).filter(offering => offering.formatVerified && offering.format).map(offering => offering.format);
+  }
+  if (item.kind === 'offering') {
+    return item.formatVerified && item.format ? [item.format] : [];
+  }
+  return [];
+}
+
+export function formatLabel(value) {
+  return ({ in_person: 'In person', online: 'Online', hybrid: 'Hybrid' })[value] || value;
+}
+
 export function priceLabel(item, { prefix = false } = {}) {
   if (item.kind === 'teacher') {
-    const values = (item.offerings || []).filter(offering => offering.priceVerified && offering.price_min != null);
-    if (!values.length) return 'Ask for pricing';
-    const cheapest = values.reduce((a, b) => a.price_min <= b.price_min ? a : b);
+    const cheapest = cheapestVerifiedOffering(item);
+    if (!cheapest) return 'Ask for pricing';
     return `${prefix ? 'From ' : ''}${formatPrice(cheapest.price_min, cheapest.currency)} ${basisLabel(cheapest.price_basis)}`.trim();
   }
   if (item.kind !== 'offering') {
-    const values = (item.offerings || []).filter(o => o.price_min != null);
-    if (!values.length) return 'Contact for pricing';
-    const cheapest = values.reduce((a, b) => a.price_min <= b.price_min ? a : b);
+    const cheapest = cheapestVerifiedOffering(item, { verifiedOnly: false });
+    if (!cheapest) return 'Contact for pricing';
     const verification = cheapest.priceVerified ? '' : ' · unverified';
     return `${prefix ? 'From ' : ''}${formatPrice(cheapest.price_min, cheapest.currency)} ${basisLabel(cheapest.price_basis)}${verification}`.trim();
   }

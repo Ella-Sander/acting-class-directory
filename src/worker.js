@@ -8,6 +8,11 @@ const parseArray = value => {
   catch { return []; }
 };
 
+const parseObject = value => {
+  try { const parsed = JSON.parse(value || '{}'); return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {}; }
+  catch { return {}; }
+};
+
 const clean = (value, max = 2000) => typeof value === 'string'
   ? value.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, max)
   : '';
@@ -124,40 +129,40 @@ function addProfileMetadata(html, url, listing, isOffering, kind = 'provider') {
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 
+function findListing(directory, slug, kind) {
+  const teacher = !kind || kind === 'teacher' ? directory.teachers.find(item => item.slug === slug) : null;
+  const offering = !kind || kind === 'offering' ? directory.offerings.find(item => item.slug === slug) : null;
+  const provider = !kind || kind === 'provider' ? directory.providers.find(item => item.slug === slug) : null;
+  const listing = teacher || offering || provider;
+  const resolvedKind = teacher ? 'teacher' : offering ? 'offering' : 'provider';
+  return { listing, isOffering: Boolean(offering), kind: resolvedKind };
+}
+
+async function notFoundResponse(request, env) {
+  const missing = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
+  const html = (await missing.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Voxline NYC</title>')
+    .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="noindex, nofollow" />');
+  return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+}
+
 async function seoProfile(request, env, slug, kind) {
   const directory = await getDirectory(env);
-  const teacher = kind === 'teacher' ? directory.teachers.find(item => item.slug === slug) : null;
-  const offering = kind === 'offering' ? directory.offerings.find(item => item.slug === slug) : null;
-  const provider = kind === 'provider' ? directory.providers.find(item => item.slug === slug) : null;
-  const listing = teacher || offering || provider;
-  if (!listing) {
-    const missing = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
-    const html = (await missing.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Voxline NYC</title>')
-      .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="noindex, nofollow" />');
-    return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
-  }
+  const { listing, isOffering } = findListing(directory, slug, kind);
+  if (!listing) return notFoundResponse(request, env);
   const response = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
   if (!response.ok) return response;
-  return new Response(addProfileMetadata(await response.text(), new URL(request.url), listing, Boolean(offering), kind), {
+  return new Response(addProfileMetadata(await response.text(), new URL(request.url), listing, isOffering, kind), {
     status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=120' },
   });
 }
 
 async function seoQueryProfile(request, env, slug) {
   const directory = await getDirectory(env);
-  const teacher = directory.teachers.find(item => item.slug === slug);
-  const offering = directory.offerings.find(item => item.slug === slug);
-  const provider = directory.providers.find(item => item.slug === slug);
-  const listing = teacher || offering || provider;
-  if (!listing) {
-    const response = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
-    const html = (await response.text()).replace(/<title>[^<]*<\/title>/i, '<title>Teacher not found | Voxline NYC</title>')
-      .replace(/<meta name="robots" content="[^"]*"\s*\/?>/i, '<meta name="robots" content="noindex, nofollow" />');
-    return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
-  }
+  const { listing, isOffering, kind } = findListing(directory, slug);
+  if (!listing) return notFoundResponse(request, env);
   const response = await env.ASSETS.fetch(new Request(new URL('/', request.url), { method: 'GET' }));
   if (!response.ok) return response;
-  return new Response(addProfileMetadata(await response.text(), new URL(request.url), listing, Boolean(offering), teacher ? 'teacher' : offering ? 'offering' : 'provider'), {
+  return new Response(addProfileMetadata(await response.text(), new URL(request.url), listing, isOffering, kind), {
     status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=120' },
   });
 }
@@ -287,10 +292,15 @@ async function submit(request, env) {
       }
     }
     if (type === 'profile_update') {
-      const provider = await env.DIRECTORY_DB.prepare(`SELECT id FROM providers WHERE id = ? AND listing_status = 'published'`).bind(clean(body.provider_id, 120)).first();
-      if (!provider) return json({ error: 'That published profile could not be found.' }, 404);
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_update_suggestions (id, provider_id, submission_id, suggested_payload_json)
-        VALUES (?, ?, ?, ?)`).bind(crypto.randomUUID(), provider.id, id, JSON.stringify(data)));
+      if (body.target_kind === 'teacher') {
+        const teacher = await env.DIRECTORY_DB.prepare(`SELECT id FROM instructors WHERE id = ? AND profile_status = 'published'`).bind(clean(body.target_id, 120)).first();
+        if (!teacher) return json({ error: 'That published profile could not be found.' }, 404);
+      } else {
+        const provider = await env.DIRECTORY_DB.prepare(`SELECT id FROM providers WHERE id = ? AND listing_status = 'published'`).bind(clean(body.provider_id, 120)).first();
+        if (!provider) return json({ error: 'That published profile could not be found.' }, 404);
+        statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_update_suggestions (id, provider_id, submission_id, suggested_payload_json)
+          VALUES (?, ?, ?, ?)`).bind(crypto.randomUUID(), provider.id, id, JSON.stringify(data)));
+      }
     }
     await env.DIRECTORY_DB.batch(statements);
     return json({ ok: true, status: 'pending', submissionId: id }, 201);
@@ -307,9 +317,142 @@ function adminAuthorized(request, env) {
 
 async function adminSubmissions(request, env) {
   if (!adminAuthorized(request, env)) return json({ error: 'Enter the local review key.' }, 401);
-  const result = await env.DIRECTORY_DB.prepare(`SELECT id, submission_type, contact_name, contact_email, website_url, payload_json, submitted_at
-    FROM submissions WHERE status = 'pending' ORDER BY submitted_at ASC`).all();
-  return json((result.results || []).map(row => ({ ...row, payload: JSON.parse(row.payload_json || '{}') })));
+  try {
+    const result = await env.DIRECTORY_DB.prepare(`SELECT id, submission_type, contact_name, contact_email, website_url, payload_json, submitted_at
+      FROM submissions WHERE status = 'pending' ORDER BY submitted_at ASC`).all();
+    return json((result.results || []).map(row => ({ ...row, payload: parseObject(row.payload_json) })));
+  } catch (error) {
+    console.error('Admin submissions failed:', error?.message || error);
+    return json({ error: 'The pending submissions could not be loaded.' }, 503);
+  }
+}
+
+function buildTeacherStatements(env, payload) {
+  const statements = [];
+  const teacherId = crypto.randomUUID();
+  const slug = slugify(payload.name);
+  const title = ['Voice teacher', 'Vocal coach', 'Singing teacher', 'Vocal pedagogue', 'Speech and voice coach', 'Other voice teacher'].includes(payload.professional_title)
+    ? payload.professional_title : 'Voice teacher';
+  statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructors
+    (id, slug, name, description, biography, teaching_experience, website_url, source_url, instagram_url, booking_url, professional_title, profile_status, last_verified_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', date('now'))`)
+    .bind(teacherId, `${slug}-${teacherId.slice(0, 6)}`, clean(payload.name, 160), clean(payload.description, 3000),
+      clean(payload.biography, 5000) || null, clean(payload.teaching_experience, 3000) || null,
+      clean(payload.website_url, 500), clean(payload.website_url, 500), clean(payload.instagram_url, 300) || null, clean(payload.booking_url, 500) || null, title));
+  const affiliationId = clean(payload.affiliation_provider_id, 120);
+  if (affiliationId) statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_instructors (provider_id, instructor_id)
+    SELECT id, ? FROM providers WHERE id = ? AND listing_status = 'published' AND listing_type != 'coach'`).bind(teacherId, affiliationId));
+  for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || []), ...(payload.genres || [])]) {
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_terms (instructor_id, term_id, verification_status, source_url)
+      SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE slug = ?`).bind(teacherId, clean(payload.website_url, 500), slugTerm));
+  }
+  const borough = clean(payload.borough, 80);
+  if (borough) {
+    const locationId = crypto.randomUUID();
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO locations (id, label, city, region, borough) VALUES (?, ?, 'New York', 'NY', ?)`)
+      .bind(locationId, `${borough}, New York`, borough));
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_locations (instructor_id, location_id) VALUES (?, ?)`)
+      .bind(teacherId, locationId));
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
+      VALUES ('location', ?, 'borough', 'unverified', ?)`).bind(locationId, clean(payload.website_url, 500)));
+  }
+  statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
+    VALUES ('instructor', ?, 'profile', 'verified', ?)`)
+    .bind(teacherId, clean(payload.website_url, 500)));
+  statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO research_sources (entity_type, entity_id, source_url, source_type, verification_status, checked_at, note)
+    VALUES ('instructor', ?, ?, 'official_website', 'verified', date('now'), 'Official professional or teaching profile reviewed by directory editor.')`)
+    .bind(teacherId, clean(payload.website_url, 500)));
+  return statements;
+}
+
+function buildProviderStatements(env, payload) {
+  const statements = [];
+  const providerId = crypto.randomUUID();
+  const slug = slugify(payload.name);
+  statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO providers (id, slug, listing_type, name, description, teaching_approach, website_url, instagram_url, source_url, listing_status, origin)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', 'submitted')`).bind(providerId, `${slug}-${providerId.slice(0, 6)}`,
+      payload.listing_type, clean(payload.name, 160), clean(payload.description, 3000) || null, clean(payload.teaching_approach, 2000) || null,
+      clean(payload.website_url, 500) || null, clean(payload.instagram_url, 300) || null, clean(payload.website_url, 500) || null));
+  const location = clean(payload.borough, 80);
+  if (location || payload.format === 'online') {
+    const locationId = crypto.randomUUID();
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO locations (id, label, city, region, borough, is_online) VALUES (?, ?, 'New York', 'NY', ?, ?)`)
+      .bind(locationId, payload.format === 'online' ? 'Online' : `${location}, New York`, location || null, payload.format === 'online' ? 1 : 0));
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_locations (provider_id, location_id, is_primary) VALUES (?, ?, 1)`).bind(providerId, locationId));
+  }
+  for (const slugTerm of payload.training_types || []) {
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
+      SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'training_type' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
+  }
+  for (const slugTerm of payload.techniques || []) {
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
+      SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'technique' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
+  }
+  for (const slugTerm of payload.genres || []) {
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
+      SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'genre' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
+  }
+  statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
+    VALUES ('provider', ?, 'submission', 'unverified', ?)`).bind(providerId, payload.website_url || null));
+  return statements;
+}
+
+async function buildOfferingStatements(env, payload) {
+  const statements = [];
+  const offeringId = crypto.randomUUID();
+  const slug = slugify(payload.name);
+  const provider = payload.provider_id
+    ? await env.DIRECTORY_DB.prepare(`SELECT id FROM providers WHERE id = ? AND listing_status = 'published'`).bind(clean(payload.provider_id, 120)).first()
+    : null;
+  statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offerings (id, slug, provider_id, name, description, registration_url, format, price_min, price_max, currency, price_basis, duration_minutes, session_count, schedule_text, skill_level, genre_specialty, audition_required, interview_required, instruction_mode, source_url, listing_status, origin)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', 'submitted')`)
+    .bind(offeringId, `${slug}-${offeringId.slice(0, 6)}`, provider?.id || null, clean(payload.name, 160), clean(payload.description, 3000) || null,
+      clean(payload.registration_url, 500) || clean(payload.website_url, 500) || null,
+      ['in_person', 'online', 'hybrid'].includes(payload.format) ? payload.format : null,
+      payload.price_min === '' || payload.price_min == null ? null : Number(payload.price_min),
+      payload.price_max === '' || payload.price_max == null ? null : Number(payload.price_max),
+      payload.price_min === '' || payload.price_min == null ? null : 'USD',
+      ['per_session', 'hourly', 'full_course', 'workshop', 'other'].includes(payload.price_basis) ? payload.price_basis : null,
+      Number(payload.duration_minutes) || null, Number(payload.session_count) || null, clean(payload.schedule_text, 300) || null,
+      clean(payload.skill_level, 80) || null, clean(payload.genre_specialty, 240) || null,
+      payload.audition_required === '' || payload.audition_required == null ? null : Number(Boolean(payload.audition_required)),
+      payload.interview_required === '' || payload.interview_required == null ? null : Number(Boolean(payload.interview_required)),
+      ['group', 'private', 'both'].includes(payload.instruction_mode) ? payload.instruction_mode : null,
+      clean(payload.registration_url, 500) || clean(payload.website_url, 500) || null));
+  for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || [])]) {
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offering_terms (offering_id, term_id, verification_status, source_url)
+      SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE slug = ?`).bind(offeringId, payload.website_url || payload.registration_url || null, slugTerm));
+  }
+  for (const slugTerm of payload.genres || []) {
+    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offering_terms (offering_id, term_id, verification_status, source_url)
+      SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'genre' AND slug = ?`).bind(offeringId, payload.website_url || payload.registration_url || null, slugTerm));
+  }
+  statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
+    VALUES ('offering', ?, 'submission', 'unverified', ?)`).bind(offeringId, payload.website_url || payload.registration_url || null));
+  return statements;
+}
+
+function buildClaimStatements(env, payload, id, action) {
+  const statements = [];
+  const isTeacher = payload.target_kind === 'teacher';
+  if (action === 'approved') {
+    if (isTeacher) {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructor_claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.target_id));
+    } else {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
+    }
+  } else if (action === 'rejected') {
+    if (isTeacher) {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructor_claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.target_id));
+    } else {
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
+      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
+    }
+  }
+  return statements;
 }
 
 async function decideSubmission(request, env) {
@@ -320,128 +463,21 @@ async function decideSubmission(request, env) {
   const id = clean(body?.id, 80);
   const action = clean(body?.action, 20);
   if (!id || !['approved', 'rejected'].includes(action)) return json({ error: 'Choose approve or reject.' }, 400);
-  const submission = await env.DIRECTORY_DB.prepare(`SELECT * FROM submissions WHERE id = ? AND status = 'pending'`).bind(id).first();
+  let submission;
+  try {
+    submission = await env.DIRECTORY_DB.prepare(`SELECT * FROM submissions WHERE id = ? AND status = 'pending'`).bind(id).first();
+  } catch (error) {
+    console.error('Review submission lookup failed:', error?.message || error);
+    return json({ error: 'The review decision could not be saved.' }, 503);
+  }
   if (!submission) return json({ error: 'Pending submission not found.' }, 404);
-  const payload = JSON.parse(submission.payload_json || '{}');
+  const payload = parseObject(submission.payload_json);
   const statements = [];
 
-  if (action === 'approved' && submission.submission_type === 'teacher') {
-    const teacherId = crypto.randomUUID();
-    const slug = slugify(payload.name);
-    const title = ['Voice teacher', 'Vocal coach', 'Singing teacher', 'Vocal pedagogue', 'Speech and voice coach', 'Other voice teacher'].includes(payload.professional_title)
-      ? payload.professional_title : 'Voice teacher';
-    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructors
-      (id, slug, name, description, biography, teaching_experience, website_url, source_url, instagram_url, booking_url, professional_title, profile_status, last_verified_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', date('now'))`)
-      .bind(teacherId, `${slug}-${teacherId.slice(0, 6)}`, clean(payload.name, 160), clean(payload.description, 3000),
-        clean(payload.biography, 5000) || null, clean(payload.teaching_experience, 3000) || null,
-        clean(payload.website_url, 500), clean(payload.website_url, 500), clean(payload.instagram_url, 300) || null, clean(payload.booking_url, 500) || null, title));
-    const affiliationId = clean(payload.affiliation_provider_id, 120);
-    if (affiliationId) statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_instructors (provider_id, instructor_id)
-      SELECT id, ? FROM providers WHERE id = ? AND listing_status = 'published' AND listing_type != 'coach'`).bind(teacherId, affiliationId));
-    for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || []), ...(payload.genres || [])]) {
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_terms (instructor_id, term_id, verification_status, source_url)
-        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE slug = ?`).bind(teacherId, clean(payload.website_url, 500), slugTerm));
-    }
-    const borough = clean(payload.borough, 80);
-    if (borough) {
-      const locationId = crypto.randomUUID();
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO locations (id, label, city, region, borough) VALUES (?, ?, 'New York', 'NY', ?)`)
-        .bind(locationId, `${borough}, New York`, borough));
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO instructor_locations (instructor_id, location_id) VALUES (?, ?)`)
-        .bind(teacherId, locationId));
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
-        VALUES ('location', ?, 'borough', 'unverified', ?)`).bind(locationId, clean(payload.website_url, 500)));
-    }
-    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
-      VALUES ('instructor', ?, 'profile', 'verified', ?)`)
-      .bind(teacherId, clean(payload.website_url, 500)));
-    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO research_sources (entity_type, entity_id, source_url, source_type, verification_status, checked_at, note)
-      VALUES ('instructor', ?, ?, 'official_website', 'verified', date('now'), 'Official professional or teaching profile reviewed by directory editor.')`)
-      .bind(teacherId, clean(payload.website_url, 500)));
-  }
-
-  if (action === 'approved' && submission.submission_type === 'provider') {
-    const providerId = crypto.randomUUID();
-    const slug = slugify(payload.name);
-    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO providers (id, slug, listing_type, name, description, teaching_approach, website_url, instagram_url, source_url, listing_status, origin)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', 'submitted')`).bind(providerId, `${slug}-${providerId.slice(0, 6)}`,
-        payload.listing_type, clean(payload.name, 160), clean(payload.description, 3000) || null, clean(payload.teaching_approach, 2000) || null,
-        clean(payload.website_url, 500) || null, clean(payload.instagram_url, 300) || null, clean(payload.website_url, 500) || null));
-    const location = clean(payload.borough, 80);
-    if (location || payload.format === 'online') {
-      const locationId = crypto.randomUUID();
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO locations (id, label, city, region, borough, is_online) VALUES (?, ?, 'New York', 'NY', ?, ?)`)
-        .bind(locationId, payload.format === 'online' ? 'Online' : `${location}, New York`, location || null, payload.format === 'online' ? 1 : 0));
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_locations (provider_id, location_id, is_primary) VALUES (?, ?, 1)`).bind(providerId, locationId));
-    }
-    for (const slugTerm of payload.training_types || []) {
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
-        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'training_type' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
-    }
-    for (const slugTerm of payload.techniques || []) {
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
-        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'technique' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
-    }
-    for (const slugTerm of payload.genres || []) {
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO provider_terms (provider_id, term_id, verification_status, source_url)
-        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'genre' AND slug = ?`).bind(providerId, payload.website_url || null, slugTerm));
-    }
-    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
-      VALUES ('provider', ?, 'submission', 'unverified', ?)`).bind(providerId, payload.website_url || null));
-  }
-
-  if (action === 'approved' && submission.submission_type === 'offering') {
-    const offeringId = crypto.randomUUID();
-    const slug = slugify(payload.name);
-    const provider = payload.provider_id
-      ? await env.DIRECTORY_DB.prepare(`SELECT id FROM providers WHERE id = ? AND listing_status = 'published'`).bind(clean(payload.provider_id, 120)).first()
-      : null;
-    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offerings (id, slug, provider_id, name, description, registration_url, format, price_min, price_max, currency, price_basis, duration_minutes, session_count, schedule_text, skill_level, genre_specialty, audition_required, interview_required, instruction_mode, source_url, listing_status, origin)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', 'submitted')`)
-      .bind(offeringId, `${slug}-${offeringId.slice(0, 6)}`, provider?.id || null, clean(payload.name, 160), clean(payload.description, 3000) || null,
-        clean(payload.registration_url, 500) || clean(payload.website_url, 500) || null,
-        ['in_person', 'online', 'hybrid'].includes(payload.format) ? payload.format : null,
-        payload.price_min === '' || payload.price_min == null ? null : Number(payload.price_min),
-        payload.price_max === '' || payload.price_max == null ? null : Number(payload.price_max),
-        payload.price_min === '' || payload.price_min == null ? null : 'USD',
-        ['per_session', 'hourly', 'full_course', 'workshop', 'other'].includes(payload.price_basis) ? payload.price_basis : null,
-        Number(payload.duration_minutes) || null, Number(payload.session_count) || null, clean(payload.schedule_text, 300) || null,
-        clean(payload.skill_level, 80) || null, clean(payload.genre_specialty, 240) || null,
-        payload.audition_required === '' || payload.audition_required == null ? null : Number(Boolean(payload.audition_required)),
-        payload.interview_required === '' || payload.interview_required == null ? null : Number(Boolean(payload.interview_required)),
-        ['group', 'private', 'both'].includes(payload.instruction_mode) ? payload.instruction_mode : null,
-        clean(payload.registration_url, 500) || clean(payload.website_url, 500) || null));
-    for (const slugTerm of [...(payload.training_types || []), ...(payload.techniques || [])]) {
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offering_terms (offering_id, term_id, verification_status, source_url)
-        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE slug = ?`).bind(offeringId, payload.website_url || payload.registration_url || null, slugTerm));
-    }
-    for (const slugTerm of payload.genres || []) {
-      statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO offering_terms (offering_id, term_id, verification_status, source_url)
-        SELECT ?, id, 'unverified', ? FROM taxonomy_terms WHERE taxonomy = 'genre' AND slug = ?`).bind(offeringId, payload.website_url || payload.registration_url || null, slugTerm));
-    }
-    statements.push(env.DIRECTORY_DB.prepare(`INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)
-      VALUES ('offering', ?, 'submission', 'unverified', ?)`).bind(offeringId, payload.website_url || payload.registration_url || null));
-  }
-
-  if (action === 'approved' && submission.submission_type === 'claim') {
-    if (payload.target_kind === 'teacher') {
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructor_claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.target_id));
-    } else {
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
-    }
-  }
-  if (submission.submission_type === 'claim' && action === 'rejected') {
-    if (payload.target_kind === 'teacher') {
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructor_claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE instructors SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.target_id));
-    } else {
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?`).bind(id));
-      statements.push(env.DIRECTORY_DB.prepare(`UPDATE providers SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?`).bind(payload.provider_id));
-    }
-  }
+  if (action === 'approved' && submission.submission_type === 'teacher') statements.push(...buildTeacherStatements(env, payload));
+  if (action === 'approved' && submission.submission_type === 'provider') statements.push(...buildProviderStatements(env, payload));
+  if (action === 'approved' && submission.submission_type === 'offering') statements.push(...await buildOfferingStatements(env, payload));
+  if (submission.submission_type === 'claim') statements.push(...buildClaimStatements(env, payload, id, action));
 
   if (action === 'approved' && submission.submission_type === 'profile_update') {
     if (payload.target_kind === 'teacher' && clean(payload.target_id, 120)) {
@@ -492,6 +528,7 @@ export default {
     if (url.pathname === '/api/admin/decision') return decideSubmission(request, env);
     if (url.pathname === '/sitemap.xml' && request.method === 'GET') return sitemap(request, env);
     if (url.pathname === '/robots.txt' && request.method === 'GET') return robots(request);
+    if (url.pathname.startsWith('/api/')) return json({ error: 'Not found.' }, 404);
     if (url.pathname === '/' && url.searchParams.has('listing')) return seoQueryProfile(request, env, clean(url.searchParams.get('listing'), 160));
     const providerMatch = url.pathname.match(/^\/providers\/([a-z0-9-]+)\/?$/i);
     if (providerMatch && request.method === 'GET') return seoProfile(request, env, providerMatch[1], 'provider');

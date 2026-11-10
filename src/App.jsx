@@ -1,7 +1,7 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   BUDGETS, FORMATS, LOCATIONS, PRICE_BASES, TECHNIQUES, TRAINING_TYPES, VOICE_STYLES,
-  filterListings, getCollectionType, mergeListings, priceLabel,
+  buildFilterChoices, filterListings, formatLabel, getCollectionType, mergeListings, priceLabel, verifiedFormats,
 } from './directory-utils.js';
 
 
@@ -178,35 +178,7 @@ function ResultsDirectory({ directory, filters, update, reset, onOpen }) {
   const [pageIndex, setPageIndex] = useState(0);
   const [mobileFilters, setMobileFilters] = useState(false);
   const teacherListings = useMemo(() => mergeListings(directory), [directory]);
-  const choices = useMemo(() => {
-    const terms = taxonomy => {
-      const map = new Map();
-      for (const item of teacherListings) for (const term of item.terms || []) {
-        if (term.taxonomy === taxonomy && term.verification_status === 'verified') map.set(term.slug, [term.slug, term.term]);
-      }
-      return [...map.values()];
-    };
-    const locations = [...new Set(teacherListings.flatMap(item => (item.locations || []).filter(location => location.verified)
-      .map(location => location.is_online ? 'Online' : location.borough || 'NYC').filter(Boolean)))].map(value => [value, value]);
-    const verifiedOffers = teacherListings.flatMap(item => item.offerings || []);
-    const formats = FORMATS.filter(([value]) => teacherListings.some(item =>
-      (item.formats || []).some(format => format.verification_status === 'verified' && format.format === value)) ||
-      verifiedOffers.some(offering => offering.formatVerified && offering.format === value));
-    const budgets = BUDGETS.filter(([, , min, max]) => teacherListings.some(item => {
-      const amount = item.offerings?.filter(offering => offering.priceVerified && offering.price_min != null).map(offering => Number(offering.price_min)) || [];
-      return amount.some(price => price >= min && price <= max);
-    })).map(([slug, label]) => [slug, label]);
-    const priceBases = PRICE_BASES.filter(([value]) => verifiedOffers.some(offering => offering.priceVerified && offering.price_min != null && offering.price_basis === value));
-    return {
-      locations,
-      training: [...new Map([...terms('training_type'), ...terms('specialty')].map(term => [term[0], term])).values()],
-      techniques: terms('technique'),
-      styles: terms('genre'),
-      formats,
-      budgets,
-      priceBases,
-    };
-  }, [teacherListings]);
+  const choices = useMemo(() => buildFilterChoices(teacherListings), [teacherListings]);
   const allListings = useMemo(() => filterListings(teacherListings, filters), [teacherListings, filters]);
   const pageCount = Math.max(1, Math.ceil(allListings.length / pageSize));
   const visibleListings = allListings.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
@@ -278,12 +250,7 @@ function ListingDialog({ item, directory, onClose, onOpenRelated, onSuggestUpdat
   const related = item.kind === 'teacher' ? item.offerings || [] : [];
   const locationRows = (item.locations || []).filter(location => location.verified);
   const terms = (item.terms || []).filter(term => term.verification_status === 'verified');
-  const verifiedFormat = related.find(offering => offering.formatVerified)?.format;
-  const formatNames = ({ in_person: 'In person', online: 'Online', hybrid: 'Hybrid' });
-  const formats = item.kind === 'teacher'
-    ? (item.formats || []).filter(entry => entry.verification_status === 'verified').map(entry => formatNames[entry.format]).filter(Boolean)
-    : item.format && item.formatVerified ? [formatNames[item.format]] : verifiedFormat ? [formatNames[verifiedFormat]] : [];
-  const format = [...new Set(formats)].join(' · ');
+  const format = [...new Set(verifiedFormats(item))].map(formatLabel).join(' · ');
   const price = priceLabel(item);
   const hasApprovedPhoto = item.image_permission_status === 'approved' && (item.image_url || item.featured_image_url);
   const experience = [item.teaching_experience, item.experience_years && `${item.experience_years} years of experience`, item.credentials].filter(Boolean);
@@ -293,7 +260,7 @@ function ListingDialog({ item, directory, onClose, onOpenRelated, onSuggestUpdat
       <div className="modal-body"><main className="modal-main"><section className="modal-section"><span className="section-kicker">ABOUT</span>{item.description && <p>{item.description}</p>}{item.biography && <p>{item.biography}</p>}{!item.description && !item.biography && <p>Teaching details are available from the provider. Visit the official profile for more information.</p>}</section>
         {terms.length > 0 && <section className="modal-section"><span className="section-kicker">TECHNIQUES & SPECIALTIES</span><div className="modal-specialties">{terms.map(term => <BrandPill key={term.id}>{term.term}</BrandPill>)}</div></section>}
         {experience.length > 0 && <section className="modal-section"><span className="section-kicker">EXPERIENCE & CREDENTIALS</span>{experience.map((detail, index) => <p key={index}>{detail}</p>)}</section>}
-        {related.length > 0 && <section className="modal-section"><span className="section-kicker">PUBLISHED CLASSES & COACHING</span><div className="related-offerings">{related.map(offering => <article key={offering.id}><strong>{offering.name}</strong>{offering.description && <p>{offering.description}</p>}<div className="offering-facts">{offering.skill_level && <span>{offering.skill_level}</span>}{offering.instruction_mode && <span>{offering.instruction_mode}</span>}{offering.formatVerified && offering.format && <span>{({ in_person: 'In person', online: 'Online', hybrid: 'Hybrid' })[offering.format]}</span>}{offering.schedule_text && <span>{offering.schedule_text}</span>}{offering.priceVerified && offering.price_min != null && <span>{priceLabel({ ...offering, kind: 'offering', priceVerified: true })}</span>}</div>{(offering.registration_url || offering.enrollment_url || offering.source_url) && <a href={offering.registration_url || offering.enrollment_url || offering.source_url} target="_blank" rel="noopener noreferrer">Official class information ↗</a>}</article>)}</div></section>}
+        {related.length > 0 && <section className="modal-section"><span className="section-kicker">PUBLISHED CLASSES & COACHING</span><div className="related-offerings">{related.map(offering => <article key={offering.id}><strong>{offering.name}</strong>{offering.description && <p>{offering.description}</p>}<div className="offering-facts">{offering.skill_level && <span>{offering.skill_level}</span>}{offering.instruction_mode && <span>{offering.instruction_mode}</span>}{offering.formatVerified && offering.format && <span>{formatLabel(offering.format)}</span>}{offering.schedule_text && <span>{offering.schedule_text}</span>}{offering.priceVerified && offering.price_min != null && <span>{priceLabel({ ...offering, kind: 'offering', priceVerified: true })}</span>}</div>{(offering.registration_url || offering.enrollment_url || offering.source_url) && <a href={offering.registration_url || offering.enrollment_url || offering.source_url} target="_blank" rel="noopener noreferrer">Official class information ↗</a>}</article>)}</div></section>}
         {item.affiliations?.length > 0 && <section className="modal-section"><span className="section-kicker">STUDIO AFFILIATIONS</span><div className="related-offerings">{item.affiliations.map(provider => <a className="related-provider" key={provider.id} href={provider.website_url || provider.source_url} target="_blank" rel="noopener noreferrer">{provider.name}<span>Official website ↗</span></a>)}</div></section>}
       </main><aside className="modal-aside"><div className="detail-panel"><span className="section-kicker">AT A GLANCE</span>
         <div className="detail-row"><span>Pricing</span><strong>{price}</strong></div>
