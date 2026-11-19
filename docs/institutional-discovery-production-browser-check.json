@@ -1,0 +1,55 @@
+{
+  "origin": "https://vocalcatalog.com",
+  "exceptions": [],
+  "layouts": [
+    {
+      "width": 1440,
+      "centerDifference": 0.0078125,
+      "overflow": false,
+      "titleMenuOverlap": false,
+      "mobileLessonVisible": false
+    },
+    {
+      "width": 1200,
+      "centerDifference": 0.0078125,
+      "overflow": false,
+      "titleMenuOverlap": false,
+      "mobileLessonVisible": false
+    },
+    {
+      "width": 768,
+      "centerDifference": 0.0078125,
+      "overflow": false,
+      "titleMenuOverlap": false,
+      "mobileLessonVisible": false
+    },
+    {
+      "width": 390,
+      "centerDifference": 0.0078125,
+      "overflow": false,
+      "titleMenuOverlap": false,
+      "mobileLessonVisible": true
+    },
+    {
+      "width": 320,
+      "centerDifference": 0.0078125,
+      "overflow": false,
+      "titleMenuOverlap": false,
+      "mobileLessonVisible": true
+    }
+  ],
+  "groupCount": 20,
+  "unverifiedPrivateExcluded": true,
+  "lessonReset": true,
+  "removalForm": true,
+  "noRegistrationRequired": true,
+  "institutionalCards": true,
+  "safeOfficialLinks": true,
+  "institutionalPagination": true,
+  "combinedFilters": true,
+  "searchComposes": true,
+  "workshopsDoNotInventMatches": true,
+  "unconfirmedNotIndependent": true,
+  "typeReset": true,
+  "standaloneProfile": true
+}

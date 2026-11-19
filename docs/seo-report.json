@@ -1,0 +1,613 @@
+{
+  "source": "Local full migration catalog; not a remote database or Search Console audit",
+  "origin": "https://vocalcatalog.com",
+  "listings": 245,
+  "profiles": {
+    "teachers": 216,
+    "classes": 29,
+    "schoolsAndStudios": 22
+  },
+  "landingPages": 28,
+  "sitemapUrls": {
+    "coaches": 216,
+    "studios": 22,
+    "classes": 29,
+    "locations": 20,
+    "specialties": 26,
+    "pages": 32
+  },
+  "totalCanonicalUrls": 345,
+  "pages": [
+    {
+      "path": "/new-york/voice-studios/",
+      "count": 22
+    },
+    {
+      "path": "/new-york/vocal-coaches/",
+      "count": 186
+    },
+    {
+      "path": "/new-york/singing-lessons/",
+      "count": 17
+    },
+    {
+      "path": "/online/vocal-coaches/",
+      "count": 50
+    },
+    {
+      "path": "/new-york/voice-and-speech/",
+      "count": 21
+    },
+    {
+      "path": "/new-york/accent-dialect-coaches/",
+      "count": 20
+    },
+    {
+      "path": "/new-york/locations/brooklyn/",
+      "count": 22
+    },
+    {
+      "path": "/new-york/locations/fort-greene/",
+      "count": 6
+    },
+    {
+      "path": "/new-york/locations/greenwich-village/",
+      "count": 15
+    },
+    {
+      "path": "/new-york/locations/manhattan/",
+      "count": 149
+    },
+    {
+      "path": "/new-york/locations/midtown/",
+      "count": 15
+    },
+    {
+      "path": "/new-york/locations/midtown-west/",
+      "count": 14
+    },
+    {
+      "path": "/new-york/locations/morningside-heights/",
+      "count": 30
+    },
+    {
+      "path": "/new-york/locations/park-slope/",
+      "count": 14
+    },
+    {
+      "path": "/new-york/locations/upper-west-side/",
+      "count": 31
+    },
+    {
+      "path": "/new-york/locations/west-village/",
+      "count": 6
+    },
+    {
+      "path": "/new-york/specialties/acting-coaching/",
+      "count": 4
+    },
+    {
+      "path": "/new-york/specialties/classical-opera/",
+      "count": 26
+    },
+    {
+      "path": "/new-york/specialties/country-folk-world/",
+      "count": 6
+    },
+    {
+      "path": "/new-york/specialties/jazz-cabaret/",
+      "count": 28
+    },
+    {
+      "path": "/new-york/specialties/musical-theatre/",
+      "count": 31
+    },
+    {
+      "path": "/new-york/specialties/pop/",
+      "count": 22
+    },
+    {
+      "path": "/new-york/specialties/r-and-b-soul/",
+      "count": 14
+    },
+    {
+      "path": "/new-york/specialties/repertoire-coaching/",
+      "count": 5
+    },
+    {
+      "path": "/new-york/specialties/rock/",
+      "count": 12
+    },
+    {
+      "path": "/new-york/specialties/vocal-coaching/",
+      "count": 44
+    },
+    {
+      "path": "/new-york/specialties/vocal-technique/",
+      "count": 18
+    },
+    {
+      "path": "/new-york/specialties/voice-lessons/",
+      "count": 161
+    }
+  ],
+  "omitted": [
+    {
+      "path": "/new-york/locations/bronx/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 1
+    },
+    {
+      "path": "/new-york/locations/east-williamsburg/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 1
+    },
+    {
+      "path": "/new-york/locations/riverdale/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 1
+    },
+    {
+      "path": "/new-york/locations/upper-east-side/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 2
+    },
+    {
+      "path": "/new-york/locations/washington-heights/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 1
+    },
+    {
+      "path": "/new-york/specialties/audition-repertoire-coaching/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 2
+    },
+    {
+      "path": "/new-york/specialties/contemporary-voice-technique/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 1
+    },
+    {
+      "path": "/new-york/specialties/gospel/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 2
+    },
+    {
+      "path": "/new-york/specialties/group-singing-classes/",
+      "reason": "Same results as an existing landing page",
+      "count": 17
+    },
+    {
+      "path": "/new-york/specialties/latin/",
+      "reason": "Fewer than three verified matching listings",
+      "count": 1
+    }
+  ],
+  "examples": [
+    {
+      "path": "/",
+      "title": "Vocal Coaches NYC | Singing Lessons & Voice Training | Vocal Catalog",
+      "description": "Find vocal coaches, singing teachers, voice lessons, and speech training in NYC. Compare specialties, locations, lesson formats, and prices.",
+      "canonical": "https://vocalcatalog.com/",
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://vocalcatalog.com/#organization",
+            "name": "Vocal Catalog",
+            "url": "https://vocalcatalog.com/",
+            "logo": "https://vocalcatalog.com/favicon.svg"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://vocalcatalog.com/#website",
+            "name": "Vocal Catalog",
+            "url": "https://vocalcatalog.com/",
+            "publisher": {
+              "@id": "https://vocalcatalog.com/#organization"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://vocalcatalog.com/",
+            "name": "Vocal Coaches NYC | Singing Lessons & Voice Training | Vocal Catalog",
+            "description": "Find vocal coaches, singing teachers, voice lessons, and speech training in NYC. Compare specialties, locations, lesson formats, and prices.",
+            "url": "https://vocalcatalog.com/",
+            "isPartOf": {
+              "@id": "https://vocalcatalog.com/#website"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://vocalcatalog.com/"
+              }
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "numberOfItems": 245,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/",
+                "name": "Abby Payne"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://vocalcatalog.com/teachers/alanna-ysabel-voice-teacher/",
+                "name": "Alanna Ysabel"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://vocalcatalog.com/teachers/alex-pelletier-speech-coach/",
+                "name": "Alex Pelletier"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "url": "https://vocalcatalog.com/teachers/alexandra-koi-voice-teacher/",
+                "name": "Alexandra Koi"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "url": "https://vocalcatalog.com/teachers/alexis-hightower-voice-teacher/",
+                "name": "Alexis Hightower"
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "url": "https://vocalcatalog.com/teachers/alison-bolshoi-voice-teacher/",
+                "name": "Alison Bolshoi"
+              },
+              {
+                "@type": "ListItem",
+                "position": 7,
+                "url": "https://vocalcatalog.com/teachers/ameer-corro-voice-teacher/",
+                "name": "Ameer Corro"
+              },
+              {
+                "@type": "ListItem",
+                "position": 8,
+                "url": "https://vocalcatalog.com/teachers/amy-burton-voice-teacher/",
+                "name": "Amy Burton"
+              },
+              {
+                "@type": "ListItem",
+                "position": 9,
+                "url": "https://vocalcatalog.com/teachers/amy-justman-voice-teacher/",
+                "name": "Amy Justman"
+              },
+              {
+                "@type": "ListItem",
+                "position": 10,
+                "url": "https://vocalcatalog.com/teachers/amy-stoller-dialect-coach/",
+                "name": "Amy Stoller"
+              },
+              {
+                "@type": "ListItem",
+                "position": 11,
+                "url": "https://vocalcatalog.com/teachers/ana-flavia-zuim-voice-teacher/",
+                "name": "Ana Flavia Zuim"
+              },
+              {
+                "@type": "ListItem",
+                "position": 12,
+                "url": "https://vocalcatalog.com/teachers/andrea-green-voice-teacher/",
+                "name": "Andrea Green"
+              },
+              {
+                "@type": "ListItem",
+                "position": 13,
+                "url": "https://vocalcatalog.com/teachers/andrea-grody-voice-teacher/",
+                "name": "Andrea Grody"
+              },
+              {
+                "@type": "ListItem",
+                "position": 14,
+                "url": "https://vocalcatalog.com/teachers/andy-king-voice-teacher/",
+                "name": "Andy King"
+              },
+              {
+                "@type": "ListItem",
+                "position": 15,
+                "url": "https://vocalcatalog.com/teachers/annie-chen-voice-teacher/",
+                "name": "Annie Chen"
+              },
+              {
+                "@type": "ListItem",
+                "position": 16,
+                "url": "https://vocalcatalog.com/teachers/anush-avetisyan-voice-teacher/",
+                "name": "Anush Avetisyan"
+              },
+              {
+                "@type": "ListItem",
+                "position": 17,
+                "url": "https://vocalcatalog.com/teachers/arthur-levy-voice-teacher/",
+                "name": "Arthur Levy"
+              },
+              {
+                "@type": "ListItem",
+                "position": 18,
+                "url": "https://vocalcatalog.com/teachers/ashley-morton-voice-teacher/",
+                "name": "Ashley Morton"
+              },
+              {
+                "@type": "ListItem",
+                "position": 19,
+                "url": "https://vocalcatalog.com/teachers/aubrey-johnson-voice-teacher/",
+                "name": "Aubrey Johnson"
+              },
+              {
+                "@type": "ListItem",
+                "position": 20,
+                "url": "https://vocalcatalog.com/teachers/audra-bowers-voice-teacher/",
+                "name": "Audra Bowers"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "/teachers/abby-payne-voice-teacher/",
+      "title": "Abby Payne | Vocal Catalog",
+      "description": "Abby Payne: New York voice teacher and performer with training in jazz studies and voice pedagogy.",
+      "canonical": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/",
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://vocalcatalog.com/#organization",
+            "name": "Vocal Catalog",
+            "url": "https://vocalcatalog.com/",
+            "logo": "https://vocalcatalog.com/favicon.svg"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://vocalcatalog.com/#website",
+            "name": "Vocal Catalog",
+            "url": "https://vocalcatalog.com/",
+            "publisher": {
+              "@id": "https://vocalcatalog.com/#organization"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/",
+            "name": "Abby Payne | Vocal Catalog",
+            "description": "Abby Payne: New York voice teacher and performer with training in jazz studies and voice pedagogy.",
+            "url": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/",
+            "isPartOf": {
+              "@id": "https://vocalcatalog.com/#website"
+            },
+            "mainEntity": {
+              "@id": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/#entity"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://vocalcatalog.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Abby Payne",
+                "item": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/"
+              }
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/#entity",
+            "name": "Abby Payne",
+            "description": "New York voice teacher and performer with training in jazz studies and voice pedagogy.",
+            "url": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/",
+            "sameAs": [
+              "https://newyorkvocalcoaching.com/about/"
+            ],
+            "knowsAbout": [
+              "Jazz and Cabaret",
+              "Voice Lessons"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "/new-york/voice-studios/",
+      "title": "Voice schools, studios and coaching providers in NYC | Vocal Catalog",
+      "description": "Explore the published organizations and coaching providers behind NYC voice training. Review their associated programs and…",
+      "canonical": "https://vocalcatalog.com/new-york/voice-studios/",
+      "schema": {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://vocalcatalog.com/#organization",
+            "name": "Vocal Catalog",
+            "url": "https://vocalcatalog.com/",
+            "logo": "https://vocalcatalog.com/favicon.svg"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://vocalcatalog.com/#website",
+            "name": "Vocal Catalog",
+            "url": "https://vocalcatalog.com/",
+            "publisher": {
+              "@id": "https://vocalcatalog.com/#organization"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://vocalcatalog.com/new-york/voice-studios/",
+            "name": "Voice schools, studios and coaching providers in NYC | Vocal Catalog",
+            "description": "Explore the published organizations and coaching providers behind NYC voice training. Review their associated programs and…",
+            "url": "https://vocalcatalog.com/new-york/voice-studios/",
+            "isPartOf": {
+              "@id": "https://vocalcatalog.com/#website"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://vocalcatalog.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Voice schools, studios and coaching providers in NYC",
+                "item": "https://vocalcatalog.com/new-york/voice-studios/"
+              }
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "numberOfItems": 22,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://vocalcatalog.com/providers/92ny-school-of-music/",
+                "name": "92NY School of Music"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://vocalcatalog.com/providers/atlantic-acting-school-voice/",
+                "name": "Atlantic Acting School"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://vocalcatalog.com/providers/bloomingdale-school-of-music/",
+                "name": "Bloomingdale School of Music"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "url": "https://vocalcatalog.com/providers/brooklyn-conservatory-of-music/",
+                "name": "Brooklyn Conservatory of Music"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "url": "https://vocalcatalog.com/providers/brooklyn-music-school/",
+                "name": "Brooklyn Music School"
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "url": "https://vocalcatalog.com/providers/greenwich-house-music-school/",
+                "name": "Greenwich House Music School"
+              },
+              {
+                "@type": "ListItem",
+                "position": 7,
+                "url": "https://vocalcatalog.com/providers/hb-studio-voice/",
+                "name": "HB Studio"
+              },
+              {
+                "@type": "ListItem",
+                "position": 8,
+                "url": "https://vocalcatalog.com/providers/liz-caplan-vocal-studios/",
+                "name": "Liz Caplan Vocal Studios"
+              },
+              {
+                "@type": "ListItem",
+                "position": 9,
+                "url": "https://vocalcatalog.com/providers/lucy-moses-school/",
+                "name": "Lucy Moses School"
+              },
+              {
+                "@type": "ListItem",
+                "position": 10,
+                "url": "https://vocalcatalog.com/providers/maggie-flanigan-studio-voice-speech/",
+                "name": "Maggie Flanigan Studio"
+              },
+              {
+                "@type": "ListItem",
+                "position": 11,
+                "url": "https://vocalcatalog.com/providers/manhattan-school-of-music/",
+                "name": "Manhattan School of Music"
+              },
+              {
+                "@type": "ListItem",
+                "position": 12,
+                "url": "https://vocalcatalog.com/providers/mannes-school-of-music/",
+                "name": "Mannes School of Music"
+              },
+              {
+                "@type": "ListItem",
+                "position": 13,
+                "url": "https://vocalcatalog.com/providers/matt-farnsworth-voice-studio/",
+                "name": "Matt Farnsworth Voice Studio"
+              },
+              {
+                "@type": "ListItem",
+                "position": 14,
+                "url": "https://vocalcatalog.com/providers/new-york-jazz-academy/",
+                "name": "New York Jazz Academy"
+              },
+              {
+                "@type": "ListItem",
+                "position": 15,
+                "url": "https://vocalcatalog.com/providers/new-york-jazz-workshop/",
+                "name": "New York Jazz Workshop"
+              },
+              {
+                "@type": "ListItem",
+                "position": 16,
+                "url": "https://vocalcatalog.com/providers/new-york-speech-coaching/",
+                "name": "New York Speech Coaching"
+              },
+              {
+                "@type": "ListItem",
+                "position": 17,
+                "url": "https://vocalcatalog.com/providers/new-york-vocal-coaching/",
+                "name": "New York Vocal Coaching"
+              },
+              {
+                "@type": "ListItem",
+                "position": 18,
+                "url": "https://vocalcatalog.com/providers/nyu-steinhardt-vocal-performance/",
+                "name": "NYU Steinhardt Vocal Performance"
+              },
+              {
+                "@type": "ListItem",
+                "position": 19,
+                "url": "https://vocalcatalog.com/providers/the-barrow-group-voice/",
+                "name": "The Barrow Group"
+              },
+              {
+                "@type": "ListItem",
+                "position": 20,
+                "url": "https://vocalcatalog.com/providers/the-diller-quaile-school-of-music/",
+                "name": "The Diller-Quaile School of Music"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

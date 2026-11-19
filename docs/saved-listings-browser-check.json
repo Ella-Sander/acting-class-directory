@@ -1,0 +1,7 @@
+{
+  "origin": "http://127.0.0.1:5174",
+  "exceptions": [
+    "SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document."
+  ],
+  "error": "Timeout: document.querySelectorAll('.listing-card').length===20"
+}

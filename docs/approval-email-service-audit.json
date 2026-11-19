@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-11-17T16:08:52.793Z",
+  "checks": [
+    {
+      "path": "/accounts/735c5b7e1a6013843699cc6e6fb4b5f6/workers/account-settings",
+      "status": 200,
+      "success": true,
+      "result": {
+        "default_usage_model": "standard"
+      },
+      "errors": []
+    },
+    {
+      "path": "/accounts/735c5b7e1a6013843699cc6e6fb4b5f6/subscriptions",
+      "status": 403,
+      "success": false,
+      "result": null,
+      "errors": [
+        {
+          "code": 10000,
+          "message": "Authentication error",
+          "documentation_url": "https://developers.cloudflare.com/api/resources/accounts/subresources/subscriptions/methods/get"
+        }
+      ]
+    },
+    {
+      "path": "/zones/60459b5a267a0a158b536e37eea35690/email/sending/subdomains",
+      "status": 401,
+      "success": false,
+      "result": null,
+      "errors": [
+        {
+          "code": 2036,
+          "message": "Unauthorized"
+        }
+      ]
+    }
+  ]
+}

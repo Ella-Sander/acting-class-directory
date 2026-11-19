@@ -1,0 +1,13 @@
+{
+  "origin": "https://vocalcatalog.com",
+  "exceptions": [],
+  "saveWithoutOpeningProfile": true,
+  "savedView": true,
+  "persistsAfterReload": true,
+  "filtersWork": true,
+  "removeFromModal": true,
+  "directProfileSave": true,
+  "emptyState": true,
+  "schoolsSupported": true,
+  "mobileNoOverflow": true
+}

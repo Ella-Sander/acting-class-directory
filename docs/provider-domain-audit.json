@@ -1,0 +1,23 @@
+{
+  "auditedAt": "2026-11-17T15:43:54.433Z",
+  "mode": "backfill identities and stage reviews; no approved fields overwritten",
+  "providers": 124,
+  "domains": 123,
+  "invalid": [],
+  "duplicates": [
+    {
+      "domain": "jeffcubetavoiceteaching.com",
+      "targetId": "independent-jeff-cubeta",
+      "targetName": "Jeff Cubeta Voice Teaching",
+      "sourceId": "3e3afb6b-d898-4895-a31e-0630dc0edff2",
+      "sourceName": "Jeff Cubeta Voice Teaching",
+      "conflicts": [
+        "description",
+        "website_url",
+        "source_url"
+      ],
+      "submissionId": "domain-merge-1c8cf6ee51b8c275e88ae8beef31700f"
+    }
+  ],
+  "recordsAudited": 124
+}

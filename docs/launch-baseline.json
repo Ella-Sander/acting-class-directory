@@ -1,0 +1,11 @@
+{
+  "origin": "https://acting-class-directory.ellasanderella.workers.dev",
+  "checkedAt": "2026-11-14T20:27:51.212Z",
+  "failures": [],
+  "data": {
+    "teachers": 216,
+    "classes": 29,
+    "providers": 22,
+    "sha256": "8484d373909ca70af97204d2f83f9a6fc58a39c3e156890b96e0279ed144a99b"
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "measuredAt": "2026-11-16T16:22:23.257Z",
+  "environment": "production HTTP requests; D1 headers come from actual binding metadata",
+  "requests": [
+    {
+      "path": "/api/directory",
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 1345.9885
+    },
+    {
+      "path": "/api/directory",
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 610.5576000000001
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "cache": "MISS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 367.82489999999984
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 285.93169999999964
+    },
+    {
+      "path": "/api/teachers/abby-payne-voice-teacher",
+      "status": 200,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "24",
+      "elapsedMs": 436.09379999999965
+    },
+    {
+      "path": "/api/teachers/abby-payne-voice-teacher",
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 267.97569999999996
+    },
+    {
+      "path": "/teachers/abby-payne-voice-teacher/",
+      "status": 200,
+      "cache": "MISS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 329.4865
+    },
+    {
+      "path": "/teachers/abby-payne-voice-teacher/",
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 240.6877000000004
+    },
+    {
+      "path": "/api/providers/92ny-school-of-music",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 428.6337000000003
+    },
+    {
+      "path": "/api/providers/92ny-school-of-music",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 972.1194999999998
+    },
+    {
+      "path": "/providers/92ny-school-of-music/",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 360.4844000000003
+    },
+    {
+      "path": "/providers/92ny-school-of-music/",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 394.8624999999993
+    },
+    {
+      "path": "/api/offerings/taylor-d-speech-and-language-services-accent-services",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 407.17109999999957
+    },
+    {
+      "path": "/api/offerings/taylor-d-speech-and-language-services-accent-services",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 458.2565999999997
+    },
+    {
+      "path": "/classes/taylor-d-speech-and-language-services-accent-services/",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 475.6871999999994
+    },
+    {
+      "path": "/classes/taylor-d-speech-and-language-services-accent-services/",
+      "status": 503,
+      "cache": "MISS",
+      "queries": "1",
+      "rowsRead": "0",
+      "elapsedMs": 394.4278000000004
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "cache": "MISS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 326.7577000000001
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 266.89869999999974
+    },
+    {
+      "path": "/sitemap-coaches.xml",
+      "status": 200,
+      "cache": "MISS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 405.28430000000117
+    },
+    {
+      "path": "/sitemap-coaches.xml",
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 244.19650000000001
+    },
+    {
+      "path": "/?category=dialects&q=Julie",
+      "status": 200,
+      "cache": "BYPASS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 286.6794000000009
+    },
+    {
+      "path": "/?category=dialects&q=Julie",
+      "status": 200,
+      "cache": "BYPASS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 316.03239999999823
+    },
+    {
+      "path": "/?sort=institute",
+      "status": 200,
+      "cache": "BYPASS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 286.59369999999944
+    },
+    {
+      "path": "/?sort=institute",
+      "status": 200,
+      "cache": "BYPASS",
+      "queries": "0",
+      "rowsRead": "0",
+      "elapsedMs": 298.0657999999985
+    }
+  ],
+  "failures": [
+    "/api/providers/92ny-school-of-music: 503",
+    "/api/providers/92ny-school-of-music: 503",
+    "/api/providers/92ny-school-of-music: repeated request queried D1",
+    "/providers/92ny-school-of-music/: 503",
+    "/providers/92ny-school-of-music/: 503",
+    "/providers/92ny-school-of-music/: repeated request queried D1",
+    "/api/offerings/taylor-d-speech-and-language-services-accent-services: 503",
+    "/api/offerings/taylor-d-speech-and-language-services-accent-services: 503",
+    "/api/offerings/taylor-d-speech-and-language-services-accent-services: repeated request queried D1",
+    "/classes/taylor-d-speech-and-language-services-accent-services/: 503",
+    "/classes/taylor-d-speech-and-language-services-accent-services/: 503",
+    "/classes/taylor-d-speech-and-language-services-accent-services/: repeated request queried D1"
+  ],
+  "records": {
+    "providers": 123,
+    "offerings": 129,
+    "teachers": 217
+  },
+  "publicPayloadHash": "4d109e55d113d0995a4eb2716adc00e85563c11abf6b7ad1ad00e9e00982ddde"
+}

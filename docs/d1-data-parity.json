@@ -1,0 +1,15 @@
+{
+  "exactOutputEqual": true,
+  "allFieldAndRelationshipValuesEqual": true,
+  "beforeRecords": {
+    "providers": 22,
+    "offerings": 29,
+    "teachers": 216
+  },
+  "afterRecords": {
+    "providers": 22,
+    "offerings": 29,
+    "teachers": 216
+  },
+  "differences": []
+}

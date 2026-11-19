@@ -1,0 +1,1005 @@
+{
+  "reviewedAt": "2026-11-10",
+  "listings": [
+    {
+      "id": "catalog2-teacher-errik-hood",
+      "name": "Errik Hood",
+      "profileUrl": "https://steinhardt.nyu.edu/people/errik-hood",
+      "httpStatus": 200,
+      "profileTitle": "Errik Hood | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-dianna-heldman",
+      "name": "Dianna Heldman",
+      "profileUrl": "https://steinhardt.nyu.edu/people/dianna-heldman",
+      "httpStatus": 200,
+      "profileTitle": "Dianna Heldman | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-justin-john-moniz",
+      "name": "Justin John Moniz",
+      "profileUrl": "https://steinhardt.nyu.edu/people/justin-john-moniz",
+      "httpStatus": 200,
+      "profileTitle": "Justin John Moniz | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-ana-flavia-zuim",
+      "name": "Ana Flavia Zuim",
+      "profileUrl": "https://steinhardt.nyu.edu/people/ana-flavia-zuim",
+      "httpStatus": 200,
+      "profileTitle": "Ana Flavia Zuim | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-kathleen-adams",
+      "name": "Kathleen Adams",
+      "profileUrl": "https://steinhardt.nyu.edu/people/kathleen-adams",
+      "httpStatus": 200,
+      "profileTitle": "Kathleen Adams | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-david-j-baldwin",
+      "name": "David J. Baldwin",
+      "profileUrl": "https://steinhardt.nyu.edu/people/david-j-baldwin",
+      "httpStatus": 200,
+      "profileTitle": "David J. Baldwin | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-harolyn-blackwell-greer",
+      "name": "Harolyn Blackwell-Greer",
+      "profileUrl": "https://steinhardt.nyu.edu/people/harolyn-blackwell-greer",
+      "httpStatus": 200,
+      "profileTitle": "Harolyn Blackwell-Greer | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": "Also listed at MSM as Harolyn Blackwell; merged affiliations, one person."
+    },
+    {
+      "id": "catalog2-teacher-chris-citera",
+      "name": "Chris Citera",
+      "profileUrl": "https://steinhardt.nyu.edu/people/chris-citera",
+      "httpStatus": 200,
+      "profileTitle": "Chris Citera | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-derek-fawcett",
+      "name": "Derek Fawcett",
+      "profileUrl": "https://steinhardt.nyu.edu/people/derek-fawcett",
+      "httpStatus": 200,
+      "profileTitle": "Derek Fawcett | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-warren-freeman",
+      "name": "Warren Freeman",
+      "profileUrl": "https://steinhardt.nyu.edu/people/warren-freeman",
+      "httpStatus": 200,
+      "profileTitle": "Warren Freeman | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-laura-kay",
+      "name": "Laura Kay",
+      "profileUrl": "https://steinhardt.nyu.edu/people/laura-kay",
+      "httpStatus": 200,
+      "profileTitle": "Laura Kay | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-jamilyn-manning",
+      "name": "Jamilyn Manning",
+      "profileUrl": "https://steinhardt.nyu.edu/people/jamilyn-manning",
+      "httpStatus": 200,
+      "profileTitle": "Jamilyn Manning | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-devon-meddock",
+      "name": "Devon Meddock",
+      "profileUrl": "https://steinhardt.nyu.edu/people/devon-meddock",
+      "httpStatus": 200,
+      "profileTitle": "Devon Meddock | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-scott-murphree",
+      "name": "Scott Murphree",
+      "profileUrl": "https://steinhardt.nyu.edu/people/scott-murphree",
+      "httpStatus": 200,
+      "profileTitle": "Scott Murphree | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-matthew-smith",
+      "name": "Matthew Smith",
+      "profileUrl": "https://steinhardt.nyu.edu/people/matthew-smith",
+      "httpStatus": 200,
+      "profileTitle": "Matthew Smith | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-christopher-preston-thompson",
+      "name": "Christopher Preston Thompson",
+      "profileUrl": "https://steinhardt.nyu.edu/people/christopher-preston-thompson",
+      "httpStatus": 200,
+      "profileTitle": "Christopher Preston Thompson | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-rosa-vento",
+      "name": "Rosa Vento",
+      "profileUrl": "https://steinhardt.nyu.edu/people/rosa-vento",
+      "httpStatus": 200,
+      "profileTitle": "Rosa Vento | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-nicole-zuraitis",
+      "name": "Nicole Zuraitis",
+      "profileUrl": "https://steinhardt.nyu.edu/people/nicole-zuraitis",
+      "httpStatus": 200,
+      "profileTitle": "Nicole Zuraitis | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Voice teacher (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-ben-caplan",
+      "name": "Ben Caplan",
+      "profileUrl": "https://steinhardt.nyu.edu/people/ben-caplan",
+      "httpStatus": 200,
+      "profileTitle": "Ben Caplan | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-benji-goldsmith",
+      "name": "Benji Goldsmith",
+      "profileUrl": "https://steinhardt.nyu.edu/people/benji-goldsmith",
+      "httpStatus": 200,
+      "profileTitle": "Benji Goldsmith | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-elizabeth-hastings",
+      "name": "Elizabeth Hastings",
+      "profileUrl": "https://steinhardt.nyu.edu/people/elizabeth-hastings",
+      "httpStatus": 200,
+      "profileTitle": "Elizabeth Hastings | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-kyle-henry",
+      "name": "Kyle Henry",
+      "profileUrl": "https://steinhardt.nyu.edu/people/kyle-henry",
+      "httpStatus": 200,
+      "profileTitle": "Kyle Henry | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-david-kreppel",
+      "name": "David Kreppel",
+      "profileUrl": "https://steinhardt.nyu.edu/people/david-kreppel",
+      "httpStatus": 200,
+      "profileTitle": "David Kreppel | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-gordon-schermer",
+      "name": "Gordon Schermer",
+      "profileUrl": "https://steinhardt.nyu.edu/people/gordon-schermer",
+      "httpStatus": 200,
+      "profileTitle": "Gordon Schermer | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-elena-shaddow",
+      "name": "Elena Shaddow",
+      "profileUrl": "https://steinhardt.nyu.edu/people/elena-shaddow",
+      "httpStatus": 200,
+      "profileTitle": "Elena Shaddow | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-grant-wenaus",
+      "name": "Grant Wenaus",
+      "profileUrl": "https://steinhardt.nyu.edu/people/grant-wenaus",
+      "httpStatus": 200,
+      "profileTitle": "Grant Wenaus | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-ji-young-lee",
+      "name": "Ji Young Lee",
+      "profileUrl": "https://steinhardt.nyu.edu/people/ji-young-lee",
+      "httpStatus": 200,
+      "profileTitle": "Ji Young Lee | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal coach (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-lauren-kinhan",
+      "name": "Lauren Kinhan",
+      "profileUrl": "https://steinhardt.nyu.edu/people/lauren-kinhan",
+      "httpStatus": 200,
+      "profileTitle": "Lauren Kinhan | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal ensemble instructor (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-jamon-maple",
+      "name": "Jamon Maple",
+      "profileUrl": "https://steinhardt.nyu.edu/people/jamon-maple",
+      "httpStatus": 200,
+      "profileTitle": "Jamon Maple | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal ensemble instructor (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-janice-pendarvis",
+      "name": "Janice Pendarvis",
+      "profileUrl": "https://steinhardt.nyu.edu/people/janice-pendarvis",
+      "httpStatus": 200,
+      "profileTitle": "Janice Pendarvis | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal ensemble instructor (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-janis-siegel",
+      "name": "Janis Siegel",
+      "profileUrl": "https://steinhardt.nyu.edu/people/janis-siegel",
+      "httpStatus": 200,
+      "profileTitle": "Janis Siegel | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal ensemble instructor (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-paul-speiser",
+      "name": "Paul Speiser",
+      "profileUrl": "https://steinhardt.nyu.edu/people/paul-speiser",
+      "httpStatus": 200,
+      "profileTitle": "Paul Speiser | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal ensemble instructor (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-eric-williamson",
+      "name": "Eric Williamson",
+      "profileUrl": "https://steinhardt.nyu.edu/people/eric-williamson",
+      "httpStatus": 200,
+      "profileTitle": "Eric Williamson | NYU Steinhardt",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "role": "Vocal ensemble instructor (NYU faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-edith-bers",
+      "name": "Edith Bers",
+      "profileUrl": "https://www.msmnyc.edu/faculty/edith-bers/",
+      "httpStatus": 200,
+      "profileTitle": "Edith Bers - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-mary-dunleavy",
+      "name": "Mary Dunleavy",
+      "profileUrl": "https://www.msmnyc.edu/faculty/mary-dunleavy/",
+      "httpStatus": 200,
+      "profileTitle": "Mary Dunleavy - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-ruth-golden",
+      "name": "Ruth Golden",
+      "profileUrl": "https://www.msmnyc.edu/faculty/ruth-golden/",
+      "httpStatus": 200,
+      "profileTitle": "Ruth Golden - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-cynthia-hoffmann",
+      "name": "Cynthia Hoffmann",
+      "profileUrl": "https://www.msmnyc.edu/faculty/cynthia-hoffmann/",
+      "httpStatus": 200,
+      "profileTitle": "Cynthia Hoffmann - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-jack-li-vigni",
+      "name": "Jack Li Vigni",
+      "profileUrl": "https://www.msmnyc.edu/faculty/jack-livigni/",
+      "httpStatus": 200,
+      "profileTitle": "Jack Li Vigni - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-catherine-malfitano",
+      "name": "Catherine Malfitano",
+      "profileUrl": "https://www.msmnyc.edu/faculty/catherine-malfitano/",
+      "httpStatus": 200,
+      "profileTitle": "Catherine Malfitano - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-james-morris",
+      "name": "James Morris",
+      "profileUrl": "https://www.msmnyc.edu/faculty/james-morris/",
+      "httpStatus": 200,
+      "profileTitle": "James Morris - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-christopheren-nomura",
+      "name": "Christòpheren Nomura",
+      "profileUrl": "https://www.msmnyc.edu/faculty/christopheren-chris-nomura/",
+      "httpStatus": 200,
+      "profileTitle": "Christòpheren (Chris) Nomura - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-mark-oswald",
+      "name": "Mark Oswald",
+      "profileUrl": "https://www.msmnyc.edu/faculty/mark-oswald/",
+      "httpStatus": 200,
+      "profileTitle": "Mark Oswald - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-sidney-outlaw",
+      "name": "Sidney Outlaw",
+      "profileUrl": "https://www.msmnyc.edu/faculty/sidney-outlaw/",
+      "httpStatus": 200,
+      "profileTitle": "Sidney Outlaw - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-joan-patenaude-yarnell",
+      "name": "Joan Patenaude-Yarnell",
+      "profileUrl": "https://www.msmnyc.edu/faculty/joan-patenaude-yarnell/",
+      "httpStatus": 200,
+      "profileTitle": "Joan Patenaude-Yarnell - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-dimitri-pittas",
+      "name": "Dimitri Pittas",
+      "profileUrl": "https://www.msmnyc.edu/faculty/dimitri-pittas/",
+      "httpStatus": 200,
+      "profileTitle": "Dimitri Pittas - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-susan-quittmeyer",
+      "name": "Susan Quittmeyer",
+      "profileUrl": "https://www.msmnyc.edu/faculty/susan-quittmeyer/",
+      "httpStatus": 200,
+      "profileTitle": "Susan Quittmeyer - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-mark-schnaible",
+      "name": "Mark Schnaible",
+      "profileUrl": "https://www.msmnyc.edu/faculty/mark-schnaible/",
+      "httpStatus": 200,
+      "profileTitle": "Mark Schnaible  - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-cyndia-sieden",
+      "name": "Cyndia Sieden",
+      "profileUrl": "https://www.msmnyc.edu/faculty/cyndia-sieden/",
+      "httpStatus": 200,
+      "profileTitle": "Cyndia Sieden - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-amy-justman",
+      "name": "Amy Justman",
+      "profileUrl": "https://www.msmnyc.edu/faculty/amy-justman/",
+      "httpStatus": 200,
+      "profileTitle": "Amy Justman - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-christopher-herbert",
+      "name": "Christopher Herbert",
+      "profileUrl": "https://www.msmnyc.edu/faculty/christopher-dylan-herbert/",
+      "httpStatus": 200,
+      "profileTitle": "Christopher Herbert - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-my-tam-huynh",
+      "name": "Mỹ Tâm Huynh",
+      "profileUrl": "https://www.msmnyc.edu/faculty/my-tam-huynh/",
+      "httpStatus": 200,
+      "profileTitle": "Mỹ Tâm Huynh - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-kristen-kemp",
+      "name": "Kristen Kemp",
+      "profileUrl": "https://www.msmnyc.edu/faculty/kristen-kemp/",
+      "httpStatus": 200,
+      "profileTitle": "Kristen Kemp - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Vocal coach (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-kenneth-merrill",
+      "name": "Kenneth Merrill",
+      "profileUrl": "https://www.msmnyc.edu/faculty/kenneth-merrill/",
+      "httpStatus": 200,
+      "profileTitle": "Kenneth Merrill - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Vocal coach (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-djordje-nesic",
+      "name": "Djordje Nesic",
+      "profileUrl": "https://www.msmnyc.edu/faculty/djordje-nesic/",
+      "httpStatus": 200,
+      "profileTitle": "Djordje Nesic - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Vocal coach (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-cristina-stanescu",
+      "name": "Cristina Stanescu",
+      "profileUrl": "https://www.msmnyc.edu/faculty/cristina-stanescu/",
+      "httpStatus": 200,
+      "profileTitle": "Cristina Stanescu - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Vocal coach (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-claudia-catania",
+      "name": "Claudia Catania",
+      "profileUrl": "https://www.msmnyc.edu/faculty/claudia-catania/",
+      "httpStatus": 200,
+      "profileTitle": "Claudia Catania - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "role": "Musical theatre voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-judith-clurman",
+      "name": "Judith Clurman",
+      "profileUrl": "https://www.msmnyc.edu/faculty/judith-clurman/",
+      "httpStatus": 200,
+      "profileTitle": "Judith Clurman - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "role": "Musical theatre voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-andrea-green",
+      "name": "Andrea Green",
+      "profileUrl": "https://www.msmnyc.edu/faculty/andrea-green/",
+      "httpStatus": 200,
+      "profileTitle": "Andrea Green - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "role": "Musical theatre voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-sam-mckelton",
+      "name": "Sam McKelton",
+      "profileUrl": "https://www.msmnyc.edu/faculty/sam-mckelton/",
+      "httpStatus": 200,
+      "profileTitle": "Sam McKelton - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "role": "Musical theatre voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-bob-stillman",
+      "name": "Bob Stillman",
+      "profileUrl": "https://www.msmnyc.edu/faculty/bob-stillman/",
+      "httpStatus": 200,
+      "profileTitle": "Bob Stillman - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "role": "Musical theatre voice teacher (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-jeanne-goffi-fynn",
+      "name": "Jeanne Goffi-Fynn",
+      "profileUrl": "https://www.msmnyc.edu/faculty/45072-2/",
+      "httpStatus": 200,
+      "profileTitle": "Jeanne Goffi-Fynn - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Vocal pedagogy instructor (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-tami-petty",
+      "name": "Tami Petty",
+      "profileUrl": "https://www.msmnyc.edu/faculty/tami-petty/",
+      "httpStatus": 200,
+      "profileTitle": "Tami Petty - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Vocal pedagogy instructor (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-neil-rosenshein",
+      "name": "Neil Rosenshein",
+      "profileUrl": "https://www.msmnyc.edu/faculty/neil-rosenshein/",
+      "httpStatus": 200,
+      "profileTitle": "Neil Rosenshein - Manhattan School of Music",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "role": "Vocal performance instructor (MSM faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-william-burden",
+      "name": "William Burden",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/william-burden/",
+      "httpStatus": 200,
+      "profileTitle": "William Burden | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-amy-burton",
+      "name": "Amy Burton",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/amy-burton/",
+      "httpStatus": 200,
+      "profileTitle": "Amy Burton | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-pei-wen-chen",
+      "name": "Pei-Wen Chen",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/pei-wen-chen/",
+      "httpStatus": 200,
+      "profileTitle": "Pei-Wen Chen | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Vocal coach (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-cris-frisco",
+      "name": "Cris Frisco",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/cris-frisco/",
+      "httpStatus": 200,
+      "profileTitle": "Cris Frisco | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Vocal coach (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-joshua-greene",
+      "name": "Joshua Greene",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/joshua-greene/",
+      "httpStatus": 200,
+      "profileTitle": "Joshua Greene | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Vocal coach (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-wendy-bryn-harmer",
+      "name": "Wendy Bryn Harmer",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/wendy-bryn-harmer/",
+      "httpStatus": 200,
+      "profileTitle": "Wendy Bryn Harmer | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-joan-la-barbara",
+      "name": "Joan La Barbara",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/joan-la-barbara/",
+      "httpStatus": 200,
+      "profileTitle": "Joan La Barbara | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-margaret-lattimore",
+      "name": "Margaret Lattimore",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/margaret-lattimore/",
+      "httpStatus": 200,
+      "profileTitle": "Margaret Lattimore | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-arthur-levy",
+      "name": "Arthur Levy",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/arthur-levy/",
+      "httpStatus": 200,
+      "profileTitle": "Arthur Levy | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-kate-maroney",
+      "name": "Kate Maroney",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/kate-maroney/",
+      "httpStatus": 200,
+      "profileTitle": "Kate Maroney | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-laquita-mitchell",
+      "name": "Laquita Mitchell",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/laquita-mitchell/",
+      "httpStatus": 200,
+      "profileTitle": "Laquita Mitchell | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-stephen-powell",
+      "name": "Stephen Powell",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/stephen-powell/",
+      "httpStatus": 200,
+      "profileTitle": "Stephen Powell | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-eric-sedgwick",
+      "name": "Eric Sedgwick",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/eric-sedgwick/",
+      "httpStatus": 200,
+      "profileTitle": "Eric Sedgwick | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Vocal coach (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-hal-wilson",
+      "name": "Hal Wilson",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/hal-wilson/",
+      "httpStatus": 200,
+      "profileTitle": "Hal Wilson | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-jennifer-zetlan",
+      "name": "Jennifer Zetlan",
+      "profileUrl": "https://ww3.newschool.edu/mannes/faculty/jennifer-zetlan/",
+      "httpStatus": 200,
+      "profileTitle": "Jennifer Zetlan | Mannes School of Music",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "role": "Voice teacher (Mannes faculty)",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-jessica-bowers",
+      "name": "Jessica Bowers",
+      "profileUrl": "https://www.brooklynmusicschool.org/jessica-bowers",
+      "httpStatus": 200,
+      "profileTitle": "Jessica Bowers &mdash; Brooklyn Music School",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "role": "Voice teacher",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-alexandra-koi",
+      "name": "Alexandra Koi",
+      "profileUrl": "https://www.brooklynmusicschool.org/alexandra-koi",
+      "httpStatus": 200,
+      "profileTitle": "Alexandra Koi &mdash; Brooklyn Music School",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "role": "Voice teacher",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-mimi-hilaire",
+      "name": "Mimi Hilaire",
+      "profileUrl": "https://www.brooklynmusicschool.org/mimi-hilaire",
+      "httpStatus": 200,
+      "profileTitle": "Mimi Hilaire &mdash; Brooklyn Music School",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "role": "Voice teacher",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-sherrine-mostin",
+      "name": "Sherrine Mostin",
+      "profileUrl": "https://www.brooklynmusicschool.org/sherrine-mostin",
+      "httpStatus": 200,
+      "profileTitle": "Sherrine Mostin &mdash; Brooklyn Music School",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "role": "Voice teacher",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-kiera-matthews",
+      "name": "Kiera Matthews",
+      "profileUrl": "https://www.brooklynmusicschool.org/kiera-matthews",
+      "httpStatus": 200,
+      "profileTitle": "Kiera Matthews &mdash; Brooklyn Music School",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "role": "Voice teacher",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-simon-nam",
+      "name": "Simon Nam",
+      "profileUrl": "https://www.brooklynmusicschool.org/simon-nam",
+      "httpStatus": 200,
+      "profileTitle": "Simon Nam &mdash; Brooklyn Music School",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "role": "Voice teacher",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-tate-chu",
+      "name": "Tate Chu",
+      "profileUrl": "https://voiceacademynyc.com/tate-chu/",
+      "httpStatus": 200,
+      "profileTitle": "TATE CHU &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-stephanie-lippman",
+      "name": "Stephanie Lippman",
+      "profileUrl": "https://voiceacademynyc.com/stephanie-lippman/",
+      "httpStatus": 200,
+      "profileTitle": "STEPHANIE LIPPMAN &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-alanna-ysabel",
+      "name": "Alanna Ysabel",
+      "profileUrl": "https://voiceacademynyc.com/alanna-ysabel/",
+      "httpStatus": 200,
+      "profileTitle": "Alanna Ysabel &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-olga-s-popova",
+      "name": "Olga S. Popova",
+      "profileUrl": "https://voiceacademynyc.com/olga-s-popova/",
+      "httpStatus": 200,
+      "profileTitle": "Olga S. Popova &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-darnell-abraham",
+      "name": "Darnell Abraham",
+      "profileUrl": "https://voiceacademynyc.com/darnell-abraham/",
+      "httpStatus": 200,
+      "profileTitle": "Darnell Abraham &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-lina-maria",
+      "name": "Lina Maria",
+      "profileUrl": "https://voiceacademynyc.com/lina-marie/",
+      "httpStatus": 200,
+      "profileTitle": "Lina Marie &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": "Roster displays Lina Maria; linked official profile title displays Lina Marie. One listing for the same linked coach."
+    },
+    {
+      "id": "catalog2-teacher-michael-longoria",
+      "name": "Michael Longoria",
+      "profileUrl": "https://voiceacademynyc.com/michael-longoria/",
+      "httpStatus": 200,
+      "profileTitle": "Michael Longoria &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-melanie-scholtz",
+      "name": "Melanie Scholtz",
+      "profileUrl": "https://voiceacademynyc.com/melanie-scholtz/",
+      "httpStatus": 200,
+      "profileTitle": "Melanie Scholtz &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-ashley-morton",
+      "name": "Ashley Morton",
+      "profileUrl": "https://voiceacademynyc.com/ashley-morton/",
+      "httpStatus": 200,
+      "profileTitle": "ASHLEY MORTON &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-azudi-onyejekwe",
+      "name": "Azudi Onyejekwe",
+      "profileUrl": "https://voiceacademynyc.com/azudi-onyejekwe/",
+      "httpStatus": 200,
+      "profileTitle": "AZUDI ONYEJEKWE &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-jonna-christensen",
+      "name": "Jonna Christensen",
+      "profileUrl": "https://voiceacademynyc.com/jonna-christensen/",
+      "httpStatus": 200,
+      "profileTitle": "Jonna Christensen &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-katarina-nolfe",
+      "name": "Katarina Nolfe",
+      "profileUrl": "https://voiceacademynyc.com/katarina-nolfe/",
+      "httpStatus": 200,
+      "profileTitle": "Katarina Nolfe &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-robert-wiggins",
+      "name": "Robert Wiggins",
+      "profileUrl": "https://voiceacademynyc.com/robert-wiggins/",
+      "httpStatus": 200,
+      "profileTitle": "Robert Wiggins &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-melody-escoboza",
+      "name": "Melody Escoboza",
+      "profileUrl": "https://voiceacademynyc.com/melody-escoboza/",
+      "httpStatus": 200,
+      "profileTitle": "Melody Escoboza &#8211; Voice Academy NYC",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "role": "Vocal coach",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-elizabeth-acosta",
+      "name": "Elizabeth Acosta",
+      "profileUrl": "https://diller-quaile.org/elizabeth-acosta",
+      "httpStatus": 200,
+      "profileTitle": "Elizabeth Acosta &mdash; The Diller-Quaile School of Music",
+      "rosterSource": "https://www.diller-quaile.org/faculty",
+      "role": "Voice teacher",
+      "notes": null
+    },
+    {
+      "id": "catalog2-teacher-constantinos-yiannoudes",
+      "name": "Constantinos Yiannoudes",
+      "profileUrl": "https://diller-quaile.org/constantinos-yiannoudes",
+      "httpStatus": 200,
+      "profileTitle": "Constantinos Yiannoudes &mdash; The Diller-Quaile School of Music",
+      "rosterSource": "https://www.diller-quaile.org/faculty",
+      "role": "Voice teacher",
+      "notes": null
+    }
+  ]
+}

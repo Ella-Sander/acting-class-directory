@@ -1,0 +1,661 @@
+{
+  "reviewedAt": "2026-11-16T07:14:43.159Z",
+  "providers": [
+    {
+      "id": "catalog-provider-nyja",
+      "name": "New York Jazz Academy",
+      "sourceUrl": "https://www.nyjazzacademy.com/category/faculty/voice/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:05:41.006Z"
+    },
+    {
+      "id": "independent-abby-ahmad",
+      "name": "Abby Ahmad Voice Coaching",
+      "sourceUrl": "https://abbyahmad.com/voice-lessons",
+      "imageUrl": "https://images.zoogletools.com/s:bzglfiles/u/594/cf7da6409bef336bc301d7382a361bf6470b9233/original/img-0272.jpeg/!!/meta%3AeyJzcmNCdWNrZXQiOiJiemdsZmlsZXMifQ%3D%3D.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:05:41.200Z"
+    },
+    {
+      "id": "independent-accent-on-english",
+      "name": "Accent on English NYC",
+      "sourceUrl": "https://aoenyc.com/services",
+      "imageUrl": "https://img1.wsimg.com/isteam/stock/12605",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:05:43.610Z"
+    },
+    {
+      "id": "independent-aj-speech-services",
+      "name": "AJ Speech Services (AnnJoan Hyman)",
+      "sourceUrl": "https://www.ajspeech.com/speech-training-for-actors",
+      "imageUrl": "https://static.wixstatic.com/media/300caf_b02fef24643249b3a564d0031f36c7d8~mv2.png/v1/fill/w_940,h_788,al_c/300caf_b02fef24643249b3a564d0031f36c7d8~mv2.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:05:45.442Z"
+    },
+    {
+      "id": "independent-alyssa-click",
+      "name": "Alyssa Click Voice Studio",
+      "sourceUrl": "https://www.alyssa-click.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:05:47.562Z"
+    },
+    {
+      "id": "independent-amy-stoller",
+      "name": "Stoller System (Amy Stoller)",
+      "sourceUrl": "https://www.stollersystem.com/faq",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:05:48.395Z"
+    },
+    {
+      "id": "independent-andrea-randall",
+      "name": "Sing with Andrea (Andrea Randall)",
+      "sourceUrl": "https://www.singwithandrea.studio/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:05:49.472Z"
+    },
+    {
+      "id": "independent-andrea-wolper",
+      "name": "Andrea Wolper Voice Studio",
+      "sourceUrl": "https://andreawolper.com/teaching",
+      "imageUrl": "https://images.zoogletools.com/s:bzglfiles/u/46406/89f3e9521dab505d154fad2b860907811988abde/original/andrea-pink-background.jpg/!!/meta%3AeyJzcmNCdWNrZXQiOiJiemdsZmlsZXMifQ%3D%3D.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:05:50.638Z"
+    },
+    {
+      "id": "independent-arpeggigon-mal-best",
+      "name": "Arpeggigon Studios (Mal Best)",
+      "sourceUrl": "https://arpeggigonstudios.com/",
+      "imageUrl": "https://arpeggigonstudios.com/assets/social-image.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:05:52.278Z"
+    },
+    {
+      "id": "independent-bay-ridge-school-of-music",
+      "name": "Bay Ridge School of Music",
+      "sourceUrl": "https://www.bayridgeschoolofmusic.com/vocal-lessons",
+      "imageUrl": "https://static.wixstatic.com/media/2fb850_5c4bfbeacf224221823d7aac29c203f3%7Emv2.png/v1/fit/w_2500,h_1330,al_c/2fb850_5c4bfbeacf224221823d7aac29c203f3%7Emv2.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:05:54.639Z"
+    },
+    {
+      "id": "independent-bold-voices-emily-parsons",
+      "name": "Bold Voices Performing Arts Studio",
+      "sourceUrl": "https://www.boldvoicesnyc.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:05:56.228Z"
+    },
+    {
+      "id": "independent-brian-loxley",
+      "name": "Brian Loxley Speech Studio",
+      "sourceUrl": "https://loxleyspeechstudio.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:05:57.372Z"
+    },
+    {
+      "id": "independent-brooklyn-letters",
+      "name": "Brooklyn Letters",
+      "sourceUrl": "https://longislandletters.com/adult-speech-language-therapy/",
+      "imageUrl": "https://longislandletters.com/wp-content/uploads/2020/08/long-island-1-665x861.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:05:58.414Z"
+    },
+    {
+      "id": "independent-charley-layton",
+      "name": "Charley Layton Dialect Coaching",
+      "sourceUrl": "https://charleylayton.com/accents",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:00.226Z"
+    },
+    {
+      "id": "independent-cheryl-ann-cassidy",
+      "name": "Cheryl Ann's School of Music & Singing",
+      "sourceUrl": "https://www.cherylanncassidy.com/teacher",
+      "imageUrl": "https://static.wixstatic.com/media/e2f10e_f4eb5792b94447a5a2acb7c93f1bd700~mv2.png/v1/fill/w_936,h_1044,al_c/e2f10e_f4eb5792b94447a5a2acb7c93f1bd700~mv2.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:01.429Z"
+    },
+    {
+      "id": "independent-christopher-costa-dialect",
+      "name": "Christopher F. Costa Dialect Coaching",
+      "sourceUrl": "https://www.christopherfcosta.com/",
+      "imageUrl": "https://static.wixstatic.com/media/ff3cd5_43c21ccf63e746a5826d6fddff05c2f4~mv2.jpg/v1/fill/w_2500,h_1517,al_c/ff3cd5_43c21ccf63e746a5826d6fddff05c2f4~mv2.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:03.984Z"
+    },
+    {
+      "id": "independent-clara-francesca-speech-coach",
+      "name": "Clara Francesca Speech Coaching",
+      "sourceUrl": "https://www.clarafrancesca.com/speech-coach/",
+      "imageUrl": "https://www.clarafrancesca.com/wp-content/uploads/2019/12/clara-francesca-logo.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:05.624Z"
+    },
+    {
+      "id": "independent-danny-bryck",
+      "name": "Danny Bryck Coaching",
+      "sourceUrl": "https://www.dannybryckcoaching.com/dialect-coaching",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:07.324Z"
+    },
+    {
+      "id": "independent-daryll-heysham",
+      "name": "DialectsByDaryll (Daryll Heysham)",
+      "sourceUrl": "https://www.dialectsbydaryll.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:08.549Z"
+    },
+    {
+      "id": "independent-david-nagler",
+      "name": "David Nagler Voice & Music Lessons",
+      "sourceUrl": "https://www.davidnagler.com/lessons",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:09.508Z"
+    },
+    {
+      "id": "independent-david-sabella",
+      "name": "David Sabella Voice Studio",
+      "sourceUrl": "https://davidsabella.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:10.531Z"
+    },
+    {
+      "id": "independent-dawn-winiarz",
+      "name": "Dawn Winiarz Voice",
+      "sourceUrl": "https://dawnwiniarzvoice.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:11.482Z"
+    },
+    {
+      "id": "independent-deborah-birnbaum",
+      "name": "Deborah Birnbaum Voice Studio",
+      "sourceUrl": "https://deborahbirnbaum.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:12.466Z",
+      "error": "certificate has expired"
+    },
+    {
+      "id": "independent-deborah-latz",
+      "name": "Deborah Latz Voice Studio",
+      "sourceUrl": "https://www.deborahlatz.com/teacher",
+      "imageUrl": "https://static.wixstatic.com/media/b91f86_5443c6034eb140c68364275bf7ccb410%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/b91f86_5443c6034eb140c68364275bf7ccb410%7Emv2.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:13.439Z"
+    },
+    {
+      "id": "independent-diane-phelan",
+      "name": "Diane Phelan Voice Studio",
+      "sourceUrl": "https://www.dianephelan.com/coaching",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:15.683Z"
+    },
+    {
+      "id": "independent-donna-breitzer",
+      "name": "Donna Breitzer Voice Studio",
+      "sourceUrl": "https://www.donnabreitzer.com/studio",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:16.708Z"
+    },
+    {
+      "id": "independent-douglas-tholedo",
+      "name": "Douglas Tholedo Voice Lessons",
+      "sourceUrl": "https://www.douglastholedo.com/voice-lessons",
+      "imageUrl": "https://static.wixstatic.com/media/05312b_8c70288555664169943a621228aecfcb%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/05312b_8c70288555664169943a621228aecfcb%7Emv2.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:18.512Z"
+    },
+    {
+      "id": "independent-eliza-simpson",
+      "name": "Eliza Simpson Dialect Coaching",
+      "sourceUrl": "https://www.dialectsnow.com/contact-performers",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:20.020Z"
+    },
+    {
+      "id": "independent-elynn-diamond",
+      "name": "Elynn Diamond Studio",
+      "sourceUrl": "https://elynndiamond.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:20.864Z"
+    },
+    {
+      "id": "independent-elyse-tindall",
+      "name": "Elyse Tindall Voice Studio",
+      "sourceUrl": "https://elysetindall.com/lessons/book",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:22.080Z"
+    },
+    {
+      "id": "independent-emily-boggs",
+      "name": "Sing With Emily (Emily Boggs)",
+      "sourceUrl": "https://www.emilycboggs.com/learn-with-emily",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:25.142Z"
+    },
+    {
+      "id": "independent-emily-goulazian-singintuit",
+      "name": "Singintuit (Emily Goulazian)",
+      "sourceUrl": "https://emilygoulazian.com/voice-lessons",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:25.888Z"
+    },
+    {
+      "id": "independent-erik-singer",
+      "name": "Erik Singer Dialect Coaching",
+      "sourceUrl": "https://www.eriksinger.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:27.186Z"
+    },
+    {
+      "id": "independent-erin-kennedy",
+      "name": "Erin Kennedy Voice Studio",
+      "sourceUrl": "https://erinkatkennedy.com/studio",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:27.842Z"
+    },
+    {
+      "id": "independent-fay-victor",
+      "name": "Fay Victor Vocal Instruction",
+      "sourceUrl": "https://www.fayvictor.com/vocal-instruction/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:29.056Z"
+    },
+    {
+      "id": "independent-franco-spoto",
+      "name": "Franco Spoto Vocal Studio",
+      "sourceUrl": "https://www.francospoto.com/lessons/",
+      "imageUrl": "https://www.francospoto.com/wp-content/uploads/2020/03/PrivateVocalLessonsfromFrancoSpoto.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:33.522Z"
+    },
+    {
+      "id": "independent-hanover-speech-voice",
+      "name": "Hanover Speech and Voice Improvement",
+      "sourceUrl": "https://hanoverspeech.com/about-me/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:34.889Z"
+    },
+    {
+      "id": "independent-holly-obrien",
+      "name": "Holly O'Brien Voice Lessons",
+      "sourceUrl": "https://www.hollyeobrien.com/lessons",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:35.957Z"
+    },
+    {
+      "id": "independent-house-of-speech-language-therapy",
+      "name": "House of Speech and Language Therapy",
+      "sourceUrl": "https://houseofslt.com/",
+      "imageUrl": "https://img1.wsimg.com/isteam/ip/3a8e7bcf-0304-4f2a-9c33-df54c7ca2de5/HSLT%20Logo.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:37.377Z"
+    },
+    {
+      "id": "independent-innovative-voice-studio",
+      "name": "Innovative Voice Studio",
+      "sourceUrl": "https://www.innovativevoicestudio.com/vg-dropin",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:39.038Z"
+    },
+    {
+      "id": "independent-isaac-williams",
+      "name": "Isaac Williams Voice Lessons",
+      "sourceUrl": "https://www.isaacwilliams.me/voice-lessons",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:40.128Z"
+    },
+    {
+      "id": "independent-jac-grady",
+      "name": "Jac Grady Vocal Studio",
+      "sourceUrl": "https://jacgradyvocalstudio.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:40.894Z"
+    },
+    {
+      "id": "independent-jacob-shipley",
+      "name": "Jacob Shipley Voice Lessons",
+      "sourceUrl": "https://www.jacobshipley.com/voicelessons",
+      "imageUrl": "https://static.wixstatic.com/media/b9aac3_9ac5f99c5a9541bbb5477e3471fd5f1a~mv2.jpg/v1/fill/w_2500,h_1716,al_c/b9aac3_9ac5f99c5a9541bbb5477e3471fd5f1a~mv2.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:41.974Z"
+    },
+    {
+      "id": "independent-jason-bennett",
+      "name": "Jason Bennett Actors Studio",
+      "sourceUrl": "https://www.jbactors.nyc/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:44.236Z",
+      "error": "Response exceeded size limit"
+    },
+    {
+      "id": "independent-jason-sofge",
+      "name": "J. Sofge Vocal Studio",
+      "sourceUrl": "https://jsofgevocalstudio.com/",
+      "imageUrl": "https://jsofgevocalstudio.com/assets/social-preview.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:45.464Z"
+    },
+    {
+      "id": "independent-jeff-cubeta",
+      "name": "Jeff Cubeta Voice Teaching",
+      "sourceUrl": "https://www.jeffcubetavoiceteaching.com/the-technique",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:48.246Z"
+    },
+    {
+      "id": "independent-jess-mcavoy",
+      "name": "Jess McAvoy Voice Coaching",
+      "sourceUrl": "https://www.jessmcavoy.com/voice-lessons",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:48.587Z",
+      "error": "Response exceeded size limit"
+    },
+    {
+      "id": "independent-juan-sebastian-suarez",
+      "name": "Juan-Sebastian Suarez Voice Studio",
+      "sourceUrl": "https://www.jsbaritone.com/lessons",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:50.225Z"
+    },
+    {
+      "id": "independent-judith-weinman-accent-on-speech",
+      "name": "Accent On Speech (Judith Weinman)",
+      "sourceUrl": "https://accentjweinman.com/speech-and-voice-services-offered/accent-modification/dialect-coaching-nyc/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:51.163Z"
+    },
+    {
+      "id": "independent-julian-morris",
+      "name": "Julian Morris Voice",
+      "sourceUrl": "https://www.julianmorrisvoice.com/singing-lessons-nyc",
+      "imageUrl": "https://static.wixstatic.com/media/6ca1b2_79d5c2919f69419585e63d5dd73b5a72%7Emv2.png/v1/fit/w_2500,h_1330,al_c/6ca1b2_79d5c2919f69419585e63d5dd73b5a72%7Emv2.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:51.490Z"
+    },
+    {
+      "id": "independent-julie-foh",
+      "name": "Julie Foh Voice and Dialect Coaching",
+      "sourceUrl": "https://www.juliefoh.com/services1",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:53.472Z"
+    },
+    {
+      "id": "independent-justin-albinder",
+      "name": "Justin Albinder Dialect Coaching",
+      "sourceUrl": "https://www.justinalbinder.com/dialectcoach",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:54.692Z"
+    },
+    {
+      "id": "independent-karen-schadow-voice-success",
+      "name": "The Voice of Success (Karen Schadow)",
+      "sourceUrl": "https://thevoiceofsuccess.com/contact",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:06:56.465Z"
+    },
+    {
+      "id": "independent-keys-to-success-music",
+      "name": "Keys To Success Music",
+      "sourceUrl": "https://www.keystosuccessnyc.com/voice",
+      "imageUrl": "https://static.wixstatic.com/media/997326_4dfc7f93ffe1497b8a3f8a5eaf3bc609%7Emv2.png/v1/fit/w_2500,h_1330,al_c/997326_4dfc7f93ffe1497b8a3f8a5eaf3bc609%7Emv2.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:56.691Z"
+    },
+    {
+      "id": "independent-koko-music-dumbo",
+      "name": "KOKO Music DUMBO",
+      "sourceUrl": "https://www.kokomusicdumbo.com/lessons-our-unique-approach.html",
+      "imageUrl": "https://www.kokomusicdumbo.com/uploads/4/6/0/9/46097663/published/dsc09074.jpg?1705263209",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:06:59.006Z"
+    },
+    {
+      "id": "independent-krowne-vocal-school",
+      "name": "Krowne Vocal School NYC",
+      "sourceUrl": "https://www.krowneonyourvoice.com/private-singing-lessons.html",
+      "imageUrl": "https://krowneonyourvoice.com/uploads/3/4/8/1/34814332/img-3754-daniel-singing_orig.jpeg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:07:00.760Z"
+    },
+    {
+      "id": "independent-lester-thomas-shane-dialect-coaching",
+      "name": "Lester Thomas Shane Dialect Coaching",
+      "sourceUrl": "https://lesterthomasshane.com/dialect-coach/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:02.754Z"
+    },
+    {
+      "id": "independent-lily-narbonne-dialect-coaching",
+      "name": "Lily Narbonne Dialect Coaching",
+      "sourceUrl": "https://www.lilynarbonne.com/dialectarts",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:04.140Z"
+    },
+    {
+      "id": "independent-lisa-rochelle",
+      "name": "Lisa Rochelle Voice",
+      "sourceUrl": "https://www.lisarochelle.com/lessons",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:05.017Z"
+    },
+    {
+      "id": "independent-luke-steinhauer",
+      "name": "Luke Steinhauer Voice Studio",
+      "sourceUrl": "https://www.lukesteinhauer.com/voice-lessons",
+      "imageUrl": "https://static.wixstatic.com/media/3d0791_ea7a35d52ef54831b0c24769e4d611a8~mv2.jpg/v1/fill/w_2500,h_1708,al_c/3d0791_ea7a35d52ef54831b0c24769e4d611a8~mv2.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:07:07.660Z"
+    },
+    {
+      "id": "independent-marcy-jellison",
+      "name": "Marcy Jellison Voice",
+      "sourceUrl": "https://marcyjellisonvoice.com/about/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:09.908Z"
+    },
+    {
+      "id": "independent-marissa-katz",
+      "name": "Marissa Katz Voice Studio",
+      "sourceUrl": "https://www.marissakatz.com/voice-lessons/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:14.244Z",
+      "error": "Hostname/IP does not match certificate's altnames: Host: www.marissakatz.com. is not in the cert's altnames: DNS:*.securedata.net, DNS:securedata.net"
+    },
+    {
+      "id": "independent-mary-ellen-callahan",
+      "name": "Mary Ellen Callahan Voice Studio",
+      "sourceUrl": "https://www.maryellencallahan.com/teaching.html",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:17.379Z"
+    },
+    {
+      "id": "independent-matt-dudley",
+      "name": "Matt Dudley Voice Studio",
+      "sourceUrl": "https://www.mattdudleyvoice.com/voice-and-speech-for-actors",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:19.727Z"
+    },
+    {
+      "id": "independent-melania-music",
+      "name": "MelaniaMusic",
+      "sourceUrl": "https://www.melaniamusic.com/en/resume",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:07:25.761Z"
+    },
+    {
+      "id": "independent-michael-warren",
+      "name": "Michael Warren Voice",
+      "sourceUrl": "https://michaelwarrenvoice.com/private-lessons/",
+      "imageUrl": "https://michaelwarrenvoice.com/wp-content/uploads/2022/10/mw-featured-image-seo.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:08:23.248Z"
+    },
+    {
+      "id": "independent-michelle-shuttleworth-towler",
+      "name": "Michelle Shuttleworth Towler Voice Studio",
+      "sourceUrl": "https://www.singingvoicenyc.com/contact.html",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:08:30.031Z",
+      "error": "Hostname/IP does not match certificate's altnames: Host: www.singingvoicenyc.com. is not in the cert's altnames: DNS:*.secureserversites.net, DNS:secureserversites.net"
+    },
+    {
+      "id": "independent-mike-walsh-nyc-dialect-coach",
+      "name": "Mike Walsh NYC Dialect Coach",
+      "sourceUrl": "https://www.nycdialectcoach.com/",
+      "imageUrl": "https://static.wixstatic.com/media/918b43_7e4bef1a4b504b17ad21bb5fccef91aa~mv2.jpg/v1/fit/w_2500,h_1330,al_c/918b43_7e4bef1a4b504b17ad21bb5fccef91aa~mv2.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:08:30.245Z"
+    },
+    {
+      "id": "independent-miranda-luze",
+      "name": "Miranda Luze Voice Studio",
+      "sourceUrl": "https://www.mirandaluze.com/voice-studio",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:08:54.240Z"
+    },
+    {
+      "id": "independent-natalie-wilson-voice",
+      "name": "Natalie Wilson Voice Studio",
+      "sourceUrl": "https://nataliewilson.com/voice-lessons",
+      "imageUrl": "https://img1.wsimg.com/isteam/ip/94dac22b-f50c-4d9e-aae3-ff0f17a3aa37/new%20headshot%20cropped%20smaller.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:09:22.322Z"
+    },
+    {
+      "id": "independent-ny-speech-voice-lab",
+      "name": "New York Speech & Voice Lab (Christie Block)",
+      "sourceUrl": "https://www.speechvoicelab.com/accent-modification",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:10:51.213Z"
+    },
+    {
+      "id": "independent-nyc-guitar-school-vocal-lessons",
+      "name": "New York City Guitar School (Vocal Lessons)",
+      "sourceUrl": "https://nycguitarschool.com/vocal-lessons/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:11:26.859Z"
+    },
+    {
+      "id": "independent-nyc-vocal-studio",
+      "name": "NYC Vocal Studio",
+      "sourceUrl": "https://www.nycvocalstudio.com/one-on-one",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:11:48.482Z"
+    },
+    {
+      "id": "independent-nyc-vocals",
+      "name": "NYC Vocals (Lana Love)",
+      "sourceUrl": "https://nycvocals.com/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:11:53.587Z",
+      "error": "Request timed out"
+    },
+    {
+      "id": "independent-open-lines-speech-communication",
+      "name": "Open Lines Speech and Communication",
+      "sourceUrl": "https://www.openlines.com/enhance/",
+      "imageUrl": "https://www.openlines.com/wp-content/uploads/2023/04/hero_int_tri_enhance.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:12:07.625Z"
+    },
+    {
+      "id": "independent-patricia-fletcher",
+      "name": "Patricia Fletcher Dialect Coaching",
+      "sourceUrl": "https://patriciafletcher.com/",
+      "imageUrl": "https://patriciafletcher.com/wp-content/uploads/2025/07/img-2.png",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:12:42.071Z"
+    },
+    {
+      "id": "independent-paula-liscio",
+      "name": "Paula Liscio Voice Studio",
+      "sourceUrl": "https://www.paulaliscio.com/tosing",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:12:54.090Z",
+      "error": "Request timed out"
+    },
+    {
+      "id": "independent-ricardo-lopez-montilla",
+      "name": "Ricardo López-Montilla Dialect Coaching",
+      "sourceUrl": "https://www.ricardolopezmontilla.com/services-sales-page-4",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:13:12.186Z",
+      "error": "Request timed out"
+    },
+    {
+      "id": "independent-ron-carlos-dialect-coaching",
+      "name": "Ron Carlos Voice and Dialect Coaching",
+      "sourceUrl": "https://www.roncarlos.com/home.html",
+      "imageUrl": "https://www.roncarlos.com/uploads/1/2/7/0/127022828/ron-1_orig.jpg",
+      "type": "og:image",
+      "checkedAt": "2026-11-16T07:13:32.034Z"
+    },
+    {
+      "id": "independent-rose-van-dyne",
+      "name": "Rose Van Dyne Voice Studio",
+      "sourceUrl": "https://www.rosevandyne.com/voice-teacher",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:13:34.720Z"
+    },
+    {
+      "id": "independent-sankin-speech-improvement",
+      "name": "Sankin Speech Improvement",
+      "sourceUrl": "https://www.sankinspeechimprovement.com/make-speech-modification-appointment/",
+      "imageUrl": null,
+      "type": "none",
+      "checkedAt": "2026-11-16T07:13:37.796Z"
+    }
+  ]
+}

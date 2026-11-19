@@ -1,0 +1,86 @@
+{
+  "zone": {
+    "id": "60459b5a267a0a158b536e37eea35690",
+    "name": "vocalcatalog.com",
+    "status": "active",
+    "name_servers": [
+      "angelina.ns.cloudflare.com",
+      "hugh.ns.cloudflare.com"
+    ]
+  },
+  "workerDomains": [
+    {
+      "id": "2265a770c9137969c7f3116de78e7f9c8f46f36b",
+      "zone_id": "60459b5a267a0a158b536e37eea35690",
+      "zone_name": "vocalcatalog.com",
+      "hostname": "vocalcatalog.com",
+      "service": "acting-class-directory",
+      "environment": "production",
+      "cert_id": "2ac4b9cf-c9e5-47d8-a08d-1a306375c487",
+      "previews_enabled": false,
+      "enabled": true
+    },
+    {
+      "id": "b6c0d3a2e7e9e505660214b1a29a925b65a318a3",
+      "zone_id": "60459b5a267a0a158b536e37eea35690",
+      "zone_name": "vocalcatalog.com",
+      "hostname": "www.vocalcatalog.com",
+      "service": "acting-class-directory",
+      "environment": "production",
+      "cert_id": "2c6007b3-0af5-4a57-b51c-1ee99acf1abd",
+      "previews_enabled": false,
+      "enabled": true
+    }
+  ],
+  "bindings": [
+    {
+      "name": "ADMIN_REVIEW_KEY",
+      "type": "secret_text"
+    },
+    {
+      "name": "ASSETS",
+      "type": "assets"
+    },
+    {
+      "name": "CANONICAL_ORIGIN",
+      "type": "plain_text"
+    },
+    {
+      "name": "DIRECTORY_DB",
+      "type": "d1",
+      "id": "05ca97de-b898-45ab-8740-6f8f1456ef6d"
+    }
+  ],
+  "dns": [
+    {
+      "unavailable": true,
+      "status": 403,
+      "errors": [
+        {
+          "code": 10000,
+          "message": "Authentication error"
+        }
+      ]
+    },
+    {
+      "unavailable": true,
+      "status": 403,
+      "errors": [
+        {
+          "code": 10000,
+          "message": "Authentication error"
+        }
+      ]
+    }
+  ],
+  "certificates": {
+    "unavailable": true,
+    "status": 403,
+    "errors": [
+      {
+        "code": 9109,
+        "message": "Unauthorized to access requested resource"
+      }
+    ]
+  }
+}

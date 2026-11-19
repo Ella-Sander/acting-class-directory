@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-11-17T15:48:00.601Z",
+  "invalidationStatus": 200,
+  "invalidation": {
+    "ok": true
+  },
+  "requests": [
+    {
+      "status": 200,
+      "cache": "MISS",
+      "queries": "0",
+      "rowsRead": "0",
+      "teachers": 217,
+      "offerings": 130,
+      "providers": 123
+    },
+    {
+      "status": 200,
+      "cache": "HIT",
+      "queries": "0",
+      "rowsRead": "0",
+      "teachers": 217,
+      "offerings": 130,
+      "providers": 123
+    }
+  ]
+}

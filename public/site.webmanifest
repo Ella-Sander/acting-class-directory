@@ -1,0 +1,12 @@
+{
+  "id": "/",
+  "name": "Vocal Catalog",
+  "short_name": "Vocal Catalog",
+  "description": "Find vocal coaches, singing teachers and voice training in NYC.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#f7f4ee",
+  "theme_color": "#70232a",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

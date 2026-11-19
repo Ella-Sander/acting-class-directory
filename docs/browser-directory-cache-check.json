@@ -1,0 +1,32 @@
+{
+  "apiResponses": [
+    {
+      "status": 200,
+      "cache": "HIT"
+    },
+    {
+      "status": 200,
+      "cache": "HIT"
+    },
+    {
+      "status": 200,
+      "cache": "HIT"
+    }
+  ],
+  "firstVisitRequests": 1,
+  "firstCache": {
+    "stored": true,
+    "version": "b7c98990-d98b-44cc-8f24-196bdfabf81c",
+    "pageVersion": "b7c98990-d98b-44cc-8f24-196bdfabf81c"
+  },
+  "repeatVisitRequests": 0,
+  "cacheRevisionMatches": true,
+  "expiredVisitRequests": 1,
+  "failedRefreshKeepsListings": true,
+  "recovered": true,
+  "adminDirectoryRequests": 0,
+  "lastState": {
+    "cards": 0,
+    "online": true
+  }
+}

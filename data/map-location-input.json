@@ -1,0 +1,182 @@
+[
+  {
+    "address": null,
+    "neighborhood": null,
+    "borough": "Manhattan",
+    "label": "92nd Street Y, Manhattan"
+  },
+  {
+    "address": null,
+    "neighborhood": "Park Slope",
+    "borough": "Brooklyn",
+    "label": "Park Slope, Brooklyn"
+  },
+  {
+    "address": "323 West 108th Street, New York, NY 10025",
+    "neighborhood": "Upper West Side",
+    "borough": "Manhattan",
+    "label": "Bloomingdale School of Music, Upper West Side"
+  },
+  {
+    "address": null,
+    "neighborhood": "Upper West Side",
+    "borough": "Manhattan",
+    "label": "Upper West Side, Manhattan"
+  },
+  {
+    "address": "46 Barrow Street, New York, NY 10014",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "label": "Greenwich House Music School, West Village"
+  },
+  {
+    "address": "129 West 67th Street, New York, NY 10023",
+    "neighborhood": "Upper West Side",
+    "borough": "Manhattan",
+    "label": "Lucy Moses School, Upper West Side"
+  },
+  {
+    "address": null,
+    "neighborhood": "Midtown",
+    "borough": "Manhattan",
+    "label": "Midtown, Manhattan"
+  },
+  {
+    "address": null,
+    "neighborhood": null,
+    "borough": null,
+    "label": "New York City"
+  },
+  {
+    "address": "92 Gates Avenue, Suite 3A, Brooklyn, NY 11238",
+    "neighborhood": null,
+    "borough": "Brooklyn",
+    "label": "Sherry Boone Studio, Brooklyn"
+  },
+  {
+    "address": null,
+    "neighborhood": null,
+    "borough": null,
+    "label": "Third Street Music School, New York City"
+  },
+  {
+    "address": "520 8th Avenue, New York, NY 10018",
+    "neighborhood": "Midtown",
+    "borough": "Manhattan",
+    "label": "Voice Academy NYC, Midtown Manhattan"
+  },
+  {
+    "address": "126 St Felix Street, Brooklyn, NY 11217",
+    "neighborhood": "Fort Greene",
+    "borough": "Brooklyn",
+    "label": "Brooklyn Music School, Fort Greene"
+  },
+  {
+    "address": "24 East 95th Street, New York, NY 10128",
+    "neighborhood": "Upper East Side",
+    "borough": "Manhattan",
+    "label": "Diller-Quaile School of Music, Upper East Side"
+  },
+  {
+    "address": null,
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "label": "Mannes School of Music, Greenwich Village"
+  },
+  {
+    "address": "130 Claremont Avenue, New York, NY 10027",
+    "neighborhood": "Morningside Heights",
+    "borough": "Manhattan",
+    "label": "Manhattan School of Music, Morningside Heights"
+  },
+  {
+    "address": null,
+    "neighborhood": null,
+    "borough": "Manhattan",
+    "label": "NYU Steinhardt, Manhattan"
+  },
+  {
+    "address": null,
+    "neighborhood": null,
+    "borough": "Manhattan",
+    "label": "Manhattan, New York"
+  },
+  {
+    "address": "239 E 14th St, New York, NY 10003",
+    "neighborhood": "Union Square",
+    "borough": "Manhattan",
+    "label": "East 14th Street, Manhattan"
+  },
+  {
+    "address": "248 W 35th St, 14th Floor, New York, NY 10001",
+    "neighborhood": "Midtown West",
+    "borough": "Manhattan",
+    "label": "Midtown West, Manhattan"
+  },
+  {
+    "address": "31 W 27th St, Floor 3, New York, NY 10001",
+    "neighborhood": "NoMad",
+    "borough": "Manhattan",
+    "label": "NoMad, Manhattan"
+  },
+  {
+    "address": "629 Kappock Street, #4D, Bronx, NY 10463",
+    "neighborhood": "Riverdale",
+    "borough": "Bronx",
+    "label": "Bronx"
+  },
+  {
+    "address": null,
+    "neighborhood": "East Williamsburg",
+    "borough": "Brooklyn",
+    "label": "East Williamsburg, Brooklyn"
+  },
+  {
+    "address": "242 W 38th St, 11th Floor, New York, NY 10018",
+    "neighborhood": "Midtown West",
+    "borough": "Manhattan",
+    "label": "Midtown West, Manhattan"
+  },
+  {
+    "address": "700 W 180th St, New York, NY 10033",
+    "neighborhood": "Washington Heights",
+    "borough": "Manhattan",
+    "label": "Washington Heights, Manhattan"
+  },
+  {
+    "address": "65 Broadway, 2nd Floor, New York, NY 10006",
+    "neighborhood": "Financial District",
+    "borough": "Manhattan",
+    "label": "Stella Adler Studio of Acting, Manhattan"
+  },
+  {
+    "address": "147 W 25th St, 5th Floor, New York, NY 10001",
+    "neighborhood": null,
+    "borough": "Manhattan",
+    "label": "Chelsea, Manhattan"
+  },
+  {
+    "address": null,
+    "neighborhood": null,
+    "borough": "Manhattan",
+    "label": "Midtown Manhattan"
+  },
+  {
+    "address": "76 Ninth Avenue, Suite 313, New York, NY 10011",
+    "neighborhood": "Chelsea",
+    "borough": "Manhattan",
+    "label": "Atlantic Acting School, Manhattan"
+  },
+  {
+    "address": "520 8th Ave, 9th floor, New York, NY 10018",
+    "neighborhood": null,
+    "borough": "Manhattan",
+    "label": "The Barrow Group, Manhattan"
+  },
+  {
+    "address": "120 Bank Street, New York, NY 10014",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "label": "HB Studio, Manhattan"
+  }
+]

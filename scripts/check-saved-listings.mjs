@@ -1,0 +1,65 @@
+import { writeFileSync } from 'node:fs';
+const origin = process.env.SITE_ORIGIN || 'http://127.0.0.1:5174';
+const target = await (await fetch('http://127.0.0.1:9223/json/new?about:blank', { method: 'PUT' })).json();
+const socket = new WebSocket(target.webSocketDebuggerUrl);
+await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onerror = reject; });
+let id = 0; const pending = new Map(); const exceptions = [];
+socket.onmessage = event => {
+  const message = JSON.parse(event.data);
+  if (message.method === 'Runtime.exceptionThrown') exceptions.push(message.params.exceptionDetails.exception?.description || message.params.exceptionDetails.text);
+  const request = pending.get(message.id);
+  if (request) { pending.delete(message.id); message.error ? request.reject(new Error(message.error.message)) : request.resolve(message.result); }
+};
+const call = (method, params = {}) => new Promise((resolve, reject) => { const key = ++id; pending.set(key, { resolve, reject }); socket.send(JSON.stringify({ id: key, method, params })); });
+const evaluate = async expression => { const result = await call('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }); if (result.exceptionDetails) throw new Error(result.exceptionDetails.text); return result.result.value; };
+const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+const wait = async expression => { for (let i = 0; i < 80; i++) { try { if (await evaluate(`Boolean(${expression})`)) return; } catch {} await pause(250); } throw new Error(`Timeout: ${expression}`); };
+const go = async path => { await call('Page.navigate', { url: new URL(path, origin).href }); await wait("document.readyState !== 'loading' && document.querySelector('h1')"); };
+const assert = (value, message) => { if (!value) throw new Error(message); };
+const report = { origin, exceptions };
+try {
+  await call('Page.enable'); await call('Runtime.enable'); await call('Network.enable'); await call('Network.setCacheDisabled', { cacheDisabled: true }); await call('Network.clearBrowserCache');
+  await call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
+  const clear = await call('Page.addScriptToEvaluateOnNewDocument', { source: "if(window===window.top)localStorage.removeItem('vocal-catalog:saved-listings:v2');" });
+  await go('/'); await wait("document.querySelectorAll('.listing-card').length===20");
+  await call('Page.removeScriptToEvaluateOnNewDocument', { identifier: clear.identifier });
+  const path = await evaluate("document.querySelector('.card-profile-link').getAttribute('href')");
+  await evaluate("document.querySelector('.card-save-button').click()");
+  await wait("document.querySelector('.card-save-button').getAttribute('aria-pressed')==='true'");
+  assert(!await evaluate("!!document.querySelector('.listing-dialog[open]')"), 'Bookmark opened the profile');
+  report.saveWithoutOpeningProfile = true;
+  await evaluate("document.querySelector('.directory-collection-tabs button:nth-child(2)').click()");
+  await wait("document.querySelectorAll('.listing-card').length===1 && location.search.includes('saved=1')");
+  report.savedView = true;
+  await evaluate("document.querySelector('.directory-results').scrollIntoView({behavior:'instant'})");
+  let screenshot = await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+  writeFileSync('artifacts/saved-listings-local-desktop.png', Buffer.from(screenshot.data, 'base64'));
+  await call('Page.reload', { ignoreCache: true }); await pause(500); await wait("document.querySelectorAll('.listing-card').length===1 && document.querySelector('.card-save-button').getAttribute('aria-pressed')==='true'");
+  report.persistsAfterReload = true;
+  await evaluate("document.querySelector('.directory-categories button:last-child').click()");
+  await wait("document.querySelector('.empty-state')");
+  await evaluate("document.querySelector('.empty-state button').click()"); await wait("document.querySelectorAll('.listing-card').length===1"); report.filtersWork = true;
+  await evaluate("document.querySelector('.card-profile-link').click()"); await wait("document.querySelector('.listing-dialog[open]')");
+  assert(await evaluate("document.querySelector('.detail-actions .save-listing-button').getAttribute('aria-pressed')==='true'"), 'Modal save state mismatched');
+  await evaluate("document.querySelector('.detail-actions .save-listing-button').click()");
+  await wait("document.querySelector('.detail-actions .save-listing-button').getAttribute('aria-pressed')==='false'");
+  await evaluate("document.querySelector('.modal-close').click()"); await wait("!document.querySelector('.listing-dialog[open]') && document.querySelector('.empty-state')"); report.removeFromModal = true;
+  await go(path); await wait("document.querySelector('.seo-explore-wrapper .save-listing-button')");
+  await evaluate("document.querySelector('.seo-explore-wrapper .save-listing-button').click()"); await wait("document.querySelector('.seo-explore-wrapper .save-listing-button').getAttribute('aria-pressed')==='true'");
+  await go('/?saved=1#directory'); await wait("document.querySelectorAll('.listing-card').length===1"); report.directProfileSave = true;
+  await evaluate("document.querySelector('.card-save-button').click()"); await wait("document.querySelector('.empty-state')"); report.emptyState = true;
+  const schoolPath = await evaluate("fetch('/api/directory').then(r=>r.json()).then(data=>'/providers/'+data.providers[0].slug+'/')");
+  await go(schoolPath); await wait("document.querySelector('.seo-explore-wrapper .save-listing-button')");
+  await evaluate("document.querySelector('.seo-explore-wrapper .save-listing-button').click()"); await pause(250);
+  await go('/?saved=1#directory'); await wait("document.querySelectorAll('.listing-card').length===1 && document.querySelector('.card-profile-link').getAttribute('href').startsWith('/providers/')"); report.schoolsSupported = true;
+  await evaluate("document.querySelector('.card-profile-link').click()"); await wait("document.querySelector('.listing-dialog[open]')"); await evaluate("document.querySelector('.modal-close').click()"); await wait("!document.querySelector('.listing-dialog[open]')");
+  await call('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
+  await go('/?saved=1#directory'); await wait("document.querySelectorAll('.listing-card').length===1");
+  report.mobileNoOverflow = await evaluate("document.documentElement.scrollWidth<=innerWidth"); assert(report.mobileNoOverflow, 'Mobile overflow');
+  await evaluate("document.querySelector('.directory-results').scrollIntoView({behavior:'instant'})");
+  screenshot = await call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+  writeFileSync('artifacts/saved-listings-local-mobile.png', Buffer.from(screenshot.data, 'base64'));
+  assert(exceptions.length === 0, exceptions.join('; '));
+  console.log(JSON.stringify(report));
+} catch (error) { report.error = error.message; throw error; }
+finally { writeFileSync('docs/saved-listings-browser-check.json', JSON.stringify(report, null, 2) + '\n'); socket.close(); await fetch(`http://127.0.0.1:9223/json/close/${target.id}`).catch(() => {}); }

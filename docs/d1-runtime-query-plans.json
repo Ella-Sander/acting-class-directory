@@ -1,0 +1,3772 @@
+{
+  "measuredAt": "2026-11-17T15:58:01.850Z",
+  "environment": "local SQLite full migrations; EXPLAIN only, no mutations; billing rows unavailable",
+  "queries": [
+    {
+      "sql": "SELECT id,name FROM providers WHERE id=? AND listing_status='published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id,name FROM instructors WHERE id=? AND profile_status='published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id FROM providers WHERE id=? AND listing_status='published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id, name, claim_status FROM instructors WHERE id = ? AND profile_status = 'published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id, name, claim_status FROM providers WHERE id = ? AND listing_status = 'published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT p.id FROM provider_site_urls ps JOIN providers p ON p.id=ps.provider_id WHERE ps.normalized_url = ? AND lower(p.name)=lower(?) AND p.listing_status='published' LIMIT 1",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH p USING INDEX idx_providers_public_name (listing_status=?)"
+        },
+        {
+          "id": 16,
+          "parent": 0,
+          "notused": 44,
+          "detail": "SEARCH ps USING COVERING INDEX sqlite_autoindex_provider_site_urls_2 (provider_id=? AND normalized_url=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id FROM instructors WHERE lower(name)=lower(?) AND website_url = ? UNION ALL SELECT p.id FROM provider_site_urls ps JOIN providers p ON p.id=ps.provider_id WHERE ps.normalized_url=? AND lower(p.name)=lower(?) AND p.listing_status='published' LIMIT 1",
+      "plan": [
+        {
+          "id": 1,
+          "parent": 0,
+          "notused": 0,
+          "detail": "COMPOUND QUERY"
+        },
+        {
+          "id": 2,
+          "parent": 1,
+          "notused": 0,
+          "detail": "LEFT-MOST SUBQUERY"
+        },
+        {
+          "id": 6,
+          "parent": 2,
+          "notused": 60,
+          "detail": "SEARCH instructors USING INDEX idx_instructors_duplicate_name_site (<expr>=? AND website_url=?)"
+        },
+        {
+          "id": 23,
+          "parent": 1,
+          "notused": 0,
+          "detail": "UNION ALL"
+        },
+        {
+          "id": 27,
+          "parent": 23,
+          "notused": 61,
+          "detail": "SEARCH p USING INDEX idx_providers_public_name (listing_status=?)"
+        },
+        {
+          "id": 38,
+          "parent": 23,
+          "notused": 44,
+          "detail": "SEARCH ps USING COVERING INDEX sqlite_autoindex_provider_site_urls_2 (provider_id=? AND normalized_url=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id FROM offerings WHERE provider_id=? AND lower(name) = lower(?) AND (registration_url = ? OR source_url = ?) LIMIT 1",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 60,
+          "detail": "SEARCH offerings USING INDEX idx_offerings_duplicate_provider_name (provider_id=? AND <expr>=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id FROM submissions WHERE status = 'pending' AND COALESCE(json_extract(payload_json,'$.type'),submission_type)=? AND lower(contact_email) = ? AND (\n      (lower(json_extract(payload_json, '$.name')) = ? AND ? <> '') OR\n      (json_extract(payload_json, '$.provider_id') = ? AND ? <> '') OR\n      (json_extract(payload_json, '$.target_id') = ? AND ? <> '')) LIMIT 1",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 60,
+          "detail": "SEARCH submissions USING INDEX idx_submissions_pending_contact_type (<expr>=? AND <expr>=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO submissions (id, submission_type, status, contact_name, contact_email, website_url, payload_json)\n      VALUES (?, ?, 'pending', ?, ?, ?, ?)",
+      "plan": [
+        {
+          "id": 100,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_merge_events"
+        },
+        {
+          "id": 108,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructor_claims USING COVERING INDEX sqlite_autoindex_instructor_claims_2 (submission_id=?)"
+        },
+        {
+          "id": 115,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN approval_events"
+        },
+        {
+          "id": 123,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH provider_update_suggestions USING COVERING INDEX idx_suggestions_submission (submission_id=?)"
+        },
+        {
+          "id": 131,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH claims USING COVERING INDEX idx_claims_submission (submission_id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 100,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_merge_events"
+        },
+        {
+          "id": 115,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN approval_events"
+        }
+      ]
+    },
+    {
+      "sql": "INSERT INTO instructor_claims (id, instructor_id, submission_id, instructor_name, contact_name, business_email, website_url, instagram_url, verification_information)\n          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE instructors SET claim_status = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND claim_status = 'unclaimed'",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO claims (id, provider_id, submission_id, provider_name, contact_name, business_email, website_url, instagram_url, verification_information)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET claim_status = 'pending', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND claim_status = 'unclaimed'",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id FROM instructors WHERE id = ? AND profile_status = 'published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id FROM offerings WHERE id = ? AND listing_status = 'published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH offerings USING INDEX sqlite_autoindex_offerings_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id FROM providers WHERE id = ? AND listing_status = 'published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_update_suggestions (id, provider_id, submission_id, suggested_payload_json)\n          VALUES (?, ?, ?, ?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence\n      (entity_type,entity_id,field_name,verification_status,source_url,verified_at,note)\n      VALUES (?,?,?,'verified',?,date('now'),?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO locations (id,label,city,region,borough,neighborhood,is_online) VALUES (?,?, 'New York','NY',?,?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_locations (provider_id,location_id,is_primary) VALUES (?,?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO instructor_locations (instructor_id,location_id) VALUES (?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO offering_locations (offering_id,location_id) VALUES (?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence (entity_type,entity_id,field_name,verification_status,source_url,verified_at,note)\n      VALUES ('location',?,'location','verified',?,date('now'),'Location checked against the official source during editorial approval.')",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT OR IGNORE INTO ${table} (${idField},term_id,verification_status,source_url,verified_at)\n      SELECT ?,id,'verified',?,date('now') FROM taxonomy_terms WHERE taxonomy=? AND slug=?",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "INSERT INTO offerings\n    (id,slug,provider_id,name,description,registration_url,format,price_min,price_max,currency,price_basis,schedule_text,instruction_mode,source_url,listing_status,origin)\n    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,'published','submitted')",
+      "plan": [
+        {
+          "id": 251,
+          "parent": 0,
+          "notused": 55,
+          "detail": "SEARCH offering_terms USING COVERING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 259,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH offering_instructors USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        },
+        {
+          "id": 267,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH offering_locations USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO offering_instructors (offering_id,instructor_id) VALUES (?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_preview_jobs(provider_id,website_url) VALUES (?,?) ON CONFLICT(provider_id) DO UPDATE SET website_url=excluded.website_url,requested_at=CURRENT_TIMESTAMP,status='pending',attempts=0,error=NULL",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT OR IGNORE INTO provider_instructors(provider_id,instructor_id) VALUES (?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT OR IGNORE INTO offering_instructors(offering_id,instructor_id) VALUES (?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE provider_merge_events SET after_json=json_object('target_revision',(SELECT merge_revision FROM providers WHERE id=?),'source_revision',(SELECT merge_revision FROM providers WHERE id=?)) WHERE id=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_merge_events USING INDEX sqlite_autoindex_provider_merge_events_1 (id=?)"
+        },
+        {
+          "id": 24,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 29,
+          "parent": 24,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 42,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 47,
+          "parent": 42,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT id, submission_type, contact_name, contact_email, website_url, payload_json, submitted_at\n      FROM submissions WHERE status = 'pending' ORDER BY submitted_at ASC",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 62,
+          "detail": "SEARCH submissions USING INDEX idx_submissions_status_date (status=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO instructors\n    (id, slug, name, description, biography, teaching_experience, website_url, source_url, instagram_url, booking_url, professional_title, profile_status, last_verified_at)\n    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', date('now'))",
+      "plan": [
+        {
+          "id": 189,
+          "parent": 0,
+          "notused": 55,
+          "detail": "SEARCH instructor_formats USING COVERING INDEX sqlite_autoindex_instructor_formats_1 (instructor_id=?)"
+        },
+        {
+          "id": 197,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH instructor_claims USING COVERING INDEX idx_instructor_claims_instructor (instructor_id=?)"
+        },
+        {
+          "id": 205,
+          "parent": 0,
+          "notused": 55,
+          "detail": "SEARCH instructor_terms USING COVERING INDEX sqlite_autoindex_instructor_terms_1 (instructor_id=?)"
+        },
+        {
+          "id": 213,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH instructor_locations USING COVERING INDEX sqlite_autoindex_instructor_locations_1 (instructor_id=?)"
+        },
+        {
+          "id": 221,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH offering_instructors USING COVERING INDEX idx_offering_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 229,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH provider_instructors USING COVERING INDEX idx_provider_instructors_instructor (instructor_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO providers (id,slug,listing_type,provider_classification,name,description,website_url,instagram_url,source_url,listing_status,origin)\n      VALUES (?,?, 'coach','independent_teacher',?,?,?,?,?,'published','submitted')",
+      "plan": [
+        {
+          "id": 212,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_preview_jobs USING COVERING INDEX sqlite_autoindex_provider_preview_jobs_1 (provider_id=?)"
+        },
+        {
+          "id": 219,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_merge_links USING COVERING INDEX idx_provider_merge_link_target (target_provider_id=?)"
+        },
+        {
+          "id": 227,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_merge_links USING COVERING INDEX sqlite_autoindex_provider_merge_links_1 (source_provider_id=?)"
+        },
+        {
+          "id": 234,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_merge_events"
+        },
+        {
+          "id": 242,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_merge_events USING COVERING INDEX idx_provider_merge_target (target_provider_id=?)"
+        },
+        {
+          "id": 250,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_domains USING COVERING INDEX idx_provider_domains_provider (provider_id=?)"
+        },
+        {
+          "id": 258,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH provider_url_redirects USING COVERING INDEX idx_provider_redirects_provider (target_provider_id=?)"
+        },
+        {
+          "id": 266,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_site_urls USING COVERING INDEX idx_provider_site_urls_provider_primary (provider_id=?)"
+        },
+        {
+          "id": 274,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH provider_update_suggestions USING COVERING INDEX idx_suggestions_provider (provider_id=?)"
+        },
+        {
+          "id": 282,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH claims USING COVERING INDEX idx_claims_provider (provider_id=?)"
+        },
+        {
+          "id": 290,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH submissions USING COVERING INDEX idx_submissions_duplicate_provider (duplicate_of_provider_id=?)"
+        },
+        {
+          "id": 298,
+          "parent": 0,
+          "notused": 55,
+          "detail": "SEARCH provider_terms USING COVERING INDEX sqlite_autoindex_provider_terms_1 (provider_id=?)"
+        },
+        {
+          "id": 306,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH provider_instructors USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 314,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH offerings USING COVERING INDEX idx_offerings_provider_trimmed_name (provider_id=?)"
+        },
+        {
+          "id": 322,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH provider_locations USING COVERING INDEX sqlite_autoindex_provider_locations_1 (provider_id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 234,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_merge_events"
+        }
+      ]
+    },
+    {
+      "sql": "INSERT INTO provider_site_urls (id,provider_id,url,normalized_url,url_role,is_primary,verification_status,source_url,verified_at)\n      VALUES (?,?,?,?, 'official',1,'verified',?,date('now'))",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO research_sources (entity_type,entity_id,source_url,source_type,verification_status,checked_at,note)\n      VALUES ('provider',?,?,'official_website','verified',date('now'),'Independent teacher practice checked against the official source during editorial approval.')",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_instructors (provider_id, instructor_id)\n    SELECT id, ? FROM providers WHERE id = ? AND listing_status = 'published' AND listing_type != 'coach'",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO research_sources (entity_type, entity_id, source_url, source_type, verification_status, checked_at, note)\n    VALUES ('instructor', ?, ?, 'official_website', 'verified', date('now'), 'Official professional or teaching profile reviewed by directory editor.')",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence (entity_type,entity_id,field_name,verification_status,source_url,note)\n    VALUES ('instructor',?,'submission_origin','unverified',?,'Created from an approved profile submission.')",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO providers (id, slug, listing_type, provider_classification, name, description, teaching_approach, website_url, instagram_url, source_url, listing_status, origin)\n    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', 'submitted')",
+      "plan": [
+        {
+          "id": 213,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_preview_jobs USING COVERING INDEX sqlite_autoindex_provider_preview_jobs_1 (provider_id=?)"
+        },
+        {
+          "id": 220,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_merge_links USING COVERING INDEX idx_provider_merge_link_target (target_provider_id=?)"
+        },
+        {
+          "id": 228,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_merge_links USING COVERING INDEX sqlite_autoindex_provider_merge_links_1 (source_provider_id=?)"
+        },
+        {
+          "id": 235,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_merge_events"
+        },
+        {
+          "id": 243,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_merge_events USING COVERING INDEX idx_provider_merge_target (target_provider_id=?)"
+        },
+        {
+          "id": 251,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_domains USING COVERING INDEX idx_provider_domains_provider (provider_id=?)"
+        },
+        {
+          "id": 259,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH provider_url_redirects USING COVERING INDEX idx_provider_redirects_provider (target_provider_id=?)"
+        },
+        {
+          "id": 267,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_site_urls USING COVERING INDEX idx_provider_site_urls_provider_primary (provider_id=?)"
+        },
+        {
+          "id": 275,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH provider_update_suggestions USING COVERING INDEX idx_suggestions_provider (provider_id=?)"
+        },
+        {
+          "id": 283,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH claims USING COVERING INDEX idx_claims_provider (provider_id=?)"
+        },
+        {
+          "id": 291,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH submissions USING COVERING INDEX idx_submissions_duplicate_provider (duplicate_of_provider_id=?)"
+        },
+        {
+          "id": 299,
+          "parent": 0,
+          "notused": 55,
+          "detail": "SEARCH provider_terms USING COVERING INDEX sqlite_autoindex_provider_terms_1 (provider_id=?)"
+        },
+        {
+          "id": 307,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH provider_instructors USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 315,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH offerings USING COVERING INDEX idx_offerings_provider_trimmed_name (provider_id=?)"
+        },
+        {
+          "id": 323,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH provider_locations USING COVERING INDEX sqlite_autoindex_provider_locations_1 (provider_id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 235,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_merge_events"
+        }
+      ]
+    },
+    {
+      "sql": "INSERT INTO provider_site_urls (id,provider_id,url,normalized_url,url_role,is_primary,verification_status,source_url,verified_at) VALUES (?,?,?,?, 'official',1,'verified',?,date('now'))",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO research_sources (entity_type,entity_id,source_url,source_type,verification_status,checked_at,note) VALUES ('provider',?,?,'official_website','verified',date('now'),'Official provider website reviewed during approval.')",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence (entity_type,entity_id,field_name,verification_status,source_url,verified_at,note) VALUES ('provider',?,'official_website','verified',?,date('now'),'Official website reviewed by directory editor.')",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence (entity_type,entity_id,field_name,verification_status,source_url,verified_at,note) VALUES ('provider',?,'provider_classification','verified',?,date('now'),'Provider classification reviewed by directory editor.')",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence (entity_type, entity_id, field_name, verification_status, source_url)\n    VALUES ('provider', ?, 'submission', 'unverified', ?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO offerings (id, slug, provider_id, name, description, registration_url, format, price_min, price_max, currency, price_basis, duration_minutes, session_count, schedule_text, skill_level, genre_specialty, audition_required, interview_required, instruction_mode, source_url, listing_status, origin)\n    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', 'submitted')",
+      "plan": [
+        {
+          "id": 257,
+          "parent": 0,
+          "notused": 55,
+          "detail": "SEARCH offering_terms USING COVERING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 265,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH offering_instructors USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        },
+        {
+          "id": 273,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH offering_locations USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE instructor_claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructor_claims USING INDEX sqlite_autoindex_instructor_claims_2 (submission_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE instructors SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE claims SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH claims USING COVERING INDEX idx_claims_submission (submission_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET claim_status = 'claimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE instructor_claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructor_claims USING INDEX sqlite_autoindex_instructor_claims_2 (submission_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE instructors SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE claims SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH claims USING COVERING INDEX idx_claims_submission (submission_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET claim_status = 'unclaimed', updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM submissions WHERE id = ? AND status = 'pending'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH submissions USING INDEX sqlite_autoindex_submissions_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_merge_guards(id,valid) SELECT ?,CASE WHEN EXISTS(SELECT 1 FROM submissions WHERE id=? AND status='pending') THEN 1 ELSE 0 END",
+      "plan": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        },
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 11,
+          "parent": 6,
+          "notused": 39,
+          "detail": "SEARCH submissions USING INDEX sqlite_autoindex_submissions_1 (id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        }
+      ]
+    },
+    {
+      "sql": "SELECT id FROM instructors WHERE id=? AND profile_status='published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET listing_status='archived',updated_at=CURRENT_TIMESTAMP WHERE listing_status='published' AND (id=? OR (registrable_domain IS NOT NULL AND registrable_domain=(SELECT registrable_domain FROM providers WHERE id=?)))",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH providers USING INDEX idx_providers_public_name (listing_status=?)"
+        },
+        {
+          "id": 17,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 22,
+          "parent": 17,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE offerings SET listing_status='archived',updated_at=CURRENT_TIMESTAMP WHERE listing_status='published' AND provider_id IN (SELECT id FROM providers WHERE id=? OR (registrable_domain IS NOT NULL AND registrable_domain=(SELECT registrable_domain FROM providers WHERE id=?)))",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH offerings USING COVERING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 9,
+          "parent": 0,
+          "notused": 0,
+          "detail": "LIST SUBQUERY 2"
+        },
+        {
+          "id": 14,
+          "parent": 9,
+          "notused": 0,
+          "detail": "MULTI-INDEX OR"
+        },
+        {
+          "id": 15,
+          "parent": 14,
+          "notused": 0,
+          "detail": "INDEX 1"
+        },
+        {
+          "id": 23,
+          "parent": 15,
+          "notused": 46,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 27,
+          "parent": 14,
+          "notused": 0,
+          "detail": "INDEX 2"
+        },
+        {
+          "id": 31,
+          "parent": 27,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 36,
+          "parent": 31,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 52,
+          "parent": 27,
+          "notused": 61,
+          "detail": "SEARCH providers USING INDEX idx_provider_domain_status (registrable_domain=?)"
+        },
+        {
+          "id": 62,
+          "parent": 9,
+          "notused": 0,
+          "detail": "CREATE BLOOM FILTER"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE instructors SET profile_status='archived',updated_at=CURRENT_TIMESTAMP WHERE id=? AND profile_status='published'",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE instructors SET description = COALESCE(NULLIF(?,''),description),\n        website_url = COALESCE(NULLIF(?,''),website_url), updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH instructors USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE offerings SET description = COALESCE(NULLIF(?,''),description), updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH offerings USING INDEX sqlite_autoindex_offerings_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET name = COALESCE(NULLIF(?,''),name), description = COALESCE(NULLIF(?,''),description),\n        teaching_approach = COALESCE(NULLIF(?,''),teaching_approach), website_url = COALESCE(NULLIF(?,''),website_url), instagram_url = COALESCE(NULLIF(?,''),instagram_url), updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE provider_update_suggestions SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH provider_update_suggestions USING COVERING INDEX idx_suggestions_submission (submission_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE provider_update_suggestions SET status = 'rejected', reviewed_at = CURRENT_TIMESTAMP WHERE submission_id = ?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 53,
+          "detail": "SEARCH provider_update_suggestions USING COVERING INDEX idx_suggestions_submission (submission_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE submissions SET status = ?, reviewed_at = CURRENT_TIMESTAMP WHERE id = ? AND status = 'pending'",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH submissions USING INDEX sqlite_autoindex_submissions_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO approval_events (submission_id, action, actor, note) VALUES (?, ?, 'local-admin', ?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "SELECT provider_id,website_url FROM provider_preview_jobs WHERE status IN ('pending','failed') AND attempts<3 ORDER BY requested_at LIMIT 3",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_preview_jobs"
+        },
+        {
+          "id": 22,
+          "parent": 0,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR ORDER BY"
+        }
+      ],
+      "scans": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 216,
+          "detail": "SCAN provider_preview_jobs"
+        }
+      ]
+    },
+    {
+      "sql": "SELECT p.* FROM provider_domains d JOIN providers p ON p.id=d.provider_id WHERE d.domain=? AND p.listing_status='published'",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 47,
+          "detail": "SEARCH d USING INDEX sqlite_autoindex_provider_domains_1 (domain=?)"
+        },
+        {
+          "id": 12,
+          "parent": 0,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_domains(domain,provider_id) VALUES (?,?) ON CONFLICT(domain) DO UPDATE SET provider_id=excluded.provider_id WHERE provider_domains.provider_id=excluded.provider_id",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_merge_guards(id,valid) SELECT ?,CASE WHEN EXISTS(SELECT 1 FROM provider_domains WHERE domain=? AND provider_id=?) THEN 1 ELSE 0 END",
+      "plan": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        },
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 11,
+          "parent": 6,
+          "notused": 39,
+          "detail": "SEARCH provider_domains USING INDEX sqlite_autoindex_provider_domains_1 (domain=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        }
+      ]
+    },
+    {
+      "sql": "UPDATE providers SET registrable_domain=? WHERE id=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM submissions WHERE id=? AND status='pending'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH submissions USING INDEX sqlite_autoindex_submissions_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM providers WHERE id=? AND listing_status='published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT 1 FROM provider_merge_links WHERE target_provider_id=? LIMIT 1",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_merge_links USING COVERING INDEX idx_provider_merge_link_target (target_provider_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM offerings WHERE provider_id=? AND lower(trim(name))=lower(trim(?)) AND listing_status='published' ORDER BY id LIMIT 1",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 59,
+          "detail": "SEARCH offerings USING INDEX idx_offerings_provider_trimmed_name (provider_id=? AND <expr>=? AND listing_status=?)"
+        },
+        {
+          "id": 60,
+          "parent": 0,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR ORDER BY"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM instructors WHERE lower(name)=lower(?) AND profile_status='published'",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH instructors USING INDEX idx_instructors_duplicate_name_site (<expr>=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM field_evidence WHERE entity_type='offering' AND entity_id=?",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH field_evidence USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM offering_instructors WHERE offering_id=?",
+      "plan": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH offering_instructors USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM provider_url_redirects WHERE source_path=?",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_url_redirects USING INDEX sqlite_autoindex_provider_url_redirects_1 (source_path=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM provider_domains WHERE provider_id IN (?,?)",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 72,
+          "detail": "SEARCH provider_domains USING INDEX idx_provider_domains_provider (provider_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM ${table} WHERE ${column} IN (?,?)",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "SELECT * FROM ${table} WHERE entity_type='provider' AND entity_id IN (?,?)",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "INSERT INTO provider_merge_guards(id,valid) SELECT ?,CASE WHEN EXISTS(SELECT 1 FROM submissions WHERE id=? AND status='pending') AND EXISTS(SELECT 1 FROM providers WHERE id=? AND merge_revision=? AND listing_status='published') THEN 1 ELSE 0 END",
+      "plan": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        },
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 11,
+          "parent": 6,
+          "notused": 39,
+          "detail": "SEARCH submissions USING INDEX sqlite_autoindex_submissions_1 (id=?)"
+        },
+        {
+          "id": 26,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 31,
+          "parent": 26,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        }
+      ]
+    },
+    {
+      "sql": "INSERT INTO provider_merge_guards(id,valid) SELECT ?,CASE WHEN EXISTS(SELECT 1 FROM providers WHERE id=? AND merge_revision=? AND listing_status='published') THEN 1 ELSE 0 END",
+      "plan": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        },
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 11,
+          "parent": 6,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        }
+      ]
+    },
+    {
+      "sql": "INSERT INTO provider_merge_events(id,submission_id,target_provider_id,source_provider_id,domain,before_json,incoming_json,resolution_json) VALUES (?,?,?,?,?,?,?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence(entity_type,entity_id,field_name,verification_status,source_url,verified_at,note) VALUES ('offering',?,?,'verified',?,date('now'),'Service resolved in provider merge review') ON CONFLICT(entity_type,entity_id,field_name) DO UPDATE SET verification_status='verified',source_url=excluded.source_url,verified_at=excluded.verified_at,note=excluded.note",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_merge_links(source_provider_id,target_provider_id,source_slug,event_id) VALUES (?,?,?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT OR IGNORE INTO ${table}(provider_id,${columns}) SELECT ?,${columns} FROM ${table} WHERE provider_id=?",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "INSERT OR IGNORE INTO provider_site_urls(id,provider_id,url,normalized_url,url_role,is_primary,verification_status,source_url,verified_at) SELECT lower(hex(randomblob(16))),?,url,normalized_url,url_role,0,verification_status,source_url,verified_at FROM provider_site_urls WHERE provider_id=?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 62,
+          "detail": "SEARCH provider_site_urls USING INDEX idx_provider_site_urls_provider_primary (provider_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT OR IGNORE INTO field_evidence(entity_type,entity_id,field_name,verification_status,source_url,verified_at,note) SELECT 'provider',?,field_name,verification_status,source_url,verified_at,note FROM field_evidence WHERE entity_type='provider' AND entity_id=?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH field_evidence USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT OR IGNORE INTO research_sources(entity_type,entity_id,source_url,source_type,verification_status,checked_at,note) SELECT 'provider',?,source_url,source_type,verification_status,checked_at,note FROM research_sources WHERE entity_type='provider' AND entity_id=?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH research_sources USING INDEX idx_research_sources_entity (entity_type=? AND entity_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE ${table} SET ${column}=? WHERE ${column}=?",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "UPDATE provider_domains SET provider_id=? WHERE provider_id=?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH provider_domains USING COVERING INDEX idx_provider_domains_provider (provider_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET listing_status='archived',merge_revision=merge_revision+1,updated_at=CURRENT_TIMESTAMP WHERE id=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_url_redirects(source_path,target_path,target_provider_id,reason,approved_by) VALUES (?,?,?,'Reviewed domain merge','admin') ON CONFLICT(source_path) DO UPDATE SET target_path=excluded.target_path,target_provider_id=excluded.target_provider_id,reason=excluded.reason",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_site_urls(id,provider_id,url,normalized_url,url_role,is_primary,verification_status,source_url,verified_at) VALUES (?,?,?,?, 'official',0,'verified',?,date('now')) ON CONFLICT(provider_id,normalized_url) DO NOTHING",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence(entity_type,entity_id,field_name,verification_status,source_url,verified_at,note) VALUES ('provider',?,?,'verified',?,date('now'),'Explicitly resolved during domain merge review') ON CONFLICT(entity_type,entity_id,field_name) DO UPDATE SET verification_status='verified',source_url=excluded.source_url,verified_at=excluded.verified_at,note=excluded.note",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE submissions SET status='approved',reviewed_at=CURRENT_TIMESTAMP,duplicate_of_provider_id=? WHERE id=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH submissions USING INDEX sqlite_autoindex_submissions_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO approval_events(submission_id,action,actor,note) VALUES (?,'approved','admin',?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "SELECT * FROM provider_merge_events WHERE id=? AND rolled_back_at IS NULL",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_merge_events USING INDEX sqlite_autoindex_provider_merge_events_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO provider_merge_guards(id,valid) SELECT ?,CASE WHEN EXISTS(SELECT 1 FROM providers WHERE id=? AND merge_revision=?) AND EXISTS(SELECT 1 FROM provider_merge_events WHERE id=? AND rolled_back_at IS NULL) THEN 1 ELSE 0 END",
+      "plan": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        },
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 11,
+          "parent": 6,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 26,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 31,
+          "parent": 26,
+          "notused": 39,
+          "detail": "SEARCH provider_merge_events USING INDEX sqlite_autoindex_provider_merge_events_1 (id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        }
+      ]
+    },
+    {
+      "sql": "INSERT INTO provider_merge_guards(id,valid) SELECT ?,CASE WHEN EXISTS(SELECT 1 FROM providers WHERE id=? AND merge_revision=?) THEN 1 ELSE 0 END",
+      "plan": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        },
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 11,
+          "parent": 6,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 2,
+          "parent": 0,
+          "notused": 0,
+          "detail": "SCAN CONSTANT ROW"
+        }
+      ]
+    },
+    {
+      "sql": "DELETE FROM ${table} WHERE ${column} IN (?,?)",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "INSERT INTO ${table}(${columns.join(',')}) VALUES (${columns.map(()=>'?').join(',')})",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "UPDATE ${table} SET ${column}=? WHERE id=?",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "DELETE FROM ${table} WHERE entity_type='provider' AND entity_id IN (?,?)",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "DELETE FROM provider_url_redirects WHERE source_path=? AND target_provider_id=?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_url_redirects USING INDEX sqlite_autoindex_provider_url_redirects_1 (source_path=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE provider_domains SET provider_id=? WHERE domain=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_domains USING INDEX sqlite_autoindex_provider_domains_1 (domain=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "DELETE FROM provider_merge_links WHERE source_provider_id=? AND event_id=?",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_merge_links USING INDEX sqlite_autoindex_provider_merge_links_1 (source_provider_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET listing_status=?,merge_revision=merge_revision+1,updated_at=CURRENT_TIMESTAMP WHERE id=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE offerings SET listing_status='archived',updated_at=CURRENT_TIMESTAMP WHERE provider_id=? AND id NOT IN (SELECT value FROM json_each(?))",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH offerings USING INDEX idx_offerings_provider_trimmed_name (provider_id=?)"
+        },
+        {
+          "id": 15,
+          "parent": 0,
+          "notused": 0,
+          "detail": "LIST SUBQUERY 1"
+        },
+        {
+          "id": 18,
+          "parent": 15,
+          "notused": 0,
+          "detail": "SCAN json_each VIRTUAL TABLE INDEX 1:"
+        },
+        {
+          "id": 27,
+          "parent": 15,
+          "notused": 0,
+          "detail": "CREATE BLOOM FILTER"
+        }
+      ],
+      "scans": [
+        {
+          "id": 18,
+          "parent": 15,
+          "notused": 0,
+          "detail": "SCAN json_each VIRTUAL TABLE INDEX 1:"
+        }
+      ]
+    },
+    {
+      "sql": "UPDATE instructors SET profile_status='archived',updated_at=CURRENT_TIMESTAMP WHERE id IN (SELECT instructor_id FROM provider_instructors WHERE provider_id=? AND instructor_id NOT IN (SELECT value FROM json_each(?)))",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 90,
+          "detail": "SEARCH instructors USING COVERING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 8,
+          "parent": 0,
+          "notused": 0,
+          "detail": "LIST SUBQUERY 2"
+        },
+        {
+          "id": 11,
+          "parent": 8,
+          "notused": 56,
+          "detail": "SEARCH provider_instructors USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 20,
+          "parent": 8,
+          "notused": 0,
+          "detail": "LIST SUBQUERY 1"
+        },
+        {
+          "id": 23,
+          "parent": 20,
+          "notused": 0,
+          "detail": "SCAN json_each VIRTUAL TABLE INDEX 1:"
+        },
+        {
+          "id": 32,
+          "parent": 20,
+          "notused": 0,
+          "detail": "CREATE BLOOM FILTER"
+        },
+        {
+          "id": 52,
+          "parent": 8,
+          "notused": 0,
+          "detail": "CREATE BLOOM FILTER"
+        }
+      ],
+      "scans": [
+        {
+          "id": 23,
+          "parent": 20,
+          "notused": 0,
+          "detail": "SCAN json_each VIRTUAL TABLE INDEX 1:"
+        }
+      ]
+    },
+    {
+      "sql": "DELETE FROM field_evidence WHERE entity_type='offering' AND entity_id=?",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 54,
+          "detail": "SEARCH field_evidence USING COVERING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO field_evidence(${columns.join(',')}) VALUES (${columns.map(()=>'?').join(',')})",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "DELETE FROM offering_instructors WHERE offering_id=?",
+      "plan": [
+        {
+          "id": 3,
+          "parent": 0,
+          "notused": 56,
+          "detail": "SEARCH offering_instructors USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO offering_instructors(offering_id,instructor_id) VALUES (?,?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "DELETE FROM ${table} WHERE provider_id=?",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "INSERT INTO ${table}(${fields.join(',')}) VALUES (${fields.map(()=>'?').join(',')})",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "DELETE FROM ${table} WHERE entity_type='provider' AND entity_id=?",
+      "dynamic": true,
+      "note": "Server-side table/column allowlists construct approval/merge/rollback statements; all user values are bound parameters."
+    },
+    {
+      "sql": "UPDATE submissions SET status='pending',reviewed_at=NULL WHERE id=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH submissions USING INDEX sqlite_autoindex_submissions_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE provider_merge_events SET rolled_back_at=CURRENT_TIMESTAMP WHERE id=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_merge_events USING INDEX sqlite_autoindex_provider_merge_events_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "INSERT INTO approval_events(submission_id,action,actor,note) VALUES (?,'reopened','admin',?)",
+      "plan": [],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE providers SET metadata_image_url=?,metadata_image_source_url=?,metadata_image_type=?,metadata_image_checked_at=CURRENT_TIMESTAMP WHERE id=? AND website_url=? AND listing_status='published'",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH providers USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE provider_preview_jobs SET status='complete',attempts=attempts+1,error=NULL WHERE provider_id=? AND website_url=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_preview_jobs USING INDEX sqlite_autoindex_provider_preview_jobs_1 (provider_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "UPDATE provider_preview_jobs SET status='failed',attempts=attempts+1,error=? WHERE provider_id=? AND website_url=?",
+      "plan": [
+        {
+          "id": 5,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH provider_preview_jobs USING INDEX sqlite_autoindex_provider_preview_jobs_1 (provider_id=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT p.*,\n  (SELECT d.provider_id FROM provider_domains d WHERE d.domain=p.registrable_domain) AS domain_provider_id,\n  (SELECT json_group_array(json_object('id',m.source_provider_id,'slug',m.source_slug)) FROM provider_merge_links m WHERE m.target_provider_id=p.id) AS aliases_json,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS description_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='teaching_approach' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS teaching_approach_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='official_website' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS official_website_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='instagram_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS instagram_verified,\n  (SELECT MAX(fe.verified_at) FROM field_evidence fe WHERE fe.entity_type = 'provider' AND fe.entity_id = p.id AND fe.verification_status = 'verified') AS last_verified,\n  (SELECT json_group_array(json_object('label',v.label,'city',v.city,'region',v.region,'borough',v.borough,'neighborhood',v.neighborhood,'postal_address',v.postal_address,'is_online',v.is_online,'verified',v.verified))\n    FROM (SELECT l.label,l.city,l.region,l.borough,l.neighborhood,l.postal_address,l.is_online,\n            EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified') AS verified\n          FROM provider_locations pl JOIN locations l ON l.id=pl.location_id WHERE pl.provider_id=p.id\n          UNION\n          SELECT l.label,l.city,l.region,l.borough,l.neighborhood,l.postal_address,l.is_online,\n            EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified') AS verified\n          FROM offerings o JOIN offering_locations ol ON ol.offering_id=o.id JOIN locations l ON l.id=ol.location_id\n          WHERE o.provider_id=p.id AND o.listing_status='published') v) AS locations_json,\n  (SELECT json_group_array(json_object('id',t.id,'taxonomy',t.taxonomy,'term',t.term,'slug',t.slug,'verification_status',t.verification_status,'source_url',t.source_url,'verified_at',t.verified_at))\n    FROM (\n      SELECT tt.id,tt.taxonomy,tt.term,tt.slug,pt.verification_status,pt.source_url,pt.verified_at\n        FROM provider_terms pt JOIN taxonomy_terms tt ON tt.id=pt.term_id WHERE pt.provider_id=p.id\n      UNION\n      SELECT tt.id,tt.taxonomy,tt.term,tt.slug,it.verification_status,it.source_url,it.verified_at\n        FROM provider_instructors pi JOIN instructor_terms it ON it.instructor_id=pi.instructor_id JOIN taxonomy_terms tt ON tt.id=it.term_id\n        WHERE pi.provider_id=p.id\n      UNION\n      SELECT tt.id,tt.taxonomy,tt.term,tt.slug,ot.verification_status,ot.source_url,ot.verified_at\n        FROM offerings o JOIN offering_terms ot ON ot.offering_id=o.id JOIN taxonomy_terms tt ON tt.id=ot.term_id\n        WHERE o.provider_id=p.id AND o.listing_status='published'\n    ) t) AS terms_json,\n  (SELECT json_group_array(json_object('id',i.id,'slug',i.slug,'name',i.name,'professional_title',CASE WHEN EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='professional_title' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) THEN i.professional_title ELSE NULL END,'description',CASE WHEN EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) THEN i.description ELSE NULL END,'website_url',i.website_url))\n    FROM provider_instructors pi JOIN instructors i ON i.id = pi.instructor_id WHERE pi.provider_id = p.id AND i.profile_status = 'published'\n      AND EXISTS (SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.verification_status='verified'\n        AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL\n        AND (fe.field_name LIKE 'affiliation%' OR (fe.field_name='profile' AND fe.note LIKE 'Official voice-faculty or studio roster.%'))\n        AND lower(replace(substr(fe.source_url,instr(fe.source_url,'://')+3,instr(substr(fe.source_url,instr(fe.source_url,'://')+3)||'/', '/')-1),'www.',''))\n          = lower(replace(substr(p.website_url,instr(p.website_url,'://')+3,instr(substr(p.website_url,instr(p.website_url,'://')+3)||'/', '/')-1),'www.','')))) AS instructors_json,\n  (SELECT json_group_array(json_object('id',o.id,'slug',o.slug,'name',o.name,'description',o.description,'descriptionVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'origin',o.origin,'genre_specialty',o.genre_specialty,'provider_id',o.provider_id,'price_min',o.price_min,'price_max',o.price_max,'currency',o.currency,'price_basis',o.price_basis,'format',o.format,'instruction_mode',o.instruction_mode,'registration_url',o.registration_url,'registrationVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='registration_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'enrollment_url',o.enrollment_url,'source_url',o.source_url,'officialWebsiteVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='official_website' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'schedule_text',o.schedule_text,'scheduleVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='schedule_text' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'skill_level',o.skill_level,'terms', (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,'verification_status',ot.verification_status,'source_url',ot.source_url,'verified_at',ot.verified_at)) FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id),'workshopVerified',(EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='lesson_format_workshop' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) OR EXISTS(SELECT 1 FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id AND tt.slug='workshops-and-intensives' AND ot.verification_status='verified' AND ot.source_url IS NOT NULL AND julianday(ot.verified_at) IS NOT NULL)),'instructionModeVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'instruction_mode' AND fe.verification_status = 'verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'formatVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'format' AND fe.verification_status = 'verified'),'priceVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'price' AND fe.verification_status = 'verified')))\n    FROM offerings o WHERE o.provider_id = p.id AND o.listing_status = 'published') AS offerings_json\n  FROM providers p WHERE p.listing_status = 'published' ORDER BY p.name COLLATE NOCASE",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH p USING INDEX idx_providers_public_name (listing_status=?)"
+        },
+        {
+          "id": 38,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 43,
+          "parent": 38,
+          "notused": 39,
+          "detail": "SEARCH d USING INDEX sqlite_autoindex_provider_domains_1 (domain=?)"
+        },
+        {
+          "id": 54,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 60,
+          "parent": 54,
+          "notused": 62,
+          "detail": "SEARCH m USING INDEX idx_provider_merge_link_target (target_provider_id=?)"
+        },
+        {
+          "id": 77,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 82,
+          "parent": 77,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 102,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 107,
+          "parent": 102,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 127,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 132,
+          "parent": 127,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 152,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 157,
+          "parent": 152,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 177,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 182,
+          "parent": 177,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 200,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 12"
+        },
+        {
+          "id": 203,
+          "parent": 200,
+          "notused": 0,
+          "detail": "CO-ROUTINE v"
+        },
+        {
+          "id": 204,
+          "parent": 203,
+          "notused": 0,
+          "detail": "COMPOUND QUERY"
+        },
+        {
+          "id": 205,
+          "parent": 204,
+          "notused": 0,
+          "detail": "LEFT-MOST SUBQUERY"
+        },
+        {
+          "id": 210,
+          "parent": 205,
+          "notused": 56,
+          "detail": "SEARCH pl USING COVERING INDEX sqlite_autoindex_provider_locations_1 (provider_id=?)"
+        },
+        {
+          "id": 215,
+          "parent": 205,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 228,
+          "parent": 205,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 232,
+          "parent": 228,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 247,
+          "parent": 204,
+          "notused": 0,
+          "detail": "UNION USING TEMP B-TREE"
+        },
+        {
+          "id": 253,
+          "parent": 247,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 260,
+          "parent": 247,
+          "notused": 56,
+          "detail": "SEARCH ol USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        },
+        {
+          "id": 265,
+          "parent": 247,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 278,
+          "parent": 247,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 10"
+        },
+        {
+          "id": 282,
+          "parent": 278,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 313,
+          "parent": 200,
+          "notused": 115,
+          "detail": "SCAN v"
+        },
+        {
+          "id": 333,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 16"
+        },
+        {
+          "id": 336,
+          "parent": 333,
+          "notused": 0,
+          "detail": "CO-ROUTINE t"
+        },
+        {
+          "id": 338,
+          "parent": 336,
+          "notused": 0,
+          "detail": "COMPOUND QUERY"
+        },
+        {
+          "id": 339,
+          "parent": 338,
+          "notused": 0,
+          "detail": "LEFT-MOST SUBQUERY"
+        },
+        {
+          "id": 344,
+          "parent": 339,
+          "notused": 62,
+          "detail": "SEARCH pt USING INDEX sqlite_autoindex_provider_terms_1 (provider_id=?)"
+        },
+        {
+          "id": 350,
+          "parent": 339,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 365,
+          "parent": 338,
+          "notused": 0,
+          "detail": "UNION USING TEMP B-TREE"
+        },
+        {
+          "id": 371,
+          "parent": 365,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 376,
+          "parent": 365,
+          "notused": 62,
+          "detail": "SEARCH it USING INDEX sqlite_autoindex_instructor_terms_1 (instructor_id=?)"
+        },
+        {
+          "id": 381,
+          "parent": 365,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 397,
+          "parent": 338,
+          "notused": 0,
+          "detail": "UNION USING TEMP B-TREE"
+        },
+        {
+          "id": 404,
+          "parent": 397,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 411,
+          "parent": 397,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 417,
+          "parent": 397,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 447,
+          "parent": 333,
+          "notused": 125,
+          "detail": "SCAN t"
+        },
+        {
+          "id": 466,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 20"
+        },
+        {
+          "id": 473,
+          "parent": 466,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 478,
+          "parent": 466,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 486,
+          "parent": 466,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 19"
+        },
+        {
+          "id": 491,
+          "parent": 486,
+          "notused": 61,
+          "detail": "SEARCH fe USING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 552,
+          "parent": 466,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 17"
+        },
+        {
+          "id": 557,
+          "parent": 552,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 580,
+          "parent": 466,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 18"
+        },
+        {
+          "id": 585,
+          "parent": 580,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 617,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 31"
+        },
+        {
+          "id": 623,
+          "parent": 617,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 635,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 21"
+        },
+        {
+          "id": 640,
+          "parent": 635,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 672,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 22"
+        },
+        {
+          "id": 677,
+          "parent": 672,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 699,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 23"
+        },
+        {
+          "id": 704,
+          "parent": 699,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 725,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 24"
+        },
+        {
+          "id": 730,
+          "parent": 725,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 751,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 25"
+        },
+        {
+          "id": 759,
+          "parent": 751,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 765,
+          "parent": 751,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 786,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 26"
+        },
+        {
+          "id": 791,
+          "parent": 786,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 810,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 27"
+        },
+        {
+          "id": 817,
+          "parent": 810,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 830,
+          "parent": 810,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 843,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 28"
+        },
+        {
+          "id": 848,
+          "parent": 843,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 868,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 29"
+        },
+        {
+          "id": 873,
+          "parent": 868,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 888,
+          "parent": 617,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 30"
+        },
+        {
+          "id": 893,
+          "parent": 888,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 313,
+          "parent": 200,
+          "notused": 115,
+          "detail": "SCAN v"
+        },
+        {
+          "id": 447,
+          "parent": 333,
+          "notused": 125,
+          "detail": "SCAN t"
+        }
+      ]
+    },
+    {
+      "sql": "SELECT o.*, p.name AS provider_name, p.slug AS provider_slug, p.listing_type AS provider_listing_type,\n  (SELECT MAX(fe.verified_at) FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.verification_status = 'verified') AS last_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS description_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='registration_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS registration_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='schedule_text' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS schedule_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='official_website' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS official_website_verified,\n  (SELECT json_group_array(json_object('label',l.label,'city',l.city,'region',l.region,'borough',l.borough,'neighborhood',l.neighborhood,'postal_address',l.postal_address,'is_online',l.is_online,'verified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'location' AND fe.entity_id = l.id AND fe.verification_status = 'verified')))\n    FROM offering_locations ol JOIN locations l ON l.id = ol.location_id WHERE ol.offering_id = o.id) AS locations_json,\n  (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,'verification_status',ot.verification_status,'source_url',ot.source_url,'verified_at',ot.verified_at))\n    FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id = ot.term_id WHERE ot.offering_id = o.id) AS terms_json,\n  (SELECT json_group_array(json_object('id',i.id,'name',i.name,'description',CASE WHEN EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) THEN i.description ELSE NULL END,'website_url',i.website_url))\n    FROM offering_instructors oi JOIN instructors i ON i.id = oi.instructor_id WHERE oi.offering_id = o.id AND i.profile_status = 'published') AS instructors_json,\n  (EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='lesson_format_workshop' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) OR EXISTS(SELECT 1 FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id AND tt.slug='workshops-and-intensives' AND ot.verification_status='verified' AND ot.source_url IS NOT NULL AND julianday(ot.verified_at) IS NOT NULL)) AS workshop_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'instruction_mode' AND fe.verification_status = 'verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS instruction_mode_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'price' AND fe.verification_status = 'verified') AS price_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'format' AND fe.verification_status = 'verified') AS format_verified\n  FROM offerings o LEFT JOIN providers p ON p.id = o.provider_id AND p.listing_status='published'\n  WHERE o.listing_status = 'published' ORDER BY o.name COLLATE NOCASE",
+      "plan": [
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_public_name (listing_status=?)"
+        },
+        {
+          "id": 11,
+          "parent": 0,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 59,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 64,
+          "parent": 59,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 82,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 87,
+          "parent": 82,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 107,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 112,
+          "parent": 107,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 132,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 137,
+          "parent": 132,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 157,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 162,
+          "parent": 157,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 182,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 189,
+          "parent": 182,
+          "notused": 56,
+          "detail": "SEARCH ol USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        },
+        {
+          "id": 194,
+          "parent": 182,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 207,
+          "parent": 182,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 211,
+          "parent": 207,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 232,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 240,
+          "parent": 232,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 246,
+          "parent": 232,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 267,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 10"
+        },
+        {
+          "id": 274,
+          "parent": 267,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        },
+        {
+          "id": 279,
+          "parent": 267,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 289,
+          "parent": 267,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 9"
+        },
+        {
+          "id": 294,
+          "parent": 289,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 326,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 11"
+        },
+        {
+          "id": 331,
+          "parent": 326,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 350,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 12"
+        },
+        {
+          "id": 357,
+          "parent": 350,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 370,
+          "parent": 350,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 383,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 13"
+        },
+        {
+          "id": 388,
+          "parent": 383,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 408,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 14"
+        },
+        {
+          "id": 413,
+          "parent": 408,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 428,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 15"
+        },
+        {
+          "id": 433,
+          "parent": 428,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT i.*,\n  (SELECT json_group_array(json_object('field_name',fe.field_name,'is_affiliation_roster',CASE WHEN fe.field_name='profile' AND fe.note LIKE 'Official voice-faculty or studio roster.%' THEN 1 ELSE 0 END,'verification_status',fe.verification_status,'source_url',fe.source_url,'verified_at',fe.verified_at)) FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.verification_status='verified' AND (fe.field_name IN ('profile','teacher_type','availability_status','instruction_mode','booking_url','description','biography','teaching_experience','professional_title','official_website','instagram_url') OR fe.field_name LIKE 'affiliation%' OR fe.field_name LIKE 'lesson_format_%')) AS fact_evidence_json,\n  (SELECT MAX(fe.verified_at) FROM field_evidence fe WHERE fe.entity_type = 'instructor' AND fe.entity_id = i.id AND fe.verification_status = 'verified') AS last_verified,\n  (SELECT json_group_array(json_object('id',p.id,'name',p.name,'website_url',p.website_url,'source_url',p.source_url) ORDER BY p.listing_type, p.rowid)\n    FROM provider_instructors pi JOIN providers p ON p.id = pi.provider_id\n    WHERE pi.instructor_id = i.id AND p.listing_status = 'published' AND p.listing_type != 'coach') AS affiliations_json,\n  (SELECT json_group_array(json_object('id',o.id,'slug',o.slug,'name',o.name,'description',o.description,'descriptionVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'origin',o.origin,\n      'provider_id',o.provider_id,'provider_name',p.name,'registration_url',o.registration_url,'registrationVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='registration_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'enrollment_url',o.enrollment_url,\n      'source_url',o.source_url,'format',o.format,'price_min',o.price_min,'price_max',o.price_max,'currency',o.currency,\n      'price_basis',o.price_basis,'schedule_text',o.schedule_text,'scheduleVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='schedule_text' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'skill_level',o.skill_level,'instruction_mode',o.instruction_mode,\n      'duration_minutes',o.duration_minutes,'session_count',o.session_count,\n      'workshopVerified',(EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='lesson_format_workshop' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) OR EXISTS(SELECT 1 FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id AND tt.slug='workshops-and-intensives' AND ot.verification_status='verified' AND ot.source_url IS NOT NULL AND julianday(ot.verified_at) IS NOT NULL)),'instructionModeVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='instruction_mode' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),\n      'priceVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='price' AND fe.verification_status='verified'),\n      'formatVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='format' AND fe.verification_status='verified')) ORDER BY o.provider_id, o.rowid)\n    FROM offering_instructors oi JOIN offerings o ON o.id = oi.offering_id\n    LEFT JOIN providers p ON p.id = o.provider_id AND p.listing_status='published'\n    WHERE oi.instructor_id = i.id AND o.listing_status = 'published') AS offerings_json,\n  (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,\n      'verification_status',it.verification_status,'source_url',it.source_url,'verified_at',it.verified_at))\n    FROM instructor_terms it JOIN taxonomy_terms tt ON tt.id = it.term_id WHERE it.instructor_id = i.id) AS terms_json,\n  (SELECT json_group_array(json_object('format',ifm.format,'verification_status',ifm.verification_status,'source_url',ifm.source_url,'verified_at',ifm.verified_at))\n    FROM instructor_formats ifm WHERE ifm.instructor_id = i.id) AS formats_json,\n  (SELECT json_group_array(json_object('label',l.label,'city',l.city,'region',l.region,'borough',l.borough,'neighborhood',l.neighborhood,\n      'postal_address',l.postal_address,'is_online',l.is_online,\n      'verified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified')))\n    FROM instructor_locations il JOIN locations l ON l.id = il.location_id WHERE il.instructor_id = i.id) AS locations_json,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='submission_origin') AS submitted_profile\n  FROM instructors i WHERE i.profile_status='published' ORDER BY i.name COLLATE NOCASE",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH i USING INDEX idx_instructors_public_name (profile_status=?)"
+        },
+        {
+          "id": 35,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 41,
+          "parent": 35,
+          "notused": 61,
+          "detail": "SEARCH fe USING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 118,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 123,
+          "parent": 118,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 141,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 146,
+          "parent": 141,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 150,
+          "parent": 141,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX idx_provider_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 155,
+          "parent": 141,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 188,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 12"
+        },
+        {
+          "id": 193,
+          "parent": 188,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 199,
+          "parent": 188,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX idx_offering_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 204,
+          "parent": 188,
+          "notused": 46,
+          "detail": "SEARCH o USING INDEX sqlite_autoindex_offerings_1 (id=?)"
+        },
+        {
+          "id": 211,
+          "parent": 188,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 230,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 235,
+          "parent": 230,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 259,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 264,
+          "parent": 259,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 294,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 299,
+          "parent": 294,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 323,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 328,
+          "parent": 323,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 347,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 354,
+          "parent": 347,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 367,
+          "parent": 347,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 380,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 9"
+        },
+        {
+          "id": 385,
+          "parent": 380,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 405,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 10"
+        },
+        {
+          "id": 410,
+          "parent": 405,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 425,
+          "parent": 188,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 11"
+        },
+        {
+          "id": 430,
+          "parent": 425,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 465,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 13"
+        },
+        {
+          "id": 473,
+          "parent": 465,
+          "notused": 62,
+          "detail": "SEARCH it USING INDEX sqlite_autoindex_instructor_terms_1 (instructor_id=?)"
+        },
+        {
+          "id": 479,
+          "parent": 465,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 500,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 14"
+        },
+        {
+          "id": 506,
+          "parent": 500,
+          "notused": 62,
+          "detail": "SEARCH ifm USING INDEX sqlite_autoindex_instructor_formats_1 (instructor_id=?)"
+        },
+        {
+          "id": 525,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 16"
+        },
+        {
+          "id": 532,
+          "parent": 525,
+          "notused": 56,
+          "detail": "SEARCH il USING COVERING INDEX sqlite_autoindex_instructor_locations_1 (instructor_id=?)"
+        },
+        {
+          "id": 537,
+          "parent": 525,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 550,
+          "parent": 525,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 15"
+        },
+        {
+          "id": 554,
+          "parent": 550,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 575,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 17"
+        },
+        {
+          "id": 579,
+          "parent": 575,
+          "notused": 39,
+          "detail": "SEARCH fe USING COVERING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT p.*,\n  (SELECT d.provider_id FROM provider_domains d WHERE d.domain=p.registrable_domain) AS domain_provider_id,\n  (SELECT json_group_array(json_object('id',m.source_provider_id,'slug',m.source_slug)) FROM provider_merge_links m WHERE m.target_provider_id=p.id) AS aliases_json,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS description_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='teaching_approach' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS teaching_approach_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='official_website' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS official_website_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='provider' AND fe.entity_id=p.id AND fe.field_name='instagram_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS instagram_verified,\n  (SELECT MAX(fe.verified_at) FROM field_evidence fe WHERE fe.entity_type = 'provider' AND fe.entity_id = p.id AND fe.verification_status = 'verified') AS last_verified,\n  (SELECT json_group_array(json_object('label',v.label,'city',v.city,'region',v.region,'borough',v.borough,'neighborhood',v.neighborhood,'postal_address',v.postal_address,'is_online',v.is_online,'verified',v.verified))\n    FROM (SELECT l.label,l.city,l.region,l.borough,l.neighborhood,l.postal_address,l.is_online,\n            EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified') AS verified\n          FROM provider_locations pl JOIN locations l ON l.id=pl.location_id WHERE pl.provider_id=p.id\n          UNION\n          SELECT l.label,l.city,l.region,l.borough,l.neighborhood,l.postal_address,l.is_online,\n            EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified') AS verified\n          FROM offerings o JOIN offering_locations ol ON ol.offering_id=o.id JOIN locations l ON l.id=ol.location_id\n          WHERE o.provider_id=p.id AND o.listing_status='published') v) AS locations_json,\n  (SELECT json_group_array(json_object('id',t.id,'taxonomy',t.taxonomy,'term',t.term,'slug',t.slug,'verification_status',t.verification_status,'source_url',t.source_url,'verified_at',t.verified_at))\n    FROM (\n      SELECT tt.id,tt.taxonomy,tt.term,tt.slug,pt.verification_status,pt.source_url,pt.verified_at\n        FROM provider_terms pt JOIN taxonomy_terms tt ON tt.id=pt.term_id WHERE pt.provider_id=p.id\n      UNION\n      SELECT tt.id,tt.taxonomy,tt.term,tt.slug,it.verification_status,it.source_url,it.verified_at\n        FROM provider_instructors pi JOIN instructor_terms it ON it.instructor_id=pi.instructor_id JOIN taxonomy_terms tt ON tt.id=it.term_id\n        WHERE pi.provider_id=p.id\n      UNION\n      SELECT tt.id,tt.taxonomy,tt.term,tt.slug,ot.verification_status,ot.source_url,ot.verified_at\n        FROM offerings o JOIN offering_terms ot ON ot.offering_id=o.id JOIN taxonomy_terms tt ON tt.id=ot.term_id\n        WHERE o.provider_id=p.id AND o.listing_status='published'\n    ) t) AS terms_json,\n  (SELECT json_group_array(json_object('id',i.id,'slug',i.slug,'name',i.name,'professional_title',CASE WHEN EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='professional_title' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) THEN i.professional_title ELSE NULL END,'description',CASE WHEN EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) THEN i.description ELSE NULL END,'website_url',i.website_url))\n    FROM provider_instructors pi JOIN instructors i ON i.id = pi.instructor_id WHERE pi.provider_id = p.id AND i.profile_status = 'published'\n      AND EXISTS (SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.verification_status='verified'\n        AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL\n        AND (fe.field_name LIKE 'affiliation%' OR (fe.field_name='profile' AND fe.note LIKE 'Official voice-faculty or studio roster.%'))\n        AND lower(replace(substr(fe.source_url,instr(fe.source_url,'://')+3,instr(substr(fe.source_url,instr(fe.source_url,'://')+3)||'/', '/')-1),'www.',''))\n          = lower(replace(substr(p.website_url,instr(p.website_url,'://')+3,instr(substr(p.website_url,instr(p.website_url,'://')+3)||'/', '/')-1),'www.','')))) AS instructors_json,\n  (SELECT json_group_array(json_object('id',o.id,'slug',o.slug,'name',o.name,'description',o.description,'descriptionVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'origin',o.origin,'genre_specialty',o.genre_specialty,'provider_id',o.provider_id,'price_min',o.price_min,'price_max',o.price_max,'currency',o.currency,'price_basis',o.price_basis,'format',o.format,'instruction_mode',o.instruction_mode,'registration_url',o.registration_url,'registrationVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='registration_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'enrollment_url',o.enrollment_url,'source_url',o.source_url,'officialWebsiteVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='official_website' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'schedule_text',o.schedule_text,'scheduleVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='schedule_text' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'skill_level',o.skill_level,'terms', (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,'verification_status',ot.verification_status,'source_url',ot.source_url,'verified_at',ot.verified_at)) FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id),'workshopVerified',(EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='lesson_format_workshop' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) OR EXISTS(SELECT 1 FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id AND tt.slug='workshops-and-intensives' AND ot.verification_status='verified' AND ot.source_url IS NOT NULL AND julianday(ot.verified_at) IS NOT NULL)),'instructionModeVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'instruction_mode' AND fe.verification_status = 'verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'formatVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'format' AND fe.verification_status = 'verified'),'priceVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'price' AND fe.verification_status = 'verified')))\n    FROM offerings o WHERE o.provider_id = p.id AND o.listing_status = 'published') AS offerings_json\n  FROM providers p WHERE p.listing_status = 'published' AND p.slug = ? ORDER BY p.name COLLATE NOCASE",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_2 (slug=?)"
+        },
+        {
+          "id": 42,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 47,
+          "parent": 42,
+          "notused": 39,
+          "detail": "SEARCH d USING INDEX sqlite_autoindex_provider_domains_1 (domain=?)"
+        },
+        {
+          "id": 58,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 64,
+          "parent": 58,
+          "notused": 62,
+          "detail": "SEARCH m USING INDEX idx_provider_merge_link_target (target_provider_id=?)"
+        },
+        {
+          "id": 81,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 86,
+          "parent": 81,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 106,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 111,
+          "parent": 106,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 131,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 136,
+          "parent": 131,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 156,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 161,
+          "parent": 156,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 181,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 186,
+          "parent": 181,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 204,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 12"
+        },
+        {
+          "id": 207,
+          "parent": 204,
+          "notused": 0,
+          "detail": "CO-ROUTINE v"
+        },
+        {
+          "id": 208,
+          "parent": 207,
+          "notused": 0,
+          "detail": "COMPOUND QUERY"
+        },
+        {
+          "id": 209,
+          "parent": 208,
+          "notused": 0,
+          "detail": "LEFT-MOST SUBQUERY"
+        },
+        {
+          "id": 214,
+          "parent": 209,
+          "notused": 56,
+          "detail": "SEARCH pl USING COVERING INDEX sqlite_autoindex_provider_locations_1 (provider_id=?)"
+        },
+        {
+          "id": 219,
+          "parent": 209,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 232,
+          "parent": 209,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 236,
+          "parent": 232,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 251,
+          "parent": 208,
+          "notused": 0,
+          "detail": "UNION USING TEMP B-TREE"
+        },
+        {
+          "id": 257,
+          "parent": 251,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 264,
+          "parent": 251,
+          "notused": 56,
+          "detail": "SEARCH ol USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        },
+        {
+          "id": 269,
+          "parent": 251,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 282,
+          "parent": 251,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 10"
+        },
+        {
+          "id": 286,
+          "parent": 282,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 317,
+          "parent": 204,
+          "notused": 83,
+          "detail": "SCAN v"
+        },
+        {
+          "id": 337,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 16"
+        },
+        {
+          "id": 340,
+          "parent": 337,
+          "notused": 0,
+          "detail": "CO-ROUTINE t"
+        },
+        {
+          "id": 342,
+          "parent": 340,
+          "notused": 0,
+          "detail": "COMPOUND QUERY"
+        },
+        {
+          "id": 343,
+          "parent": 342,
+          "notused": 0,
+          "detail": "LEFT-MOST SUBQUERY"
+        },
+        {
+          "id": 348,
+          "parent": 343,
+          "notused": 62,
+          "detail": "SEARCH pt USING INDEX sqlite_autoindex_provider_terms_1 (provider_id=?)"
+        },
+        {
+          "id": 354,
+          "parent": 343,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 369,
+          "parent": 342,
+          "notused": 0,
+          "detail": "UNION USING TEMP B-TREE"
+        },
+        {
+          "id": 375,
+          "parent": 369,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 380,
+          "parent": 369,
+          "notused": 62,
+          "detail": "SEARCH it USING INDEX sqlite_autoindex_instructor_terms_1 (instructor_id=?)"
+        },
+        {
+          "id": 385,
+          "parent": 369,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 401,
+          "parent": 342,
+          "notused": 0,
+          "detail": "UNION USING TEMP B-TREE"
+        },
+        {
+          "id": 408,
+          "parent": 401,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 415,
+          "parent": 401,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 421,
+          "parent": 401,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 451,
+          "parent": 337,
+          "notused": 93,
+          "detail": "SCAN t"
+        },
+        {
+          "id": 470,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 20"
+        },
+        {
+          "id": 477,
+          "parent": 470,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 482,
+          "parent": 470,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 490,
+          "parent": 470,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 19"
+        },
+        {
+          "id": 495,
+          "parent": 490,
+          "notused": 61,
+          "detail": "SEARCH fe USING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 556,
+          "parent": 470,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 17"
+        },
+        {
+          "id": 561,
+          "parent": 556,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 584,
+          "parent": 470,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 18"
+        },
+        {
+          "id": 589,
+          "parent": 584,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 621,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 31"
+        },
+        {
+          "id": 627,
+          "parent": 621,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 639,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 21"
+        },
+        {
+          "id": 644,
+          "parent": 639,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 676,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 22"
+        },
+        {
+          "id": 681,
+          "parent": 676,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 703,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 23"
+        },
+        {
+          "id": 708,
+          "parent": 703,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 729,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 24"
+        },
+        {
+          "id": 734,
+          "parent": 729,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 755,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 25"
+        },
+        {
+          "id": 763,
+          "parent": 755,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 769,
+          "parent": 755,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 790,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 26"
+        },
+        {
+          "id": 795,
+          "parent": 790,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 814,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 27"
+        },
+        {
+          "id": 821,
+          "parent": 814,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 834,
+          "parent": 814,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 847,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 28"
+        },
+        {
+          "id": 852,
+          "parent": 847,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 872,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 29"
+        },
+        {
+          "id": 877,
+          "parent": 872,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 892,
+          "parent": 621,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 30"
+        },
+        {
+          "id": 897,
+          "parent": 892,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ],
+      "scans": [
+        {
+          "id": 317,
+          "parent": 204,
+          "notused": 83,
+          "detail": "SCAN v"
+        },
+        {
+          "id": 451,
+          "parent": 337,
+          "notused": 93,
+          "detail": "SCAN t"
+        }
+      ]
+    },
+    {
+      "sql": "SELECT o.*, p.name AS provider_name, p.slug AS provider_slug, p.listing_type AS provider_listing_type,\n  (SELECT MAX(fe.verified_at) FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.verification_status = 'verified') AS last_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS description_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='registration_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS registration_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='schedule_text' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS schedule_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='official_website' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS official_website_verified,\n  (SELECT json_group_array(json_object('label',l.label,'city',l.city,'region',l.region,'borough',l.borough,'neighborhood',l.neighborhood,'postal_address',l.postal_address,'is_online',l.is_online,'verified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'location' AND fe.entity_id = l.id AND fe.verification_status = 'verified')))\n    FROM offering_locations ol JOIN locations l ON l.id = ol.location_id WHERE ol.offering_id = o.id) AS locations_json,\n  (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,'verification_status',ot.verification_status,'source_url',ot.source_url,'verified_at',ot.verified_at))\n    FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id = ot.term_id WHERE ot.offering_id = o.id) AS terms_json,\n  (SELECT json_group_array(json_object('id',i.id,'name',i.name,'description',CASE WHEN EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) THEN i.description ELSE NULL END,'website_url',i.website_url))\n    FROM offering_instructors oi JOIN instructors i ON i.id = oi.instructor_id WHERE oi.offering_id = o.id AND i.profile_status = 'published') AS instructors_json,\n  (EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='lesson_format_workshop' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) OR EXISTS(SELECT 1 FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id AND tt.slug='workshops-and-intensives' AND ot.verification_status='verified' AND ot.source_url IS NOT NULL AND julianday(ot.verified_at) IS NOT NULL)) AS workshop_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'instruction_mode' AND fe.verification_status = 'verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) AS instruction_mode_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'price' AND fe.verification_status = 'verified') AS price_verified,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type = 'offering' AND fe.entity_id = o.id AND fe.field_name = 'format' AND fe.verification_status = 'verified') AS format_verified\n  FROM offerings o LEFT JOIN providers p ON p.id = o.provider_id AND p.listing_status='published'\n  WHERE o.listing_status = 'published' AND o.slug = ? ORDER BY o.name COLLATE NOCASE",
+      "plan": [
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 46,
+          "detail": "SEARCH o USING INDEX sqlite_autoindex_offerings_2 (slug=?)"
+        },
+        {
+          "id": 15,
+          "parent": 0,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 63,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 68,
+          "parent": 63,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 86,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 91,
+          "parent": 86,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 111,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 116,
+          "parent": 111,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 136,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 141,
+          "parent": 136,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 161,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 166,
+          "parent": 161,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 186,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 193,
+          "parent": 186,
+          "notused": 56,
+          "detail": "SEARCH ol USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        },
+        {
+          "id": 198,
+          "parent": 186,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 211,
+          "parent": 186,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 215,
+          "parent": 211,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 236,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 244,
+          "parent": 236,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 250,
+          "parent": 236,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 271,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 10"
+        },
+        {
+          "id": 278,
+          "parent": 271,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        },
+        {
+          "id": 283,
+          "parent": 271,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 293,
+          "parent": 271,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 9"
+        },
+        {
+          "id": 298,
+          "parent": 293,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 330,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 11"
+        },
+        {
+          "id": 335,
+          "parent": 330,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 354,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 12"
+        },
+        {
+          "id": 361,
+          "parent": 354,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 374,
+          "parent": 354,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 387,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 13"
+        },
+        {
+          "id": 392,
+          "parent": 387,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 412,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 14"
+        },
+        {
+          "id": 417,
+          "parent": 412,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 432,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 15"
+        },
+        {
+          "id": 437,
+          "parent": 432,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ],
+      "scans": []
+    },
+    {
+      "sql": "SELECT i.*,\n  (SELECT json_group_array(json_object('field_name',fe.field_name,'is_affiliation_roster',CASE WHEN fe.field_name='profile' AND fe.note LIKE 'Official voice-faculty or studio roster.%' THEN 1 ELSE 0 END,'verification_status',fe.verification_status,'source_url',fe.source_url,'verified_at',fe.verified_at)) FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.verification_status='verified' AND (fe.field_name IN ('profile','teacher_type','availability_status','instruction_mode','booking_url','description','biography','teaching_experience','professional_title','official_website','instagram_url') OR fe.field_name LIKE 'affiliation%' OR fe.field_name LIKE 'lesson_format_%')) AS fact_evidence_json,\n  (SELECT MAX(fe.verified_at) FROM field_evidence fe WHERE fe.entity_type = 'instructor' AND fe.entity_id = i.id AND fe.verification_status = 'verified') AS last_verified,\n  (SELECT json_group_array(json_object('id',p.id,'name',p.name,'website_url',p.website_url,'source_url',p.source_url) ORDER BY p.listing_type, p.rowid)\n    FROM provider_instructors pi JOIN providers p ON p.id = pi.provider_id\n    WHERE pi.instructor_id = i.id AND p.listing_status = 'published' AND p.listing_type != 'coach') AS affiliations_json,\n  (SELECT json_group_array(json_object('id',o.id,'slug',o.slug,'name',o.name,'description',o.description,'descriptionVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='description' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'origin',o.origin,\n      'provider_id',o.provider_id,'provider_name',p.name,'registration_url',o.registration_url,'registrationVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='registration_url' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'enrollment_url',o.enrollment_url,\n      'source_url',o.source_url,'format',o.format,'price_min',o.price_min,'price_max',o.price_max,'currency',o.currency,\n      'price_basis',o.price_basis,'schedule_text',o.schedule_text,'scheduleVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='schedule_text' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),'skill_level',o.skill_level,'instruction_mode',o.instruction_mode,\n      'duration_minutes',o.duration_minutes,'session_count',o.session_count,\n      'workshopVerified',(EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='lesson_format_workshop' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL) OR EXISTS(SELECT 1 FROM offering_terms ot JOIN taxonomy_terms tt ON tt.id=ot.term_id WHERE ot.offering_id=o.id AND tt.slug='workshops-and-intensives' AND ot.verification_status='verified' AND ot.source_url IS NOT NULL AND julianday(ot.verified_at) IS NOT NULL)),'instructionModeVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='instruction_mode' AND fe.verification_status='verified' AND fe.source_url IS NOT NULL AND julianday(fe.verified_at) IS NOT NULL),\n      'priceVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='price' AND fe.verification_status='verified'),\n      'formatVerified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='offering' AND fe.entity_id=o.id AND fe.field_name='format' AND fe.verification_status='verified')) ORDER BY o.provider_id, o.rowid)\n    FROM offering_instructors oi JOIN offerings o ON o.id = oi.offering_id\n    LEFT JOIN providers p ON p.id = o.provider_id AND p.listing_status='published'\n    WHERE oi.instructor_id = i.id AND o.listing_status = 'published') AS offerings_json,\n  (SELECT json_group_array(json_object('id',tt.id,'taxonomy',tt.taxonomy,'term',tt.term,'slug',tt.slug,\n      'verification_status',it.verification_status,'source_url',it.source_url,'verified_at',it.verified_at))\n    FROM instructor_terms it JOIN taxonomy_terms tt ON tt.id = it.term_id WHERE it.instructor_id = i.id) AS terms_json,\n  (SELECT json_group_array(json_object('format',ifm.format,'verification_status',ifm.verification_status,'source_url',ifm.source_url,'verified_at',ifm.verified_at))\n    FROM instructor_formats ifm WHERE ifm.instructor_id = i.id) AS formats_json,\n  (SELECT json_group_array(json_object('label',l.label,'city',l.city,'region',l.region,'borough',l.borough,'neighborhood',l.neighborhood,\n      'postal_address',l.postal_address,'is_online',l.is_online,\n      'verified',EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='location' AND fe.entity_id=l.id AND fe.verification_status='verified')))\n    FROM instructor_locations il JOIN locations l ON l.id = il.location_id WHERE il.instructor_id = i.id) AS locations_json,\n  EXISTS(SELECT 1 FROM field_evidence fe WHERE fe.entity_type='instructor' AND fe.entity_id=i.id AND fe.field_name='submission_origin') AS submitted_profile\n  FROM instructors i WHERE i.profile_status='published' AND i.slug = ? ORDER BY i.name COLLATE NOCASE",
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 45,
+          "detail": "SEARCH i USING INDEX idx_instructors_slug (slug=?)"
+        },
+        {
+          "id": 39,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 45,
+          "parent": 39,
+          "notused": 61,
+          "detail": "SEARCH fe USING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 122,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 127,
+          "parent": 122,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 145,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 150,
+          "parent": 145,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 154,
+          "parent": 145,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX idx_provider_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 159,
+          "parent": 145,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 192,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 12"
+        },
+        {
+          "id": 197,
+          "parent": 192,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 203,
+          "parent": 192,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX idx_offering_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 208,
+          "parent": 192,
+          "notused": 46,
+          "detail": "SEARCH o USING INDEX sqlite_autoindex_offerings_1 (id=?)"
+        },
+        {
+          "id": 215,
+          "parent": 192,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 234,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 239,
+          "parent": 234,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 263,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 268,
+          "parent": 263,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 298,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 303,
+          "parent": 298,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 327,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 332,
+          "parent": 327,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 351,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 358,
+          "parent": 351,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 371,
+          "parent": 351,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 384,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 9"
+        },
+        {
+          "id": 389,
+          "parent": 384,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 409,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 10"
+        },
+        {
+          "id": 414,
+          "parent": 409,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 429,
+          "parent": 192,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 11"
+        },
+        {
+          "id": 434,
+          "parent": 429,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 469,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 13"
+        },
+        {
+          "id": 477,
+          "parent": 469,
+          "notused": 62,
+          "detail": "SEARCH it USING INDEX sqlite_autoindex_instructor_terms_1 (instructor_id=?)"
+        },
+        {
+          "id": 483,
+          "parent": 469,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 504,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 14"
+        },
+        {
+          "id": 510,
+          "parent": 504,
+          "notused": 62,
+          "detail": "SEARCH ifm USING INDEX sqlite_autoindex_instructor_formats_1 (instructor_id=?)"
+        },
+        {
+          "id": 529,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 16"
+        },
+        {
+          "id": 536,
+          "parent": 529,
+          "notused": 56,
+          "detail": "SEARCH il USING COVERING INDEX sqlite_autoindex_instructor_locations_1 (instructor_id=?)"
+        },
+        {
+          "id": 541,
+          "parent": 529,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 554,
+          "parent": 529,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 15"
+        },
+        {
+          "id": 558,
+          "parent": 554,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 579,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 17"
+        },
+        {
+          "id": 583,
+          "parent": 579,
+          "notused": 39,
+          "detail": "SEARCH fe USING COVERING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ],
+      "scans": []
+    }
+  ]
+}

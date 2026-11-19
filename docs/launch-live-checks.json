@@ -1,0 +1,92 @@
+{
+  "origin": "https://vocalcatalog.com",
+  "checkedAt": "2026-11-15T14:58:36.919Z",
+  "failures": [],
+  "data": {
+    "teachers": 216,
+    "classes": 29,
+    "providers": 22,
+    "sha256": "8484d373909ca70af97204d2f83f9a6fc58a39c3e156890b96e0279ed144a99b"
+  },
+  "health": {
+    "ok": true,
+    "service": "acting-class-directory",
+    "databaseConfigured": true
+  },
+  "sitemaps": [
+    {
+      "url": "https://vocalcatalog.com/sitemap-coaches.xml",
+      "urls": 216
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-studios.xml",
+      "urls": 22
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-classes.xml",
+      "urls": 29
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-locations.xml",
+      "urls": 20
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-specialties.xml",
+      "urls": 26
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-pages.xml",
+      "urls": 32
+    }
+  ],
+  "metadataExamples": [
+    {
+      "url": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/",
+      "title": "Abby Payne | Vocal Catalog",
+      "description": "Abby Payne: New York voice teacher and performer with training in jazz studies and voice pedagogy.",
+      "canonical": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/"
+    },
+    {
+      "url": "https://vocalcatalog.com/teachers/alexis-hightower-voice-teacher/",
+      "title": "Alexis Hightower | Vocal Catalog",
+      "description": "Alexis Hightower: Voice faculty at Brooklyn Conservatory of Music. Contact the school or studio for current lesson placement.",
+      "canonical": "https://vocalcatalog.com/teachers/alexis-hightower-voice-teacher/"
+    },
+    {
+      "url": "https://vocalcatalog.com/teachers/ameer-corro-voice-teacher/",
+      "title": "Ameer Corro | Vocal Catalog",
+      "description": "Ameer Corro: Voice teacher and vocal coach specializing in jazz, gospel, neo-soul, R&B, pop and hip-hop.",
+      "canonical": "https://vocalcatalog.com/teachers/ameer-corro-voice-teacher/"
+    }
+  ],
+  "analytics": {
+    "googleAnalytics": true,
+    "searchConsoleMeta": false,
+    "cloudflareBeacon": false
+  },
+  "canonicalUrlsChecked": 345,
+  "indexableProfiles": 267,
+  "logosChecked": 41,
+  "redirects": [
+    {
+      "source": "http://vocalcatalog.com/teachers/abby-payne-voice-teacher/?ref=launch",
+      "status": 308,
+      "destination": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/?ref=launch"
+    },
+    {
+      "source": "http://www.vocalcatalog.com/teachers/abby-payne-voice-teacher/?ref=launch",
+      "status": 308,
+      "destination": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/?ref=launch"
+    },
+    {
+      "source": "https://www.vocalcatalog.com/teachers/abby-payne-voice-teacher/?ref=launch",
+      "status": 308,
+      "destination": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/?ref=launch"
+    },
+    {
+      "source": "https://acting-class-directory.ellasanderella.workers.dev/teachers/abby-payne-voice-teacher/?ref=launch",
+      "status": 308,
+      "destination": "https://vocalcatalog.com/teachers/abby-payne-voice-teacher/?ref=launch"
+    }
+  ]
+}

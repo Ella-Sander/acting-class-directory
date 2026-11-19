@@ -1,0 +1,178 @@
+{
+  "provider": "US Census Geocoder",
+  "benchmark": "Public_AR_Current",
+  "reviewedAt": "2026-11-13",
+  "addresses": {
+    "46 Barrow Street, New York, NY 10014": {
+      "coordinates": [
+        40.7321496571,
+        -74.004337224847
+      ],
+      "matchedAddress": "46 BARROW ST, NEW YORK, NY, 10014",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=46+Barrow+Street%2C+New+York%2C+NY+10014&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "129 West 67th Street, New York, NY 10023": {
+      "coordinates": [
+        40.774840169676,
+        -73.982426009997
+      ],
+      "matchedAddress": "129 W 67TH ST, NEW YORK, NY, 10023",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=129+West+67th+Street%2C+New+York%2C+NY+10023&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "323 West 108th Street, New York, NY 10025": {
+      "coordinates": [
+        40.803139081386,
+        -73.967930103858
+      ],
+      "matchedAddress": "323 W 108TH ST, NEW YORK, NY, 10025",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=323+West+108th+Street%2C+New+York%2C+NY+10025&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "92 Gates Avenue, Suite 3A, Brooklyn, NY 11238": {
+      "coordinates": [
+        40.684593954585,
+        -73.964171174576
+      ],
+      "matchedAddress": "92 GATES AVE, BROOKLYN, NY, 11238",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=92+Gates+Avenue%2C+Brooklyn%2C+NY+11238&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "520 8th Avenue, New York, NY 10018": {
+      "coordinates": [
+        40.753533434878,
+        -73.992398387996
+      ],
+      "matchedAddress": "520 8TH AVE, NEW YORK, NY, 10018",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=520+8th+Avenue%2C+New+York%2C+NY+10018&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "126 St Felix Street, Brooklyn, NY 11217": {
+      "coordinates": [
+        40.686426650545,
+        -73.977341733679
+      ],
+      "matchedAddress": "126 ST FELIX ST, BROOKLYN, NY, 11217",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=126+St+Felix+Street%2C+Brooklyn%2C+NY+11217&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "130 Claremont Avenue, New York, NY 10027": {
+      "coordinates": [
+        40.813020233777,
+        -73.961457542515
+      ],
+      "matchedAddress": "130 CLAREMONT AVE, NEW YORK, NY, 10027",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=130+Claremont+Avenue%2C+New+York%2C+NY+10027&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "24 East 95th Street, New York, NY 10128": {
+      "coordinates": [
+        40.786850720338,
+        -73.95552759051
+      ],
+      "matchedAddress": "24 E 95TH ST, NEW YORK, NY, 10128",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=24+East+95th+Street%2C+New+York%2C+NY+10128&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "239 E 14th St, New York, NY 10003": {
+      "coordinates": [
+        40.732873877459,
+        -73.986036003461
+      ],
+      "matchedAddress": "239 E 14TH ST, NEW YORK, NY, 10003",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=239+E+14th+St%2C+New+York%2C+NY+10003&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "629 Kappock Street, #4D, Bronx, NY 10463": {
+      "coordinates": [
+        40.879696637001,
+        -73.916834646441
+      ],
+      "matchedAddress": "629 KAPPOCK ST, BRONX, NY, 10463",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=629+Kappock+Street%2C+Bronx%2C+NY+10463&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "31 W 27th St, Floor 3, New York, NY 10001": {
+      "coordinates": [
+        40.744742346215,
+        -73.989208705625
+      ],
+      "matchedAddress": "31 W 27TH ST, NEW YORK, NY, 10001",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=31+W+27th+St%2C+New+York%2C+NY+10001&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "248 W 35th St, 14th Floor, New York, NY 10001": {
+      "coordinates": [
+        40.752194768477,
+        -73.991565486865
+      ],
+      "matchedAddress": "248 W 35TH ST, NEW YORK, NY, 10001",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=248+W+35th+St%2C+New+York%2C+NY+10001&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "65 Broadway, 2nd Floor, New York, NY 10006": {
+      "coordinates": [
+        40.7069077603,
+        -74.012481708148
+      ],
+      "matchedAddress": "65 BROADWAY, NEW YORK, NY, 10006",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=65+Broadway%2C+New+York%2C+NY+10006&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "242 W 38th St, 11th Floor, New York, NY 10018": {
+      "coordinates": [
+        40.753980800789,
+        -73.990052706973
+      ],
+      "matchedAddress": "242 W 38TH ST, NEW YORK, NY, 10018",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=242+W+38th+St%2C+New+York%2C+NY+10018&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "700 W 180th St, New York, NY 10033": {
+      "coordinates": [
+        40.849500315603,
+        -73.936489639368
+      ],
+      "matchedAddress": "700 W 180TH ST, NEW YORK, NY, 10033",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=700+W+180th+St%2C+New+York%2C+NY+10033&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "76 Ninth Avenue, Suite 313, New York, NY 10011": {
+      "coordinates": [
+        40.741188805886,
+        -74.005029233603
+      ],
+      "matchedAddress": "76 9TH AVE, NEW YORK, NY, 10011",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=76+Ninth+Avenue%2C+New+York%2C+NY+10011&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "520 8th Ave, 9th floor, New York, NY 10018": {
+      "coordinates": [
+        40.753533434878,
+        -73.992398387996
+      ],
+      "matchedAddress": "520 8TH AVE, NEW YORK, NY, 10018",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=520+8th+Ave%2C+New+York%2C+NY+10018&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "147 W 25th St, 5th Floor, New York, NY 10001": {
+      "coordinates": [
+        40.744799624206,
+        -73.993170379672
+      ],
+      "matchedAddress": "147 W 25TH ST, NEW YORK, NY, 10001",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=147+W+25th+St%2C+New+York%2C+NY+10001&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    },
+    "120 Bank Street, New York, NY 10014": {
+      "coordinates": [
+        40.73624784381,
+        -74.007498287836
+      ],
+      "matchedAddress": "120 BANK ST, NEW YORK, NY, 10014",
+      "sourceUrl": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=120+Bank+Street%2C+New+York%2C+NY+10014&benchmark=Public_AR_Current&format=json",
+      "precision": "street-address"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "deployedAt": "2026-11-16T03:39:33.718Z",
+  "origin": "https://vocalcatalog.com",
+  "version": "9cf9d41e-be58-435f-a1c9-5738e3bebef8",
+  "migration": "0014_teacher_facts.sql",
+  "databaseBackup": ".wrangler/backup-before-institutional-release.sql (private, ignored)",
+  "tests": 59,
+  "productionRecords": {
+    "teachers": 216,
+    "offerings": 29,
+    "providers": 22
+  },
+  "liveBrowserChecks": "passed",
+  "liveCacheChecks": "passed; repeated requests zero D1 queries",
+  "productionSubmissionsCreated": 0
+}

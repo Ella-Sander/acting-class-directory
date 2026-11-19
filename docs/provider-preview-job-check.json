@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-11-17T15:50:58.393Z",
+  "jobs": [
+    {
+      "provider_id": "independent-jeff-cubeta",
+      "status": "complete",
+      "attempts": 1,
+      "error": null,
+      "metadata_image_url": "https://vocalcatalog.com/api/provider-previews/independent-jeff-cubeta.jpg",
+      "metadata_image_source_url": "https://www.jeffcubetavoiceteaching.com/the-technique",
+      "metadata_image_type": "none",
+      "metadata_image_checked_at": "2026-11-17 15:49:50"
+    }
+  ],
+  "image": {
+    "status": 200,
+    "bytes": 84549,
+    "rowsRead": "0"
+  }
+}

@@ -2,14 +2,37 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "acting-class-directory",
   "compatibility_date": "2026-10-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "browser": { "binding": "PROVIDER_BROWSER" },
   "main": "src/worker.js",
   "workers_dev": true,
   "preview_urls": false,
-  "observability": { "enabled": false },
+  "version_metadata": { "binding": "WORKER_VERSION" },
+  "send_email": [
+    {
+      "name": "SUBMISSION_EMAIL",
+      "allowed_sender_addresses": [
+        "notifications@vocalcatalog.com"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "vocalcatalog.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.vocalcatalog.com",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": false
+  },
   "assets": {
-    "directory": "./dist",
+    "directory": "./dist/client",
     "binding": "ASSETS",
-    "run_worker_first": ["/", "/directory", "/studios", "/classes", "/coaches", "/api/*", "/providers/*", "/classes/*", "/teachers/*", "/sitemap.xml", "/robots.txt"],
+    "run_worker_first": true,
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "single-page-application"
   },
@@ -19,6 +42,16 @@
       "database_name": "acting-class-directory",
       "database_id": "05ca97de-b898-45ab-8740-6f8f1456ef6d",
       "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "APPROVAL_EMAIL_ENABLED": "false",
+    "CANONICAL_ORIGIN": "https://vocalcatalog.com"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "PUBLIC_CACHE_STORE",
+      "id": "ae2e93595aa44ff59041a94ef36f7358"
     }
   ]
 }

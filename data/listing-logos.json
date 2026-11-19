@@ -1,0 +1,426 @@
+{
+  "reviewedAt": "2026-11-16",
+  "brands": {
+    "catalog-provider-bkcm": {
+      "name": "Brooklyn Conservatory of Music",
+      "url": "/logos/catalog-provider-bkcm.jpg",
+      "sourceUrl": "https://bkcm.org/voice-lessons-at-bkcm/",
+      "assetUrl": "https://bkcm.org/wp-content/uploads/2025/01/BKCM-Logo-250.jpg",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "d41b57ce9aaeef1d71867a1a935ea1da5af935bc70c14a7392ba3dba4695142d"
+    },
+    "catalog-provider-bloomingdale": {
+      "name": "Bloomingdale School of Music",
+      "url": "/logos/catalog-provider-bloomingdale.svg",
+      "sourceUrl": "https://www.bsmny.org/about-us/faculty-and-staff/",
+      "assetUrl": "https://www.bsmny.org/wp-content/uploads/2019/01/BSM-logo-mark-white.svg",
+      "surface": "dark",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "10c6017f4e775884326aff9b2b992b84baf8c18acd8f8c2dc9329dcb6d67711c"
+    },
+    "catalog-provider-greenwich": {
+      "name": "Greenwich House",
+      "url": "/logos/catalog-provider-greenwich.jpg",
+      "sourceUrl": "https://greenwichhouse.org/music-school/staff-and-faculty/",
+      "assetUrl": "https://greenwichhouse.org/wp-content/uploads/2025/07/Greenwich-House-Site-Icon-200x200.jpg",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "64df7d916eea2a5a0888f4596b8e2afbb0481a7ce12763185733d9d9027485a7"
+    },
+    "catalog-provider-lucy": {
+      "name": "Kaufman Music Center — home of Lucy Moses School",
+      "url": "/logos/catalog-provider-lucy.svg",
+      "sourceUrl": "https://www.kaufmanmusiccenter.org/lms/faculty-list/",
+      "assetUrl": "https://www.kaufmanmusiccenter.org/ui/images/kaufman-music-center-home-02.svg",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "918d4a6caaab42376f56e8ce369165927c5dcb84cc11dfdbeaf6ef0215f36673"
+    },
+    "catalog-provider-farnsworth": {
+      "name": "Matt Farnsworth Vocal Studio",
+      "url": "/logos/catalog-provider-farnsworth.png",
+      "sourceUrl": "https://www.mattfarnsworthvoice.com/about",
+      "assetUrl": "https://cdn.prod.website-files.com/5f899ec40c9e894f3131a9eb/5f8b0b62c42740b8eb2e1c09_mattlogonofree-p-500.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "0a9f2225bfea390895aecbf1c51c226c0ea9d7108e7830240cf6bf72814ebdf0"
+    },
+    "catalog-provider-liz": {
+      "name": "Liz Caplan Vocal Studios",
+      "url": "/logos/catalog-provider-liz.webp",
+      "sourceUrl": "https://www.lizcaplan.com/team-1",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/648605c4fb42f33c24973c37/a1ec2262-ee8c-470a-b03a-5cbab923f0f4/Clean+%26+Simple+Logo+%282%29.png?format=300w",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "71bd6d275761356cadfe84d80be74fd124bc931b65f7bcb2c8433fc4389cf978"
+    },
+    "catalog-provider-third": {
+      "name": "Third Street Music School",
+      "url": "/logos/catalog-provider-third.png",
+      "sourceUrl": "https://www.thirdstreet.nyc/faculty-staff-board-of-directors",
+      "assetUrl": "https://irp.cdn-website.com/9d245552/dms3rep/multi/opt/Third+Street+Main+Logo+-+White-1920w.png",
+      "surface": "dark",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "a0781ecaaa30833359f3651980ddb8e3411c71e4b952a60ddcbd6f8fb5be2619"
+    },
+    "catalog-provider-nyjw": {
+      "name": "New York Jazz Workshop",
+      "url": "/logos/catalog-provider-nyjw.png",
+      "sourceUrl": "https://newyorkjazzworkshop.com/nyjw-music-teachers/voice-lessons/",
+      "assetUrl": "https://nyjw.wpenginepowered.com/wp-content/uploads/2025/11/logo2.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "ae39a32af7d3ec23a41780430609e88a2006a0d78976eea73649a48047e3f163"
+    },
+    "provider-new-york-vocal-coaching": {
+      "name": "New York Vocal Coaching",
+      "url": "/logos/provider-new-york-vocal-coaching.svg",
+      "sourceUrl": "https://newyorkvocalcoaching.com/",
+      "assetUrl": "https://newyorkvocalcoaching.com/content/img/shared/logos/nyvcLogoFull.svg",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "97468840175625a48f8cb04974e5fc1d3acfdeffe33fc87843a4b43b78e6ec95"
+    },
+    "catalog-teacher-david-sisco": {
+      "name": "David Sisco",
+      "url": "/logos/catalog-teacher-david-sisco.png",
+      "sourceUrl": "https://davidsisco.com/teaching/",
+      "assetUrl": "https://davidsisco.com/wp-content/themes/david-sisco/img/david-sisco-footer-logo.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "d02da8cd42de7a983ff937ccfc66c6b1ea9b37afdd00e41fef3d56a049ebf4cb"
+    },
+    "catalog-teacher-deric-rosenblatt": {
+      "name": "Vocal Power LLC — Deric Rosenblatt",
+      "url": "/logos/catalog-teacher-deric-rosenblatt.webp",
+      "sourceUrl": "https://www.vocalpowerllc.com/",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/59933c9c6a49634687f2c4c9/1503932984154-DL6ODEE1QSF2CIWOXFRH/vp_final_logo.jpg?format=300w",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "cd403a94a8198a65ee40494d6f83953ecaf3652e172b1c4838792da4942d8ad8"
+    },
+    "catalog-teacher-michael-forman": {
+      "name": "The Michael Forman Studio",
+      "url": "/logos/catalog-teacher-michael-forman.png",
+      "sourceUrl": "https://formanvocalcoach.com/",
+      "assetUrl": "https://formanvocalcoach.com/wp-content/uploads/2020/03/Logo-1DG.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "d8ae5745de9ff8131da018984d7794671f65a05a6f603fbef83a07ced043d627"
+    },
+    "catalog-teacher-mary-setrakian": {
+      "name": "Mary Setrakian",
+      "url": "/logos/catalog-teacher-mary-setrakian.webp",
+      "sourceUrl": "https://marysetrakian.com/newyorkclasses",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/5a1e88272278e73e3d65bb7a/1519484406465-PQOSGHOABSRXQYMP780O/MARY+FOUNDED+LOGO.png?format=300w",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "49ded0d26155a28651a8475f7db84aeaac63165f195f3a59779ed81412a8fb09"
+    },
+    "vocal-charlotte-surkin": {
+      "name": "Charlotte Surkin",
+      "url": "/logos/vocal-charlotte-surkin.png",
+      "sourceUrl": "https://www.charlottesurkin.com/",
+      "assetUrl": "https://www.charlottesurkin.com/wp-content/uploads/2020/08/logo.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "ed55ccf08ca0935634d005a3f22833e6198c01dba940da70ad227bb7007b7093"
+    },
+    "vocal-david-sabella": {
+      "name": "David Sabella",
+      "url": "/logos/vocal-david-sabella.png",
+      "sourceUrl": "https://www.sabellavoice.com/",
+      "assetUrl": "https://davidsabella.com/wp-content/uploads/2026/07/David-Sabella-logo.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "60a3c37e1485cc03d94689a066ada68704c19355d76b8f969d48105046e2e73d"
+    },
+    "vocal-dawn-winiarz": {
+      "name": "Dawn Winiarz Voice",
+      "url": "/logos/vocal-dawn-winiarz.webp",
+      "sourceUrl": "https://dawnwiniarzvoice.com/",
+      "assetUrl": "https://static1.squarespace.com/static/64040247c1e9155f6db7ae65/t/6546f79d250674286dbe4826/1699149725243/DWV+Logo+Purple+Square+Large+copy.png?format=300w",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "26133968e67ab79d088194bc94ffb9986de0497f8cff3287a4eecaf535144dc7"
+    },
+    "catalog-teacher-lily-librach": {
+      "name": "Lily Librach Music",
+      "url": "/logos/catalog-teacher-lily-librach.png",
+      "sourceUrl": "https://www.lilylibrach.com/",
+      "assetUrl": "https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/users/85c66cb9-38c0-4d0b-87bb-3e16de74253d/design-previews/2c2ba20b-4d50-41a9-a021-8041d086b34e/1722542276913-transparentThumbnail.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "aa984e483c3538e759e4473c970d9fcfe25bbc8877600324f8a731e37cdbc3d4"
+    },
+    "catalog-teacher-wilma-wever": {
+      "name": "Performance EmPowering — Wilma Wever",
+      "url": "/logos/catalog-teacher-wilma-wever.jpg",
+      "sourceUrl": "https://www.performanceempowering.com/",
+      "assetUrl": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,fit=crop/9rWxrmqCq7CAfKGF/logo-design-performance-empowering-03-kAGKUZha6pGsVchj.jpeg",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "8192c9cc693bdc6ec1a9409e912f454c7658b77686ea2687c28b657b3b368f29"
+    },
+    "catalog-teacher-aubrey-johnson": {
+      "name": "Aubrey Johnson",
+      "url": "/logos/catalog-teacher-aubrey-johnson.webp",
+      "sourceUrl": "https://www.aubreyjohnsonmusic.com/",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/645cedbcbc3f10163deab1aa/c44aba35-1648-4e92-a33f-a6e40205c795/aubrey+logo.png?format=300w",
+      "surface": "dark",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "f88325295283adef9178e1649764b0adeefe7d9f356a6911b058473a56cf7a68"
+    },
+    "catalog-teacher-sara-serpa": {
+      "name": "Sara Serpa",
+      "url": "/logos/catalog-teacher-sara-serpa.svg",
+      "sourceUrl": "https://www.saraserpa.com/",
+      "assetUrl": "https://www.saraserpa.com/images/Group-62.svg",
+      "surface": "dark",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "73aedc16900c7bf5c956ccc34c245494e6e22afbb63cca10e19c585c1cf83726"
+    },
+    "catalog-teacher-sirintip": {
+      "name": "Sirintip",
+      "url": "/logos/catalog-teacher-sirintip.webp",
+      "sourceUrl": "https://www.sirintipofficial.com/",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/55fdb52ce4b08422c889ffe9/2d59428f-4e9c-4930-86b2-14f4abbac339/SIRINTIP_logo+orange.png?format=300w",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "b8db2650f4899d70ded86e491db743e8ac173229168a0b53ee7cab75b1735519"
+    },
+    "catalog2-provider-nyu": {
+      "name": "NYU Steinhardt",
+      "url": "/logos/catalog2-provider-nyu.svg",
+      "sourceUrl": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "assetUrl": "https://steinhardt.nyu.edu/themes/custom/nyusteinhardt/assets/images/logo.svg",
+      "surface": "dark",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "b738e2a01835f1cc00c9a2a190a2c4f67f24a70a8582ae2c14cdeeeacf448f74"
+    },
+    "catalog2-provider-msm": {
+      "name": "Manhattan School of Music",
+      "url": "/logos/catalog2-provider-msm.png",
+      "sourceUrl": "https://www.msmnyc.edu/",
+      "assetUrl": "https://www.msmnyc.edu/wp-content/uploads/2018/05/cropped-MSM-Site-Icon-192x192.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "109d2417ff9f12f4c9245daff4f69239f8a713fd6bd55e8b3973ae0887b5a382"
+    },
+    "catalog2-provider-mannes": {
+      "name": "Mannes School of Music — The New School",
+      "url": "/logos/catalog2-provider-mannes.svg",
+      "sourceUrl": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "assetUrl": "https://ww3.newschool.edu/assets/img/school-logos/mannes_desktop.svg",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "4b4f42557026226d38380ae14cae0e6cc60e2a8d59f0bb90935562355ab33fb4"
+    },
+    "catalog2-provider-bms": {
+      "name": "Brooklyn Music School",
+      "url": "/logos/catalog2-provider-bms.png",
+      "sourceUrl": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/68eeb262291ea72f131dc57e/98c6c0e6-ff41-466b-90fe-73ac1c25d7f3/brooklyn+music+school+logo+CMYK-nobkgrnd+%285%29.png?format=300w",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "b4ca06c1fad24a999b30e2a8b696e87929ead17a788ff62841c747600025df78"
+    },
+    "catalog2-provider-academy": {
+      "name": "Voice Academy NYC",
+      "url": "/logos/catalog2-provider-academy.webp",
+      "sourceUrl": "https://voiceacademynyc.com/vocal-coaches/",
+      "assetUrl": "https://voiceacademynyc.com/wp-content/uploads/2025/05/nyc-logo.webp",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "3df02d03abd94712fefa58c24b458fed6fb6752b4dcaf2c887a3f1f50dcaff2d"
+    },
+    "catalog2-provider-diller": {
+      "name": "The Diller-Quaile School of Music",
+      "url": "/logos/catalog2-provider-diller.webp",
+      "sourceUrl": "https://www.diller-quaile.org/faculty",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/59cff91532601e11ca5d8f27/8f615be0-16d0-45fb-82ee-407050b68ab7/DQ-highres+logo.png?format=300w",
+      "surface": "light",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "9c89e7da9d79f1192dc80d6e2cd6d73895385dcb73d657f0a0293f60f293ae64"
+    },
+    "catalog-provider-92ny": {
+      "name": "92NY School of Music",
+      "url": "/logos/catalog-provider-92ny.svg",
+      "sourceUrl": "https://www.92ny.org/class/the-show-tune-social",
+      "assetUrl": "https://ny92-stage.imgix.net/92ny/92ny-logo-w_1.svg",
+      "surface": "dark",
+      "verifiedAt": "2026-11-10",
+      "status": "verified",
+      "sha256": "4f4a42d019d23ef7153f88593df880a8ae9b945f13d4e6a25ad745deb52411b5"
+    },
+    "voice-school-hb": {
+      "name": "HB Studio",
+      "url": "/logos/voice-school-hb.svg",
+      "sourceUrl": "https://www.hbstudio.org/classes/musical-theater-performance/",
+      "assetUrl": "https://www.hbstudio.org/classes/musical-theater-performance/",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "ac7789b6d14c07347301cebbd5d0331d85c025b2bb1dd701e79d5c2086989039",
+      "note": "Original inline header SVG extracted unchanged from official source page."
+    },
+    "voice-school-barrow": {
+      "name": "The Barrow Group",
+      "url": "/logos/voice-school-barrow.png",
+      "sourceUrl": "https://www.barrowgroup.org/acting-school/classes/specialty-classes/voice-actor/",
+      "assetUrl": "https://www.barrowgroup.org/wp-content/uploads/2018/11/cropped-cropped-Transparent-logo-1.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "dcb38271c7f0032752fd94619b236c0105348003820da7195cb28ba4c5fe3e9d"
+    },
+    "provider-stella-adler": {
+      "name": "Stella Adler Studio of Acting",
+      "url": "/logos/provider-stella-adler.svg",
+      "sourceUrl": "https://classes.stellaadler.com/workshops/sound-into-action-voice-monologue/",
+      "assetUrl": "https://classes.stellaadler.com/wp-content/uploads/sites/6/2024/02/stellaadlercenter-primary-logo-ny-studio-no-city-white-rgb.svg",
+      "surface": "dark",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "cb6f9c18368be4610b0746b874b7c5268b8bea005a3c7172b59a31bc941194fa"
+    },
+    "voice-school-atlantic": {
+      "name": "Atlantic Acting School",
+      "url": "/logos/voice-school-atlantic.png",
+      "sourceUrl": "https://atlanticactingschool.org/courses/voice/",
+      "assetUrl": "https://atlanticactingschool.org/wp-content/uploads/2025/01/AAS_Logo_Color-768x109.png",
+      "surface": "dark",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "a90965944a25ec9b1281c0acc18a8329632f688937603303a77b45ac0c66ef1d"
+    },
+    "dialect-shane-ann-younts": {
+      "name": "Shane Ann Younts",
+      "url": "/logos/dialect-shane-ann-younts.png",
+      "sourceUrl": "https://shaneannyounts.com/dialect-coach-nyc/",
+      "assetUrl": "https://www.shaneannyounts.com/wp-content/uploads/2014/12/saylogo.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "6b92272ecf95d3df8b8a2351ca9627ff6b2056720b26e6cfc2d9de96ecbe067f"
+    },
+    "dialect-linda-jones": {
+      "name": "Linda Jones",
+      "url": "/logos/dialect-linda-jones.png",
+      "sourceUrl": "https://lindajonesnyc.com/coach/",
+      "assetUrl": "https://lindajonesnyc.com/wp-content/uploads/2026/02/Linda-Jones-Actor-Audiobook-Narrator-Logo.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "e04f15b7fad7016ca7af9b950c6711f0af4a1ad9e4ad1ee57e4f84c4cc2cb19c"
+    },
+    "dialect-deena-kaye": {
+      "name": "Deena Kaye",
+      "url": "/logos/dialect-deena-kaye.webp",
+      "sourceUrl": "https://www.deenakaye.com/",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/57d1c76bf5e2317b428e85bf/1482288174985-AQDK322ISVI4FOBX9PYO/logo.png?format=1500w",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "caea4d4edb93231fb39da454b4ff71b9a8c7127ebc1d592ae0284e914efbd29e"
+    },
+    "dialect-melanie-fox": {
+      "name": "Melanie Fox",
+      "url": "/logos/dialect-melanie-fox.svg",
+      "sourceUrl": "https://speechfox.com/dialect-coaching/",
+      "assetUrl": "https://cdn-ilekcnj.nitrocdn.com/KZzfRGhdhwYfoZfbuYCQeTWVqwmJalRz/assets/images/optimized/rev-a42c845/speechfox.com/wp-content/uploads/2026/07/Logo_-SpeechFox_SVG-cropped.svg",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "73235299c8e9389dcd0ebfea1ba03d42b5a9d0e24eb638550f74237199cd01e3"
+    },
+    "dialect-ben-furey": {
+      "name": "Ben Furey",
+      "url": "/logos/dialect-ben-furey.webp",
+      "sourceUrl": "https://www.benfurey.com/actors",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/5a74b9c3cd39c357ee3d6d77/62cf51af-fe78-493e-bc15-8a8e8a6d4fb7/Ben+Furey-logo.jpg",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "05c95afeaf12c3b281bc02578e80659460395bde18fa9667a0ea96da55fce170"
+    },
+    "dialect-kristen-cerelli": {
+      "name": "Kristen Cerelli",
+      "url": "/logos/dialect-kristen-cerelli.webp",
+      "sourceUrl": "https://www.kristencerelli.com/book-now",
+      "assetUrl": "https://images.squarespace-cdn.com/content/v1/61d6d9d42564361e5cd19382/2516521a-3b6b-4360-be6d-56ec8994e130/Horizontal-W-Tagline-BabyBlue%404x.png?format=1500w",
+      "surface": "dark",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "607b7927f446902fa87462ff277f6c0ef78b9d6375d72be006970df8f5db7692"
+    },
+    "dialect-leigh-dillon": {
+      "name": "Leigh Dillon",
+      "url": "/logos/dialect-leigh-dillon.jpg",
+      "sourceUrl": "https://leighdillon.website/contact/",
+      "assetUrl": "https://leighdillon.website/wp-content/uploads/2023/11/leighdillonLOGOv2-1024x41.jpg",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "c9545be1dce6414d4e4301ebb0e140e86dc6a9563ae5cc74c23c10a86a428ce5"
+    },
+    "speech-school-nysc": {
+      "name": "New York Speech Coaching",
+      "url": "/logos/speech-school-nysc.png",
+      "sourceUrl": "https://newyorkspeechcoaching.com/about",
+      "assetUrl": "https://newyorkspeechcoaching.com/sitefiles/img/nyscLogoColorTransparent.png",
+      "surface": "light",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "868b4d576c94679e1cfe1a81a187fc394ff93c4fbe1a801890b9f5f515c5ce5a"
+    },
+    "speech-school-maggie": {
+      "name": "Maggie Flanigan Studio",
+      "url": "/logos/speech-school-maggie.png",
+      "sourceUrl": "https://www.maggieflaniganstudio.com/voice-1",
+      "assetUrl": "https://static.wixstatic.com/media/4c038e_88b8ff1075814d8caa95c34e1f982f77~mv2.png",
+      "surface": "dark",
+      "verifiedAt": "2026-11-13",
+      "status": "verified",
+      "sha256": "41988f984c46784260555d2110436bf9cf856e3a97de6c38d7d816a9c0bc03af"
+    },
+    "independent-accentsoff": {
+      "name": "AccentsOff",
+      "url": "/logos/independent-accentsoff.png",
+      "sourceUrl": "https://accentsoff.com/about/",
+      "assetUrl": "https://accentsoff.com/wp-content/uploads/2021/01/logo-footer.png",
+      "surface": "dark",
+      "verifiedAt": "2026-11-16",
+      "status": "verified",
+      "sha256": "36af6902adbf7455b5d8fbae41533656e8d8abbf95362d7e95f259003474e3b0"
+    }
+  }
+}

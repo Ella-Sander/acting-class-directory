@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-16T16:24:44.218Z",
+  "failures": [],
+  "checked": 956,
+  "d1Queries": 0,
+  "d1RowsRead": 0,
+  "hash": "4d109e55d113d0995a4eb2716adc00e85563c11abf6b7ad1ad00e9e00982ddde",
+  "records": {
+    "providers": 123,
+    "offerings": 129,
+    "teachers": 217
+  },
+  "profileUrls": 938
+}

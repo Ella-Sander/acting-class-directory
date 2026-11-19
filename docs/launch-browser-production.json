@@ -1,0 +1,88 @@
+{
+  "origin": "https://vocalcatalog.com",
+  "viewports": [
+    {
+      "name": "desktop",
+      "h1": "Find Your Voice Coach in NYC",
+      "title": "Vocal Coaches NYC | Singing Lessons & Voice Training | Vocal Catalog",
+      "brand": "Vocal Catalog\nNYC",
+      "canonical": "https://vocalcatalog.com/",
+      "overflow": false,
+      "brokenImages": [],
+      "pins": 22,
+      "boroughButtons": 0,
+      "statsBottom": 662.96875,
+      "headerOverflow": false
+    },
+    {
+      "name": "laptop",
+      "h1": "Find Your Voice Coach in NYC",
+      "title": "Vocal Coaches NYC | Singing Lessons & Voice Training | Vocal Catalog",
+      "brand": "Vocal Catalog\nNYC",
+      "canonical": "https://vocalcatalog.com/",
+      "overflow": false,
+      "brokenImages": [],
+      "pins": 22,
+      "boroughButtons": 0,
+      "statsBottom": 657.140625,
+      "headerOverflow": false
+    },
+    {
+      "name": "mobile",
+      "h1": "Find Your Voice Coach in NYC",
+      "title": "Vocal Coaches NYC | Singing Lessons & Voice Training | Vocal Catalog",
+      "brand": "Vocal Catalog\nNYC",
+      "canonical": "https://vocalcatalog.com/",
+      "overflow": false,
+      "brokenImages": [],
+      "pins": 22,
+      "boroughButtons": 0,
+      "statsBottom": 532.265625,
+      "headerOverflow": false
+    },
+    {
+      "name": "small-mobile",
+      "h1": "Find Your Voice Coach in NYC",
+      "title": "Vocal Coaches NYC | Singing Lessons & Voice Training | Vocal Catalog",
+      "brand": "Vocal Catalog\nNYC",
+      "canonical": "https://vocalcatalog.com/",
+      "overflow": false,
+      "brokenImages": [],
+      "pins": 22,
+      "boroughButtons": 0,
+      "statsBottom": 612.59375,
+      "headerOverflow": false
+    }
+  ],
+  "interactions": {
+    "pagination": {
+      "url": "https://vocalcatalog.com/?page=2#directory",
+      "title": "Vocal Coaches NYC — Page 2 | Vocal Catalog",
+      "canonical": "https://vocalcatalog.com/?page=2"
+    },
+    "profileModal": {
+      "url": "https://vocalcatalog.com/teachers/azudi-onyejekwe-voice-teacher/#directory",
+      "canonical": "https://vocalcatalog.com/teachers/azudi-onyejekwe-voice-teacher/"
+    },
+    "directProfile": {
+      "h1": "Azudi Onyejekwe",
+      "canonical": "https://vocalcatalog.com/teachers/azudi-onyejekwe-voice-teacher/"
+    },
+    "search": {
+      "name": "JFPortrait / logo pending01Dialect coachJulie FohDialect Coaching⌖New York · OnlineOnlineAsk for pricingProfile ↗",
+      "robots": "noindex, follow"
+    },
+    "categoryFilter": true,
+    "emptyState": true,
+    "reset": true
+  },
+  "exceptions": [],
+  "resourceErrors": [],
+  "lastPage": {
+    "url": "https://vocalcatalog.com/",
+    "title": "Vocal Coaches NYC | Singing Lessons & Voice Training | Vocal Catalog",
+    "cards": 20,
+    "pins": 22,
+    "text": "Skip to directory\nVocal Catalog\nNYC\nTHE VOICE DIRECTORY\nExplore directory\nHow it works\nGet listed\n↗\nVOCAL CATALOG · THE LOCAL VOICE DIRECTORY\nMADE FOR NEW YORK'S MANY VOICES\nNYC\nFIVE BOROUGHS. YOUR NEXT CHAPTER.\nFind Your\nVoice Coach in NYC\n\nDiscover vocal coaches, singing teachers, voice lessons, and speech training across New York City.\n\nExplore New York's voices\n↗\nTHE FIVE-BOROUGH GUIDE\nNew York, in tune.\nReset map ↗\n14\n16\n6\n14\n10\n15\n30\n45\n38\n9\n4\n1\n12\n1\n2\n1\n1\n1\n1\n5\n1\n4\n+\n−\n Leaflet | © OpenStreetMap contributors\n22 mapped locations · select a pin to explore listings.\nOpen a pin for address or approximate-area details. Shared locations group listings; online-only listings are not pinned.\n177\n245\ndirectory listings\n156\n216\nvoice professionals\n21\n29\nclasses & programs\n14\n20\ndialect coaches"
+  }
+}

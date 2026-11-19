@@ -1,0 +1,53 @@
+{
+  "status": 200,
+  "result": {
+    "data": {
+      "viewer": {
+        "accounts": [
+          {
+            "d1AnalyticsAdaptiveGroups": [
+              {
+                "dimensions": {
+                  "databaseId": "05ca97de-b898-45ab-8740-6f8f1456ef6d",
+                  "date": "2026-11-13"
+                },
+                "sum": {
+                  "readQueries": 47,
+                  "rowsRead": 207215,
+                  "rowsWritten": 1252,
+                  "writeQueries": 409
+                }
+              },
+              {
+                "dimensions": {
+                  "databaseId": "05ca97de-b898-45ab-8740-6f8f1456ef6d",
+                  "date": "2026-11-14"
+                },
+                "sum": {
+                  "readQueries": 1397,
+                  "rowsRead": 7320376,
+                  "rowsWritten": 3,
+                  "writeQueries": 1
+                }
+              },
+              {
+                "dimensions": {
+                  "databaseId": "05ca97de-b898-45ab-8740-6f8f1456ef6d",
+                  "date": "2026-11-15"
+                },
+                "sum": {
+                  "readQueries": 783,
+                  "rowsRead": 4108923,
+                  "rowsWritten": 0,
+                  "writeQueries": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "errors": null
+  },
+  "note": "Successful SQL execution statistics alone do not prove the cause of historical failed requests."
+}

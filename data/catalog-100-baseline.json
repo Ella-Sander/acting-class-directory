@@ -1,0 +1,502 @@
+[
+  {
+    "id": "vocal-abby-payne",
+    "slug": "abby-payne-voice-teacher",
+    "name": "Abby Payne"
+  },
+  {
+    "id": "catalog-teacher-alexis-hightower",
+    "slug": "alexis-hightower-voice-teacher",
+    "name": "Alexis Hightower"
+  },
+  {
+    "id": "catalog-teacher-alison-bolshoi",
+    "slug": "alison-bolshoi-voice-teacher",
+    "name": "Alison Bolshoi"
+  },
+  {
+    "id": "vocal-ameer-corro",
+    "slug": "ameer-corro-voice-teacher",
+    "name": "Ameer Corro"
+  },
+  {
+    "id": "vocal-andrea-grody",
+    "slug": "andrea-grody-voice-teacher",
+    "name": "Andrea Grody"
+  },
+  {
+    "id": "vocal-andy-king",
+    "slug": "andy-king-voice-teacher",
+    "name": "Andy King"
+  },
+  {
+    "id": "catalog-teacher-annie-chen",
+    "slug": "annie-chen-voice-teacher",
+    "name": "Annie Chen"
+  },
+  {
+    "id": "catalog-teacher-anush-avetisyan",
+    "slug": "anush-avetisyan-voice-teacher",
+    "name": "Anush Avetisyan"
+  },
+  {
+    "id": "catalog-teacher-aubrey-johnson",
+    "slug": "aubrey-johnson-voice-teacher",
+    "name": "Aubrey Johnson"
+  },
+  {
+    "id": "catalog-teacher-audra-bowers",
+    "slug": "audra-bowers-voice-teacher",
+    "name": "Audra Bowers"
+  },
+  {
+    "id": "catalog-teacher-carolyn-leonhart",
+    "slug": "carolyn-leonhart-voice-teacher",
+    "name": "Carolyn Leonhart"
+  },
+  {
+    "id": "catalog-teacher-charlotte-detrick",
+    "slug": "charlotte-detrick-voice-teacher",
+    "name": "Charlotte Detrick"
+  },
+  {
+    "id": "vocal-charlotte-surkin",
+    "slug": "charlotte-surkin-voice-teacher",
+    "name": "Charlotte Surkin"
+  },
+  {
+    "id": "vocal-christina-wuenn",
+    "slug": "christina-wuenn-voice-teacher",
+    "name": "Christina Wuenn"
+  },
+  {
+    "id": "catalog-teacher-christine-browning",
+    "slug": "christine-browning-voice-teacher",
+    "name": "Christine Browning"
+  },
+  {
+    "id": "catalog-teacher-christine-cornell",
+    "slug": "christine-cornell-voice-teacher",
+    "name": "Christine Cornell"
+  },
+  {
+    "id": "catalog-teacher-christopher-nazarian",
+    "slug": "christopher-nazarian-voice-teacher",
+    "name": "Christopher Nazarian"
+  },
+  {
+    "id": "catalog-teacher-conrad-chu",
+    "slug": "conrad-chu-voice-teacher",
+    "name": "Conrad Chu"
+  },
+  {
+    "id": "vocal-david-sabella",
+    "slug": "david-sabella-voice-teacher",
+    "name": "David Sabella"
+  },
+  {
+    "id": "catalog-teacher-david-sisco",
+    "slug": "david-sisco-voice-teacher",
+    "name": "David Sisco"
+  },
+  {
+    "id": "vocal-dawn-winiarz",
+    "slug": "dawn-winiarz-voice-teacher",
+    "name": "Dawn Winiarz"
+  },
+  {
+    "id": "catalog-teacher-debra-vanderlinde",
+    "slug": "debra-vanderlinde-voice-teacher",
+    "name": "Debra Vanderlinde"
+  },
+  {
+    "id": "vocal-debra-wiley-hart",
+    "slug": "debra-wiley-hart-voice-teacher",
+    "name": "Debra Wiley-Hart"
+  },
+  {
+    "id": "catalog-teacher-deric-rosenblatt",
+    "slug": "deric-rosenblatt-voice-teacher",
+    "name": "Deric Rosenblatt"
+  },
+  {
+    "id": "catalog-teacher-elana-hedrych",
+    "slug": "elana-hedrych-voice-teacher",
+    "name": "Elana Hedrych"
+  },
+  {
+    "id": "vocal-elissa-weiss",
+    "slug": "elissa-weiss-voice-teacher",
+    "name": "Elissa Weiss"
+  },
+  {
+    "id": "catalog-teacher-emma-larsson",
+    "slug": "emma-larsson-voice-teacher",
+    "name": "Emma Larsson"
+  },
+  {
+    "id": "catalog-teacher-eros",
+    "slug": "eros-voice-teacher",
+    "name": "EROS"
+  },
+  {
+    "id": "catalog-teacher-fernanda-douglas",
+    "slug": "fernanda-douglas-voice-teacher",
+    "name": "Fernanda Douglas"
+  },
+  {
+    "id": "catalog-teacher-grace-macgregor-chermak",
+    "slug": "grace-macgregor-chermak-voice-teacher",
+    "name": "Grace MacGregor Chermak"
+  },
+  {
+    "id": "catalog-teacher-ian-harris",
+    "slug": "ian-harris-voice-teacher",
+    "name": "Ian Harris"
+  },
+  {
+    "id": "vocal-jamie-kaufman",
+    "slug": "jamie-kaufman-voice-teacher",
+    "name": "Jamie Kaufman"
+  },
+  {
+    "id": "vocal-jan-horvath",
+    "slug": "jan-horvath-voice-teacher",
+    "name": "Jan Horvath"
+  },
+  {
+    "id": "catalog-teacher-jasper-fearon",
+    "slug": "jasper-fearon-voice-teacher",
+    "name": "Jasper Fearon"
+  },
+  {
+    "id": "vocal-jess-maison",
+    "slug": "jess-maison-voice-teacher",
+    "name": "Jess Maison"
+  },
+  {
+    "id": "catalog-teacher-jesse-kissel",
+    "slug": "jesse-kissel-voice-teacher",
+    "name": "Jesse Kissel"
+  },
+  {
+    "id": "catalog-teacher-joan-zimmerman",
+    "slug": "joan-zimmerman-voice-teacher",
+    "name": "Joan Zimmerman"
+  },
+  {
+    "id": "catalog-teacher-jocelyn-medina",
+    "slug": "jocelyn-medina-voice-teacher",
+    "name": "Jocelyn Medina"
+  },
+  {
+    "id": "catalog-teacher-john-tafone",
+    "slug": "john-tafone-voice-teacher",
+    "name": "John Tafone"
+  },
+  {
+    "id": "catalog-teacher-josephine-mongiardo-cooper",
+    "slug": "josephine-mongiardo-cooper-voice-teacher",
+    "name": "Josephine Mongiardo-Cooper"
+  },
+  {
+    "id": "catalog-teacher-judith-barnes",
+    "slug": "judith-barnes-voice-teacher",
+    "name": "Judith Barnes"
+  },
+  {
+    "id": "catalog-teacher-julie-milgram",
+    "slug": "julie-milgram-voice-teacher",
+    "name": "Julie Milgram"
+  },
+  {
+    "id": "vocal-justin-stoney",
+    "slug": "justin-stoney-voice-teacher",
+    "name": "Justin Stoney"
+  },
+  {
+    "id": "vocal-kacey-velazquez",
+    "slug": "kacey-velazquez-voice-teacher",
+    "name": "Kacey Velazquez"
+  },
+  {
+    "id": "catalog-teacher-kaitlin-stark",
+    "slug": "kaitlin-stark-voice-teacher",
+    "name": "Kaitlin Stark"
+  },
+  {
+    "id": "catalog-teacher-kate-victor",
+    "slug": "kate-victor-voice-teacher",
+    "name": "Kate Victor"
+  },
+  {
+    "id": "catalog-teacher-katherine-hoffman",
+    "slug": "katherine-hoffman-voice-teacher",
+    "name": "Katherine Hoffman"
+  },
+  {
+    "id": "catalog-teacher-katie-seiler",
+    "slug": "katie-seiler-voice-teacher",
+    "name": "Katie Seiler"
+  },
+  {
+    "id": "catalog-teacher-konstantina-siokis",
+    "slug": "konstantina-siokis-voice-teacher",
+    "name": "Konstantina Siokis"
+  },
+  {
+    "id": "catalog-teacher-laca-tines",
+    "slug": "laca-tines-voice-teacher",
+    "name": "Laca Tines"
+  },
+  {
+    "id": "catalog-teacher-lily-librach",
+    "slug": "lily-librach-voice-teacher",
+    "name": "Lily Librach"
+  },
+  {
+    "id": "vocal-lisa-rochelle",
+    "slug": "lisa-rochelle-voice-teacher",
+    "name": "Lisa Rochelle"
+  },
+  {
+    "id": "catalog-teacher-liz-caplan",
+    "slug": "liz-caplan-voice-teacher",
+    "name": "Liz Caplan"
+  },
+  {
+    "id": "catalog-teacher-lucia-stavros",
+    "slug": "lucia-stavros-voice-teacher",
+    "name": "Lucia Stavros"
+  },
+  {
+    "id": "catalog-teacher-lucy-galliher",
+    "slug": "lucy-galliher-voice-teacher",
+    "name": "Lucy Galliher"
+  },
+  {
+    "id": "catalog-teacher-mary-hurlbut",
+    "slug": "mary-hurlbut-voice-teacher",
+    "name": "Mary Hurlbut"
+  },
+  {
+    "id": "catalog-teacher-mary-setrakian",
+    "slug": "mary-setrakian-voice-teacher",
+    "name": "Mary Setrakian"
+  },
+  {
+    "id": "catalog-teacher-matt-farnsworth",
+    "slug": "matt-farnsworth-voice-teacher",
+    "name": "Matt Farnsworth"
+  },
+  {
+    "id": "catalog-teacher-michael-forman",
+    "slug": "michael-forman-voice-teacher",
+    "name": "Michael Forman"
+  },
+  {
+    "id": "catalog-teacher-michelle-walker",
+    "slug": "michelle-walker-voice-teacher",
+    "name": "Michelle Walker"
+  },
+  {
+    "id": "catalog-teacher-mike-maixner",
+    "slug": "mike-maixner-voice-teacher",
+    "name": "Mike Maixner"
+  },
+  {
+    "id": "catalog-teacher-miles-griffith",
+    "slug": "miles-griffith-voice-teacher",
+    "name": "Miles Griffith"
+  },
+  {
+    "id": "catalog-teacher-nadia-chechet",
+    "slug": "nadia-chechet-voice-teacher",
+    "name": "Nadia Chechet"
+  },
+  {
+    "id": "catalog-teacher-nancy-adams",
+    "slug": "nancy-adams-voice-teacher",
+    "name": "Nancy Adams"
+  },
+  {
+    "id": "catalog-teacher-nicole-haslett",
+    "slug": "nicole-haslett-voice-teacher",
+    "name": "Nicole Haslett"
+  },
+  {
+    "id": "vocal-nicolas-hormazabal",
+    "slug": "nicolas-hormazabal-voice-teacher",
+    "name": "Nicolás Hormazábal"
+  },
+  {
+    "id": "catalog-teacher-oren-gradus",
+    "slug": "oren-gradus-voice-teacher",
+    "name": "Oren Gradus"
+  },
+  {
+    "id": "vocal-paula-liscio",
+    "slug": "paula-liscio-voice-teacher",
+    "name": "Paula Liscio"
+  },
+  {
+    "id": "catalog-teacher-rae-covey",
+    "slug": "rae-covey-voice-teacher",
+    "name": "Rae Covey"
+  },
+  {
+    "id": "catalog-teacher-reut-ben-zeev",
+    "slug": "reut-ben-zeev-voice-teacher",
+    "name": "Re’ut Ben-Ze’ev"
+  },
+  {
+    "id": "vocal-roberto-crippa",
+    "slug": "roberto-crippa-voice-teacher",
+    "name": "Roberto Crippa"
+  },
+  {
+    "id": "catalog-teacher-ron-wilkins",
+    "slug": "ron-wilkins-voice-teacher",
+    "name": "Ron Wilkins"
+  },
+  {
+    "id": "catalog-teacher-sara-serpa",
+    "slug": "sara-serpa-voice-teacher",
+    "name": "Sara Serpa"
+  },
+  {
+    "id": "catalog-teacher-sherry-boone",
+    "slug": "sherry-boone-voice-teacher",
+    "name": "Sherry Boone"
+  },
+  {
+    "id": "catalog-teacher-shirley-perkins",
+    "slug": "shirley-perkins-voice-teacher",
+    "name": "Shirley Perkins"
+  },
+  {
+    "id": "catalog-teacher-sirintip",
+    "slug": "sirintip-voice-teacher",
+    "name": "Sirintip"
+  },
+  {
+    "id": "catalog-teacher-sofia-rei",
+    "slug": "sofia-rei-voice-teacher",
+    "name": "Sofia Rei"
+  },
+  {
+    "id": "catalog-teacher-sun-young-chang",
+    "slug": "sun-young-chang-voice-teacher",
+    "name": "Sun Young Chang"
+  },
+  {
+    "id": "catalog-teacher-tammy-scheffer",
+    "slug": "tammy-scheffer-voice-teacher",
+    "name": "Tammy Scheffer"
+  },
+  {
+    "id": "catalog-teacher-tamuz-nissim",
+    "slug": "tamuz-nissim-voice-teacher",
+    "name": "Tamuz Nissim"
+  },
+  {
+    "id": "catalog-teacher-thana-alexa",
+    "slug": "thana-alexa-voice-teacher",
+    "name": "Thana Alexa"
+  },
+  {
+    "id": "vocal-tim-rosser",
+    "slug": "tim-rosser-voice-teacher",
+    "name": "Tim Rosser"
+  },
+  {
+    "id": "catalog-teacher-valeska-cambron",
+    "slug": "valeska-cambron-voice-teacher",
+    "name": "Valeska Cambron"
+  },
+  {
+    "id": "catalog-teacher-vicki-burns",
+    "slug": "vicki-burns-voice-teacher",
+    "name": "Vicki Burns"
+  },
+  {
+    "id": "catalog-teacher-wilma-wever",
+    "slug": "wilma-wever-voice-teacher",
+    "name": "Wilma Wever"
+  },
+  {
+    "id": "catalog-teacher-yaala-ballin",
+    "slug": "yaala-ballin-voice-teacher",
+    "name": "Yaala Ballin"
+  },
+  {
+    "id": "catalog-class-bloomingdale-broadway-ensemble",
+    "slug": "bloomingdale-broadway-ensemble",
+    "name": "Broadway Ensemble — Bloomingdale"
+  },
+  {
+    "id": "catalog-class-brooklyn-conservatory-chorale",
+    "slug": "brooklyn-conservatory-chorale",
+    "name": "Brooklyn Conservatory Chorale"
+  },
+  {
+    "id": "catalog-class-brooklyn-harmonics-vocal-program",
+    "slug": "brooklyn-harmonics-vocal-program",
+    "name": "Brooklyn Harmonics Vocal Program"
+  },
+  {
+    "id": "catalog-class-92ny-everybody-can-sing",
+    "slug": "92ny-everybody-can-sing",
+    "name": "Everybody Can Sing — 92NY"
+  },
+  {
+    "id": "offering-nyvc-group-singing",
+    "slug": "new-york-vocal-coaching-group-singing-classes",
+    "name": "Group Singing Classes"
+  },
+  {
+    "id": "catalog-class-bkcm-intro-singing-adults",
+    "slug": "bkcm-intro-singing-adults",
+    "name": "Intro to Singing for Adults — BKCM"
+  },
+  {
+    "id": "catalog-class-bloomingdale-intro-singing-adults",
+    "slug": "bloomingdale-intro-singing-adults",
+    "name": "Introduction to Singing: Adults — Bloomingdale"
+  },
+  {
+    "id": "catalog-class-bkcm-jazz-vocal-lab",
+    "slug": "bkcm-jazz-vocal-lab",
+    "name": "Jazz Vocal Lab — BKCM"
+  },
+  {
+    "id": "catalog-class-lucy-moses-opera-workshop",
+    "slug": "lucy-moses-opera-workshop",
+    "name": "Opera Workshop — Lucy Moses School"
+  },
+  {
+    "id": "catalog-class-lucy-moses-sight-singing-intermediate-one",
+    "slug": "lucy-moses-sight-singing-intermediate-one",
+    "name": "Sight-Singing: Intermediate I — Lucy Moses School"
+  },
+  {
+    "id": "catalog-class-lucy-moses-sight-singing-intermediate-two",
+    "slug": "lucy-moses-sight-singing-intermediate-two",
+    "name": "Sight-Singing: Intermediate II — Lucy Moses School"
+  },
+  {
+    "id": "catalog-class-nyja-vocal-jazz-workshops",
+    "slug": "nyja-vocal-jazz-workshops",
+    "name": "Vocal Jazz Workshops — New York Jazz Academy"
+  },
+  {
+    "id": "catalog-class-bloomingdale-voice-children",
+    "slug": "bloomingdale-voice-children",
+    "name": "Voice for Children — Bloomingdale"
+  },
+  {
+    "id": "catalog-class-bloomingdale-voice-pre-teens",
+    "slug": "bloomingdale-voice-pre-teens",
+    "name": "Voice for Pre-Teens — Bloomingdale"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-17T15:55:44.671Z",
+  "failures": [],
+  "requests": 956,
+  "rowsRead": 0,
+  "aliases": [
+    {
+      "source": "/providers/jeff-cubeta-voice-teaching-3e3afb/",
+      "target": "/providers/jeff-cubeta-voice-teaching-independent-jeff-cubeta/"
+    }
+  ],
+  "sitemaps": [
+    {
+      "url": "https://vocalcatalog.com/sitemap-coaches.xml",
+      "urls": 167
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-studios.xml",
+      "urls": 123
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-classes.xml",
+      "urls": 129
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-locations.xml",
+      "urls": 2
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-specialties.xml",
+      "urls": 10
+    },
+    {
+      "url": "https://vocalcatalog.com/sitemap-pages.xml",
+      "urls": 27
+    }
+  ],
+  "records": {
+    "providers": 123,
+    "offerings": 130,
+    "teachers": 217
+  },
+  "adminReview": {
+    "accessible": true,
+    "domain": "jeffcubetavoiceteaching.com",
+    "conflicts": [
+      "description",
+      "website_url",
+      "source_url"
+    ],
+    "serviceConflict": false
+  }
+}

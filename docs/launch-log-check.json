@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-17T15:48:19.734Z",
+  "events": 5,
+  "outcomes": [
+    "ok",
+    "ok",
+    "ok",
+    "ok",
+    "ok"
+  ],
+  "exceptions": false,
+  "errorLogs": false,
+  "connectionError": false,
+  "rawEventsSaved": false
+}

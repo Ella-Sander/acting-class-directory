@@ -1,4 +1,6 @@
 node_modules/
+artifacts/logo-research/
+artifacts/catalog-200-research/
 dist/
 .wrangler/
 .dev.vars
@@ -7,3 +9,7 @@ dist/
 .env
 .env.*
 !.env.example
+
+.npm-cache/
+# Scoped credential entered locally by the owner for Email Routing setup.
+.cloudflare-email-token

@@ -1,0 +1,2082 @@
+{
+  "reviewedAt": "2026-11-10",
+  "previousTotal": 100,
+  "expectedTotal": 200,
+  "sqlHeader": "-- 100 additional verified NYC vocal instructors; expected public directory total: 200.\n-- Reviewed 2026-11-10. Every addition has an official profile and verified affiliated logo.\n-- Generated from data/nyc-catalog-expansion-200.json. Preserve after applying.\n",
+  "providers": [
+    {
+      "key": "nyu",
+      "id": "catalog2-provider-nyu",
+      "slug": "nyu-steinhardt-vocal-performance",
+      "name": "NYU Steinhardt Vocal Performance",
+      "type": "school",
+      "location": "nyu",
+      "source": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "description": "NYU Steinhardt Vocal Performance provides vocal instruction in New York City. Contact the institution about enrollment, eligibility and current teaching arrangements."
+    },
+    {
+      "key": "msm",
+      "id": "catalog2-provider-msm",
+      "slug": "manhattan-school-of-music",
+      "name": "Manhattan School of Music",
+      "type": "school",
+      "location": "msm",
+      "source": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "description": "Manhattan School of Music provides vocal instruction in New York City. Contact the institution about enrollment, eligibility and current teaching arrangements."
+    },
+    {
+      "key": "mannes",
+      "id": "catalog2-provider-mannes",
+      "slug": "mannes-school-of-music",
+      "name": "Mannes School of Music",
+      "type": "school",
+      "location": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "description": "Mannes School of Music provides vocal instruction in New York City. Contact the institution about enrollment, eligibility and current teaching arrangements."
+    },
+    {
+      "key": "bms",
+      "id": "catalog2-provider-bms",
+      "slug": "brooklyn-music-school",
+      "name": "Brooklyn Music School",
+      "type": "school",
+      "location": "bms",
+      "source": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "description": "Brooklyn Music School provides vocal instruction in New York City. Contact the institution about enrollment, eligibility and current teaching arrangements."
+    },
+    {
+      "key": "academy",
+      "id": "catalog2-provider-academy",
+      "slug": "voice-academy-nyc",
+      "name": "Voice Academy NYC",
+      "type": "studio",
+      "location": "academy",
+      "source": "https://voiceacademynyc.com/vocal-coaches/",
+      "description": "Voice Academy NYC provides vocal instruction in New York City. Contact the institution about enrollment, eligibility and current teaching arrangements."
+    },
+    {
+      "key": "diller",
+      "id": "catalog2-provider-diller",
+      "slug": "the-diller-quaile-school-of-music",
+      "name": "The Diller-Quaile School of Music",
+      "type": "school",
+      "location": "diller",
+      "source": "https://www.diller-quaile.org/faculty",
+      "description": "The Diller-Quaile School of Music provides vocal instruction in New York City. Contact the institution about enrollment, eligibility and current teaching arrangements."
+    }
+  ],
+  "locations": [
+    {
+      "key": "nyu",
+      "id": "catalog2-location-nyu",
+      "label": "NYU Steinhardt, Manhattan",
+      "city": "New York",
+      "region": "NY",
+      "borough": "Manhattan",
+      "neighborhood": null,
+      "address": null,
+      "source": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "key": "msm",
+      "id": "catalog2-location-msm",
+      "label": "Manhattan School of Music, Morningside Heights",
+      "city": "New York",
+      "region": "NY",
+      "borough": "Manhattan",
+      "neighborhood": "Morningside Heights",
+      "address": "130 Claremont Avenue, New York, NY 10027",
+      "source": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "key": "mannes",
+      "id": "catalog2-location-mannes",
+      "label": "Mannes School of Music, Greenwich Village",
+      "city": "New York",
+      "region": "NY",
+      "borough": "Manhattan",
+      "neighborhood": "Greenwich Village",
+      "address": null,
+      "source": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "key": "bms",
+      "id": "catalog2-location-bms",
+      "label": "Brooklyn Music School, Fort Greene",
+      "city": "New York",
+      "region": "NY",
+      "borough": "Brooklyn",
+      "neighborhood": "Fort Greene",
+      "address": "126 St Felix Street, Brooklyn, NY 11217",
+      "source": "https://www.brooklynmusicschool.org/faculty-and-staff"
+    },
+    {
+      "key": "academy",
+      "id": "catalog2-location-academy",
+      "label": "Voice Academy NYC, Midtown Manhattan",
+      "city": "New York",
+      "region": "NY",
+      "borough": "Manhattan",
+      "neighborhood": "Midtown",
+      "address": "520 8th Avenue, New York, NY 10018",
+      "source": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "key": "diller",
+      "id": "catalog2-location-diller",
+      "label": "Diller-Quaile School of Music, Upper East Side",
+      "city": "New York",
+      "region": "NY",
+      "borough": "Manhattan",
+      "neighborhood": "Upper East Side",
+      "address": "24 East 95th Street, New York, NY 10128",
+      "source": "https://www.diller-quaile.org/faculty"
+    },
+    {
+      "key": "online",
+      "id": "catalog2-location-online",
+      "label": "Online",
+      "city": "New York",
+      "region": "NY",
+      "online": true,
+      "source": "https://voiceacademynyc.com/vocal-coaches/"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "catalog2-teacher-errik-hood",
+      "slug": "errik-hood-voice-teacher",
+      "name": "Errik Hood",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/errik-hood",
+      "website": "https://steinhardt.nyu.edu/people/errik-hood",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-dianna-heldman",
+      "slug": "dianna-heldman-voice-teacher",
+      "name": "Dianna Heldman",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/dianna-heldman",
+      "website": "https://steinhardt.nyu.edu/people/dianna-heldman",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-justin-john-moniz",
+      "slug": "justin-john-moniz-voice-teacher",
+      "name": "Justin John Moniz",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/justin-john-moniz",
+      "website": "https://steinhardt.nyu.edu/people/justin-john-moniz",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-ana-flavia-zuim",
+      "slug": "ana-flavia-zuim-voice-teacher",
+      "name": "Ana Flavia Zuim",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/ana-flavia-zuim",
+      "website": "https://steinhardt.nyu.edu/people/ana-flavia-zuim",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-kathleen-adams",
+      "slug": "kathleen-adams-voice-teacher",
+      "name": "Kathleen Adams",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/kathleen-adams",
+      "website": "https://steinhardt.nyu.edu/people/kathleen-adams",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-david-j-baldwin",
+      "slug": "david-j-baldwin-voice-teacher",
+      "name": "David J. Baldwin",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/david-j-baldwin",
+      "website": "https://steinhardt.nyu.edu/people/david-j-baldwin",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-harolyn-blackwell-greer",
+      "slug": "harolyn-blackwell-greer-voice-teacher",
+      "name": "Harolyn Blackwell-Greer",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/harolyn-blackwell-greer",
+      "website": "https://steinhardt.nyu.edu/people/harolyn-blackwell-greer",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-chris-citera",
+      "slug": "chris-citera-voice-teacher",
+      "name": "Chris Citera",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/chris-citera",
+      "website": "https://steinhardt.nyu.edu/people/chris-citera",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-derek-fawcett",
+      "slug": "derek-fawcett-voice-teacher",
+      "name": "Derek Fawcett",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/derek-fawcett",
+      "website": "https://steinhardt.nyu.edu/people/derek-fawcett",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-warren-freeman",
+      "slug": "warren-freeman-voice-teacher",
+      "name": "Warren Freeman",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/warren-freeman",
+      "website": "https://steinhardt.nyu.edu/people/warren-freeman",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-laura-kay",
+      "slug": "laura-kay-voice-teacher",
+      "name": "Laura Kay",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/laura-kay",
+      "website": "https://steinhardt.nyu.edu/people/laura-kay",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-jamilyn-manning",
+      "slug": "jamilyn-manning-voice-teacher",
+      "name": "Jamilyn Manning",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/jamilyn-manning",
+      "website": "https://steinhardt.nyu.edu/people/jamilyn-manning",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-devon-meddock",
+      "slug": "devon-meddock-voice-teacher",
+      "name": "Devon Meddock",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/devon-meddock",
+      "website": "https://steinhardt.nyu.edu/people/devon-meddock",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-scott-murphree",
+      "slug": "scott-murphree-voice-teacher",
+      "name": "Scott Murphree",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/scott-murphree",
+      "website": "https://steinhardt.nyu.edu/people/scott-murphree",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-matthew-smith",
+      "slug": "matthew-smith-voice-teacher",
+      "name": "Matthew Smith",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/matthew-smith",
+      "website": "https://steinhardt.nyu.edu/people/matthew-smith",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-christopher-preston-thompson",
+      "slug": "christopher-preston-thompson-voice-teacher",
+      "name": "Christopher Preston Thompson",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/christopher-preston-thompson",
+      "website": "https://steinhardt.nyu.edu/people/christopher-preston-thompson",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-rosa-vento",
+      "slug": "rosa-vento-voice-teacher",
+      "name": "Rosa Vento",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/rosa-vento",
+      "website": "https://steinhardt.nyu.edu/people/rosa-vento",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-nicole-zuraitis",
+      "slug": "nicole-zuraitis-voice-teacher",
+      "name": "Nicole Zuraitis",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/nicole-zuraitis",
+      "website": "https://steinhardt.nyu.edu/people/nicole-zuraitis",
+      "sourceType": "official_website",
+      "title": "Voice teacher (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-ben-caplan",
+      "slug": "ben-caplan-voice-teacher",
+      "name": "Ben Caplan",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/ben-caplan",
+      "website": "https://steinhardt.nyu.edu/people/ben-caplan",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-benji-goldsmith",
+      "slug": "benji-goldsmith-voice-teacher",
+      "name": "Benji Goldsmith",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/benji-goldsmith",
+      "website": "https://steinhardt.nyu.edu/people/benji-goldsmith",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-elizabeth-hastings",
+      "slug": "elizabeth-hastings-voice-teacher",
+      "name": "Elizabeth Hastings",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/elizabeth-hastings",
+      "website": "https://steinhardt.nyu.edu/people/elizabeth-hastings",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-kyle-henry",
+      "slug": "kyle-henry-voice-teacher",
+      "name": "Kyle Henry",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/kyle-henry",
+      "website": "https://steinhardt.nyu.edu/people/kyle-henry",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-david-kreppel",
+      "slug": "david-kreppel-voice-teacher",
+      "name": "David Kreppel",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/david-kreppel",
+      "website": "https://steinhardt.nyu.edu/people/david-kreppel",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-gordon-schermer",
+      "slug": "gordon-schermer-voice-teacher",
+      "name": "Gordon Schermer",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/gordon-schermer",
+      "website": "https://steinhardt.nyu.edu/people/gordon-schermer",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-elena-shaddow",
+      "slug": "elena-shaddow-voice-teacher",
+      "name": "Elena Shaddow",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/elena-shaddow",
+      "website": "https://steinhardt.nyu.edu/people/elena-shaddow",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-grant-wenaus",
+      "slug": "grant-wenaus-voice-teacher",
+      "name": "Grant Wenaus",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/grant-wenaus",
+      "website": "https://steinhardt.nyu.edu/people/grant-wenaus",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-ji-young-lee",
+      "slug": "ji-young-lee-voice-teacher",
+      "name": "Ji Young Lee",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/ji-young-lee",
+      "website": "https://steinhardt.nyu.edu/people/ji-young-lee",
+      "sourceType": "official_website",
+      "title": "Vocal coach (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-lauren-kinhan",
+      "slug": "lauren-kinhan-voice-teacher",
+      "name": "Lauren Kinhan",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/lauren-kinhan",
+      "website": "https://steinhardt.nyu.edu/people/lauren-kinhan",
+      "sourceType": "official_website",
+      "title": "Vocal ensemble instructor (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal ensemble instructor listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-jamon-maple",
+      "slug": "jamon-maple-voice-teacher",
+      "name": "Jamon Maple",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/jamon-maple",
+      "website": "https://steinhardt.nyu.edu/people/jamon-maple",
+      "sourceType": "official_website",
+      "title": "Vocal ensemble instructor (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal ensemble instructor listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-janice-pendarvis",
+      "slug": "janice-pendarvis-voice-teacher",
+      "name": "Janice Pendarvis",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/janice-pendarvis",
+      "website": "https://steinhardt.nyu.edu/people/janice-pendarvis",
+      "sourceType": "official_website",
+      "title": "Vocal ensemble instructor (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal ensemble instructor listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-janis-siegel",
+      "slug": "janis-siegel-voice-teacher",
+      "name": "Janis Siegel",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/janis-siegel",
+      "website": "https://steinhardt.nyu.edu/people/janis-siegel",
+      "sourceType": "official_website",
+      "title": "Vocal ensemble instructor (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal ensemble instructor listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-paul-speiser",
+      "slug": "paul-speiser-voice-teacher",
+      "name": "Paul Speiser",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/paul-speiser",
+      "website": "https://steinhardt.nyu.edu/people/paul-speiser",
+      "sourceType": "official_website",
+      "title": "Vocal ensemble instructor (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal ensemble instructor listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-eric-williamson",
+      "slug": "eric-williamson-voice-teacher",
+      "name": "Eric Williamson",
+      "provider": "nyu",
+      "source": "https://steinhardt.nyu.edu/people/eric-williamson",
+      "website": "https://steinhardt.nyu.edu/people/eric-williamson",
+      "sourceType": "official_website",
+      "title": "Vocal ensemble instructor (NYU faculty)",
+      "location": "nyu",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal ensemble instructor listed by NYU Steinhardt's Vocal Performance program. Instruction through the university may require admission or enrollment; contact NYU about eligibility and placement. Independent private availability is not confirmed.",
+      "rosterSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff",
+      "locationSource": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-edith-bers",
+      "slug": "edith-bers-voice-teacher",
+      "name": "Edith Bers",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/edith-bers/",
+      "website": "https://www.msmnyc.edu/faculty/edith-bers/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-mary-dunleavy",
+      "slug": "mary-dunleavy-voice-teacher",
+      "name": "Mary Dunleavy",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/mary-dunleavy/",
+      "website": "https://www.msmnyc.edu/faculty/mary-dunleavy/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-ruth-golden",
+      "slug": "ruth-golden-voice-teacher",
+      "name": "Ruth Golden",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/ruth-golden/",
+      "website": "https://www.msmnyc.edu/faculty/ruth-golden/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-cynthia-hoffmann",
+      "slug": "cynthia-hoffmann-voice-teacher",
+      "name": "Cynthia Hoffmann",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/cynthia-hoffmann/",
+      "website": "https://www.msmnyc.edu/faculty/cynthia-hoffmann/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-jack-li-vigni",
+      "slug": "jack-li-vigni-voice-teacher",
+      "name": "Jack Li Vigni",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/jack-livigni/",
+      "website": "https://www.msmnyc.edu/faculty/jack-livigni/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-catherine-malfitano",
+      "slug": "catherine-malfitano-voice-teacher",
+      "name": "Catherine Malfitano",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/catherine-malfitano/",
+      "website": "https://www.msmnyc.edu/faculty/catherine-malfitano/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-james-morris",
+      "slug": "james-morris-voice-teacher",
+      "name": "James Morris",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/james-morris/",
+      "website": "https://www.msmnyc.edu/faculty/james-morris/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-christopheren-nomura",
+      "slug": "christopheren-nomura-voice-teacher",
+      "name": "Christòpheren Nomura",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/christopheren-chris-nomura/",
+      "website": "https://www.msmnyc.edu/faculty/christopheren-chris-nomura/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-mark-oswald",
+      "slug": "mark-oswald-voice-teacher",
+      "name": "Mark Oswald",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/mark-oswald/",
+      "website": "https://www.msmnyc.edu/faculty/mark-oswald/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-sidney-outlaw",
+      "slug": "sidney-outlaw-voice-teacher",
+      "name": "Sidney Outlaw",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/sidney-outlaw/",
+      "website": "https://www.msmnyc.edu/faculty/sidney-outlaw/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-joan-patenaude-yarnell",
+      "slug": "joan-patenaude-yarnell-voice-teacher",
+      "name": "Joan Patenaude-Yarnell",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/joan-patenaude-yarnell/",
+      "website": "https://www.msmnyc.edu/faculty/joan-patenaude-yarnell/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-dimitri-pittas",
+      "slug": "dimitri-pittas-voice-teacher",
+      "name": "Dimitri Pittas",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/dimitri-pittas/",
+      "website": "https://www.msmnyc.edu/faculty/dimitri-pittas/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-susan-quittmeyer",
+      "slug": "susan-quittmeyer-voice-teacher",
+      "name": "Susan Quittmeyer",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/susan-quittmeyer/",
+      "website": "https://www.msmnyc.edu/faculty/susan-quittmeyer/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-mark-schnaible",
+      "slug": "mark-schnaible-voice-teacher",
+      "name": "Mark Schnaible",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/mark-schnaible/",
+      "website": "https://www.msmnyc.edu/faculty/mark-schnaible/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-cyndia-sieden",
+      "slug": "cyndia-sieden-voice-teacher",
+      "name": "Cyndia Sieden",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/cyndia-sieden/",
+      "website": "https://www.msmnyc.edu/faculty/cyndia-sieden/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-classical-opera"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-amy-justman",
+      "slug": "amy-justman-voice-teacher",
+      "name": "Amy Justman",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/amy-justman/",
+      "website": "https://www.msmnyc.edu/faculty/amy-justman/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-christopher-herbert",
+      "slug": "christopher-herbert-voice-teacher",
+      "name": "Christopher Herbert",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/christopher-dylan-herbert/",
+      "website": "https://www.msmnyc.edu/faculty/christopher-dylan-herbert/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-my-tam-huynh",
+      "slug": "my-tam-huynh-voice-teacher",
+      "name": "Mỹ Tâm Huynh",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/my-tam-huynh/",
+      "website": "https://www.msmnyc.edu/faculty/my-tam-huynh/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-kristen-kemp",
+      "slug": "kristen-kemp-voice-teacher",
+      "name": "Kristen Kemp",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/kristen-kemp/",
+      "website": "https://www.msmnyc.edu/faculty/kristen-kemp/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-kenneth-merrill",
+      "slug": "kenneth-merrill-voice-teacher",
+      "name": "Kenneth Merrill",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/kenneth-merrill/",
+      "website": "https://www.msmnyc.edu/faculty/kenneth-merrill/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-djordje-nesic",
+      "slug": "djordje-nesic-voice-teacher",
+      "name": "Djordje Nesic",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/djordje-nesic/",
+      "website": "https://www.msmnyc.edu/faculty/djordje-nesic/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-cristina-stanescu",
+      "slug": "cristina-stanescu-voice-teacher",
+      "name": "Cristina Stanescu",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/cristina-stanescu/",
+      "website": "https://www.msmnyc.edu/faculty/cristina-stanescu/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-claudia-catania",
+      "slug": "claudia-catania-voice-teacher",
+      "name": "Claudia Catania",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/claudia-catania/",
+      "website": "https://www.msmnyc.edu/faculty/claudia-catania/",
+      "sourceType": "official_website",
+      "title": "Musical theatre voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-musical-theatre"
+      ],
+      "formats": [],
+      "description": "Musical theatre voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-judith-clurman",
+      "slug": "judith-clurman-voice-teacher",
+      "name": "Judith Clurman",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/judith-clurman/",
+      "website": "https://www.msmnyc.edu/faculty/judith-clurman/",
+      "sourceType": "official_website",
+      "title": "Musical theatre voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-musical-theatre"
+      ],
+      "formats": [],
+      "description": "Musical theatre voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-andrea-green",
+      "slug": "andrea-green-voice-teacher",
+      "name": "Andrea Green",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/andrea-green/",
+      "website": "https://www.msmnyc.edu/faculty/andrea-green/",
+      "sourceType": "official_website",
+      "title": "Musical theatre voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-musical-theatre"
+      ],
+      "formats": [],
+      "description": "Musical theatre voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-sam-mckelton",
+      "slug": "sam-mckelton-voice-teacher",
+      "name": "Sam McKelton",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/sam-mckelton/",
+      "website": "https://www.msmnyc.edu/faculty/sam-mckelton/",
+      "sourceType": "official_website",
+      "title": "Musical theatre voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-musical-theatre"
+      ],
+      "formats": [],
+      "description": "Musical theatre voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-bob-stillman",
+      "slug": "bob-stillman-voice-teacher",
+      "name": "Bob Stillman",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/bob-stillman/",
+      "website": "https://www.msmnyc.edu/faculty/bob-stillman/",
+      "sourceType": "official_website",
+      "title": "Musical theatre voice teacher (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons",
+        "genre-musical-theatre"
+      ],
+      "formats": [],
+      "description": "Musical theatre voice teacher on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/musical-theatre/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-jeanne-goffi-fynn",
+      "slug": "jeanne-goffi-fynn-voice-teacher",
+      "name": "Jeanne Goffi-Fynn",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/45072-2/",
+      "website": "https://www.msmnyc.edu/faculty/45072-2/",
+      "sourceType": "official_website",
+      "title": "Vocal pedagogy instructor (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal pedagogy instructor on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-tami-petty",
+      "slug": "tami-petty-voice-teacher",
+      "name": "Tami Petty",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/tami-petty/",
+      "website": "https://www.msmnyc.edu/faculty/tami-petty/",
+      "sourceType": "official_website",
+      "title": "Vocal pedagogy instructor (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal pedagogy instructor on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-neil-rosenshein",
+      "slug": "neil-rosenshein-voice-teacher",
+      "name": "Neil Rosenshein",
+      "provider": "msm",
+      "source": "https://www.msmnyc.edu/faculty/neil-rosenshein/",
+      "website": "https://www.msmnyc.edu/faculty/neil-rosenshein/",
+      "sourceType": "official_website",
+      "title": "Vocal performance instructor (MSM faculty)",
+      "location": "msm",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Vocal performance instructor on the Manhattan School of Music faculty. School-based study may require admission, audition or enrollment; ask MSM about eligibility and teacher placement. No independent private-lesson availability or rate is asserted.",
+      "rosterSource": "https://www.msmnyc.edu/programs/vocal-arts/",
+      "locationSource": "https://www.msmnyc.edu/programs/vocal-arts/"
+    },
+    {
+      "id": "catalog2-teacher-william-burden",
+      "slug": "william-burden-voice-teacher",
+      "name": "William Burden",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/william-burden/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/william-burden/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-amy-burton",
+      "slug": "amy-burton-voice-teacher",
+      "name": "Amy Burton",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/amy-burton/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/amy-burton/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-pei-wen-chen",
+      "slug": "pei-wen-chen-voice-teacher",
+      "name": "Pei-Wen Chen",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/pei-wen-chen/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/pei-wen-chen/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-cris-frisco",
+      "slug": "cris-frisco-voice-teacher",
+      "name": "Cris Frisco",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/cris-frisco/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/cris-frisco/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-joshua-greene",
+      "slug": "joshua-greene-voice-teacher",
+      "name": "Joshua Greene",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/joshua-greene/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/joshua-greene/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-wendy-bryn-harmer",
+      "slug": "wendy-bryn-harmer-voice-teacher",
+      "name": "Wendy Bryn Harmer",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/wendy-bryn-harmer/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/wendy-bryn-harmer/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-joan-la-barbara",
+      "slug": "joan-la-barbara-voice-teacher",
+      "name": "Joan La Barbara",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/joan-la-barbara/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/joan-la-barbara/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-margaret-lattimore",
+      "slug": "margaret-lattimore-voice-teacher",
+      "name": "Margaret Lattimore",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/margaret-lattimore/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/margaret-lattimore/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-arthur-levy",
+      "slug": "arthur-levy-voice-teacher",
+      "name": "Arthur Levy",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/arthur-levy/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/arthur-levy/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-kate-maroney",
+      "slug": "kate-maroney-voice-teacher",
+      "name": "Kate Maroney",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/kate-maroney/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/kate-maroney/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-laquita-mitchell",
+      "slug": "laquita-mitchell-voice-teacher",
+      "name": "Laquita Mitchell",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/laquita-mitchell/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/laquita-mitchell/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-stephen-powell",
+      "slug": "stephen-powell-voice-teacher",
+      "name": "Stephen Powell",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/stephen-powell/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/stephen-powell/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-eric-sedgwick",
+      "slug": "eric-sedgwick-voice-teacher",
+      "name": "Eric Sedgwick",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/eric-sedgwick/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/eric-sedgwick/",
+      "sourceType": "official_website",
+      "title": "Vocal coach (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [],
+      "description": "Vocal coach listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-hal-wilson",
+      "slug": "hal-wilson-voice-teacher",
+      "name": "Hal Wilson",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/hal-wilson/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/hal-wilson/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-jennifer-zetlan",
+      "slug": "jennifer-zetlan-voice-teacher",
+      "name": "Jennifer Zetlan",
+      "provider": "mannes",
+      "source": "https://ww3.newschool.edu/mannes/faculty/jennifer-zetlan/",
+      "website": "https://ww3.newschool.edu/mannes/faculty/jennifer-zetlan/",
+      "sourceType": "official_website",
+      "title": "Voice teacher (Mannes faculty)",
+      "location": "mannes",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teacher listed in Mannes School of Music's voice department at The New School in New York City. School-based lessons and coaching may require admission or enrollment. Contact Mannes about eligibility, placement and current teaching arrangements.",
+      "rosterSource": "https://ww3.newschool.edu/mannes/voice-faculty/",
+      "locationSource": "https://ww3.newschool.edu/mannes/voice-faculty/"
+    },
+    {
+      "id": "catalog2-teacher-jessica-bowers",
+      "slug": "jessica-bowers-voice-teacher",
+      "name": "Jessica Bowers",
+      "provider": "bms",
+      "source": "https://www.brooklynmusicschool.org/jessica-bowers",
+      "website": "https://www.brooklynmusicschool.org/jessica-bowers",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "bms",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teaching artist listed by Brooklyn Music School in Fort Greene. Contact the school about private-lesson placement, age suitability, scheduling and current fees.",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "locationSource": "https://www.brooklynmusicschool.org/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-alexandra-koi",
+      "slug": "alexandra-koi-voice-teacher",
+      "name": "Alexandra Koi",
+      "provider": "bms",
+      "source": "https://www.brooklynmusicschool.org/alexandra-koi",
+      "website": "https://www.brooklynmusicschool.org/alexandra-koi",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "bms",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teaching artist listed by Brooklyn Music School in Fort Greene. Contact the school about private-lesson placement, age suitability, scheduling and current fees.",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "locationSource": "https://www.brooklynmusicschool.org/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-mimi-hilaire",
+      "slug": "mimi-hilaire-voice-teacher",
+      "name": "Mimi Hilaire",
+      "provider": "bms",
+      "source": "https://www.brooklynmusicschool.org/mimi-hilaire",
+      "website": "https://www.brooklynmusicschool.org/mimi-hilaire",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "bms",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teaching artist listed by Brooklyn Music School in Fort Greene. Contact the school about private-lesson placement, age suitability, scheduling and current fees.",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "locationSource": "https://www.brooklynmusicschool.org/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-sherrine-mostin",
+      "slug": "sherrine-mostin-voice-teacher",
+      "name": "Sherrine Mostin",
+      "provider": "bms",
+      "source": "https://www.brooklynmusicschool.org/sherrine-mostin",
+      "website": "https://www.brooklynmusicschool.org/sherrine-mostin",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "bms",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teaching artist listed by Brooklyn Music School in Fort Greene. Contact the school about private-lesson placement, age suitability, scheduling and current fees.",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "locationSource": "https://www.brooklynmusicschool.org/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-kiera-matthews",
+      "slug": "kiera-matthews-voice-teacher",
+      "name": "Kiera Matthews",
+      "provider": "bms",
+      "source": "https://www.brooklynmusicschool.org/kiera-matthews",
+      "website": "https://www.brooklynmusicschool.org/kiera-matthews",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "bms",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teaching artist listed by Brooklyn Music School in Fort Greene. Contact the school about private-lesson placement, age suitability, scheduling and current fees.",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "locationSource": "https://www.brooklynmusicschool.org/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-simon-nam",
+      "slug": "simon-nam-voice-teacher",
+      "name": "Simon Nam",
+      "provider": "bms",
+      "source": "https://www.brooklynmusicschool.org/simon-nam",
+      "website": "https://www.brooklynmusicschool.org/simon-nam",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "bms",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice teaching artist listed by Brooklyn Music School in Fort Greene. Contact the school about private-lesson placement, age suitability, scheduling and current fees.",
+      "rosterSource": "https://www.brooklynmusicschool.org/faculty-and-staff",
+      "locationSource": "https://www.brooklynmusicschool.org/faculty-and-staff"
+    },
+    {
+      "id": "catalog2-teacher-tate-chu",
+      "slug": "tate-chu-voice-teacher",
+      "name": "Tate Chu",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/tate-chu/",
+      "website": "https://voiceacademynyc.com/tate-chu/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-classical-opera",
+        "genre-pop",
+        "genre-musical-theatre"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-stephanie-lippman",
+      "slug": "stephanie-lippman-voice-teacher",
+      "name": "Stephanie Lippman",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/stephanie-lippman/",
+      "website": "https://voiceacademynyc.com/stephanie-lippman/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-alanna-ysabel",
+      "slug": "alanna-ysabel-voice-teacher",
+      "name": "Alanna Ysabel",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/alanna-ysabel/",
+      "website": "https://voiceacademynyc.com/alanna-ysabel/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-rnb-soul"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-olga-s-popova",
+      "slug": "olga-s-popova-voice-teacher",
+      "name": "Olga S. Popova",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/olga-s-popova/",
+      "website": "https://voiceacademynyc.com/olga-s-popova/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-musical-theatre"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-darnell-abraham",
+      "slug": "darnell-abraham-voice-teacher",
+      "name": "Darnell Abraham",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/darnell-abraham/",
+      "website": "https://voiceacademynyc.com/darnell-abraham/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-musical-theatre"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-lina-maria",
+      "slug": "lina-maria-voice-teacher",
+      "name": "Lina Maria",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/lina-marie/",
+      "website": "https://voiceacademynyc.com/lina-marie/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-musical-theatre",
+        "genre-pop",
+        "genre-rock"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-michael-longoria",
+      "slug": "michael-longoria-voice-teacher",
+      "name": "Michael Longoria",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/michael-longoria/",
+      "website": "https://voiceacademynyc.com/michael-longoria/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-musical-theatre"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-melanie-scholtz",
+      "slug": "melanie-scholtz-voice-teacher",
+      "name": "Melanie Scholtz",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/melanie-scholtz/",
+      "website": "https://voiceacademynyc.com/melanie-scholtz/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-jazz-cabaret",
+        "genre-pop",
+        "genre-musical-theatre"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-ashley-morton",
+      "slug": "ashley-morton-voice-teacher",
+      "name": "Ashley Morton",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/ashley-morton/",
+      "website": "https://voiceacademynyc.com/ashley-morton/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-musical-theatre",
+        "genre-pop",
+        "genre-rock"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-azudi-onyejekwe",
+      "slug": "azudi-onyejekwe-voice-teacher",
+      "name": "Azudi Onyejekwe",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/azudi-onyejekwe/",
+      "website": "https://voiceacademynyc.com/azudi-onyejekwe/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-musical-theatre",
+        "genre-pop",
+        "genre-rnb-soul"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-jonna-christensen",
+      "slug": "jonna-christensen-voice-teacher",
+      "name": "Jonna Christensen",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/jonna-christensen/",
+      "website": "https://voiceacademynyc.com/jonna-christensen/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-pop",
+        "genre-rnb-soul"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-katarina-nolfe",
+      "slug": "katarina-nolfe-voice-teacher",
+      "name": "Katarina Nolfe",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/katarina-nolfe/",
+      "website": "https://voiceacademynyc.com/katarina-nolfe/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-pop",
+        "genre-rnb-soul",
+        "genre-musical-theatre"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-robert-wiggins",
+      "slug": "robert-wiggins-voice-teacher",
+      "name": "Robert Wiggins",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/robert-wiggins/",
+      "website": "https://voiceacademynyc.com/robert-wiggins/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-rnb-soul"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-melody-escoboza",
+      "slug": "melody-escoboza-voice-teacher",
+      "name": "Melody Escoboza",
+      "provider": "academy",
+      "source": "https://voiceacademynyc.com/melody-escoboza/",
+      "website": "https://voiceacademynyc.com/melody-escoboza/",
+      "sourceType": "official_website",
+      "title": "Vocal coach",
+      "location": "academy",
+      "terms": [
+        "training-vocal-coaching",
+        "genre-musical-theatre",
+        "genre-pop",
+        "genre-jazz-cabaret",
+        "genre-classical-opera"
+      ],
+      "formats": [
+        "in_person",
+        "online"
+      ],
+      "description": "Vocal coach on the Voice Academy NYC team. The studio offers in-person and online singing lessons; confirm this coach's current schedule, location, lesson focus and rates directly with the studio.",
+      "formatSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "rosterSource": "https://voiceacademynyc.com/vocal-coaches/",
+      "locationSource": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "id": "catalog2-teacher-elizabeth-acosta",
+      "slug": "elizabeth-acosta-voice-teacher",
+      "name": "Elizabeth Acosta",
+      "provider": "diller",
+      "source": "https://diller-quaile.org/elizabeth-acosta",
+      "website": "https://diller-quaile.org/elizabeth-acosta",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "diller",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice faculty member at The Diller-Quaile School of Music on Manhattan's Upper East Side. Contact the school about vocal instruction, placement requirements, age suitability and current enrollment.",
+      "rosterSource": "https://www.diller-quaile.org/faculty",
+      "locationSource": "https://www.diller-quaile.org/faculty"
+    },
+    {
+      "id": "catalog2-teacher-constantinos-yiannoudes",
+      "slug": "constantinos-yiannoudes-voice-teacher",
+      "name": "Constantinos Yiannoudes",
+      "provider": "diller",
+      "source": "https://diller-quaile.org/constantinos-yiannoudes",
+      "website": "https://diller-quaile.org/constantinos-yiannoudes",
+      "sourceType": "official_website",
+      "title": "Voice teacher",
+      "location": "diller",
+      "terms": [
+        "training-voice-lessons"
+      ],
+      "formats": [],
+      "description": "Voice faculty member at The Diller-Quaile School of Music on Manhattan's Upper East Side. Contact the school about vocal instruction, placement requirements, age suitability and current enrollment.",
+      "rosterSource": "https://www.diller-quaile.org/faculty",
+      "locationSource": "https://www.diller-quaile.org/faculty"
+    }
+  ],
+  "classes": [],
+  "additionalAffiliations": [
+    {
+      "provider": "nyu",
+      "teacherId": "catalog-teacher-david-sisco",
+      "source": "https://steinhardt.nyu.edu/programs/vocal-performance/faculty-and-staff"
+    },
+    {
+      "provider": "diller",
+      "teacherId": "catalog-teacher-nicole-haslett",
+      "source": "https://www.diller-quaile.org/faculty"
+    },
+    {
+      "provider": "academy",
+      "teacherId": "catalog2-teacher-derek-fawcett",
+      "source": "https://voiceacademynyc.com/vocal-coaches/"
+    },
+    {
+      "provider": "msm",
+      "teacherId": "catalog2-teacher-harolyn-blackwell-greer",
+      "source": "https://www.msmnyc.edu/faculty/harolyn-blackwell/"
+    },
+    {
+      "provider": "msm",
+      "teacherId": "catalog2-teacher-justin-john-moniz",
+      "source": "https://www.msmnyc.edu/faculty/justin-john-moniz/"
+    }
+  ]
+}

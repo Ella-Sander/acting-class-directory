@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-18T16:32:42.846Z",
+  "widths": [
+    {
+      "width": 1440,
+      "noOverflow": true,
+      "adjacent": true,
+      "city": "NYC+",
+      "menu": false
+    },
+    {
+      "width": 768,
+      "noOverflow": true,
+      "adjacent": true,
+      "city": "NYC+",
+      "menu": true
+    },
+    {
+      "width": 390,
+      "noOverflow": true,
+      "adjacent": true,
+      "city": "NYC+",
+      "menu": true
+    },
+    {
+      "width": 320,
+      "noOverflow": true,
+      "adjacent": true,
+      "city": "NYC+",
+      "menu": true
+    }
+  ],
+  "exceptions": [],
+  "savedView": true
+}

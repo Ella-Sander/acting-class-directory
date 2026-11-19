@@ -1,4 +1,41 @@
+import { verifiedLessonFormats, providerTypes, teacherTypes } from './teacher-facts.js';
 export const LOCATIONS = ['NYC', 'Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island', 'Online'];
+export const NO_NYC_LOCATION = 'no-nyc-location';
+export const DIRECTORY_CATEGORIES = [
+  ['all', 'Everything'],
+  ['singing', 'Singing & vocal training'],
+  ['voice-speech', 'Voice, speech & communication'],
+  ['dialects', 'Accent & dialect coaching'],
+];
+
+function verifiedServiceText(item) {
+  const verifiedTerms = (item.terms || [])
+    .filter(term => term.verification_status === 'verified' && term.source_url)
+    .map(term => term.term);
+  const verifiedOffers = (item.offerings || []).filter(offering => offering.source_url);
+  return cleanText([
+    item.name,
+    item.description,
+    ...verifiedTerms,
+    ...verifiedOffers.flatMap(offering => [
+      offering.name,
+      offering.description,
+      offering.genre_specialty,
+      ...(offering.terms || [])
+        .filter(term => term.verification_status === 'verified' && term.source_url)
+        .map(term => term.term),
+    ]),
+  ].filter(Boolean).join(' '));
+}
+
+export function matchesCategory(item, category) {
+  if (!category || category === 'all') return true;
+  const serviceText = verifiedServiceText(item);
+  if (category === 'dialects') return /\b(accents?|dialects?|pronunciation)\b/.test(serviceText);
+  if (category === 'voice-speech') return /\b(speech|communication|public speaking|diction|articulation|elocution|spoken voice|voiceover|voice over|presentation coaching)\b/.test(serviceText);
+  if (category === 'singing') return /\b(sing(?:ing|er|ers)?|vocals?|music|opera|songs?|voice lessons?|voice instruction)\b/.test(serviceText);
+  return false;
+}
 export const TRAINING_TYPES = [
   ['voice-lessons', 'Voice lessons'], ['vocal-coaching', 'Vocal coaching'],
   ['audition-repertoire-coaching', 'Audition & repertoire'], ['acting-coaching', 'Acting through song'],
@@ -38,18 +75,20 @@ export function searchBlob(item) {
 
 export function getCollectionType(item) {
   if (item.kind === 'teacher') return 'coach';
-  if (item.kind === 'provider') return item.listing_type === 'coach' ? 'coach' : 'studio';
+  if (item.kind === 'provider') return item.provider_classification === 'independent_teacher' ? 'coach' : item.provider_classification === 'institution' ? 'school' : item.provider_classification === 'studio_business' ? 'studio' : 'unconfirmed';
   return item.instruction_mode === 'private' ? 'coach' : 'class';
 }
 
 export function mergeListings(data) {
-  if (Array.isArray(data?.teachers)) return [
-    ...data.teachers.map(teacher => ({ ...teacher, kind: 'teacher' })),
-    ...(data.offerings || []).map(offering => ({ ...offering, kind: 'offering' })),
+  return (data?.providers || []).map(provider => ({ ...provider, kind: 'provider' }));
+}
+
+export function mergeAllRecords(data) {
+  return [
+    ...mergeListings(data),
+    ...(data?.teachers || []).map(teacher => ({ ...teacher, kind: 'teacher' })),
+    ...(data?.offerings || []).map(offering => ({ ...offering, kind: 'offering' })),
   ];
-  const providers = (data?.providers || []).map(provider => ({ ...provider, kind: 'provider' }));
-  const offerings = (data?.offerings || []).map(offering => ({ ...offering, kind: 'offering' }));
-  return [...providers, ...offerings];
 }
 
 export function budgetFor(item) {
@@ -86,18 +125,25 @@ function priceMatches(item, { minPrice, maxPrice, priceBasis, budget }) {
 
 export function filterListings(listings, filters) {
   let results = listings.filter(item => {
+    if (!matchesCategory(item, filters.category)) return false;
     const collectionType = getCollectionType(item);
     if (filters.type === 'studios' && !(item.kind === 'provider' && collectionType === 'studio')) return false;
     if (filters.type === 'classes' && !(item.kind === 'offering' && collectionType === 'class')) return false;
     if (filters.type === 'coaches' && !(collectionType === 'coach' && ['teacher', 'provider', 'offering'].includes(item.kind))) return false;
 
+    const requestedProviderType = filters.providerType || filters.teacherType;
+    const providerType = ({ independent: 'independent_teacher', institutional: 'institution' })[requestedProviderType] || requestedProviderType;
+    if (filters.teacherType && item.kind === 'teacher') {
+      if (!teacherTypes(item).includes(filters.teacherType)) return false;
+    } else if (providerType && !providerTypes(item).includes(providerType)) return false;
+    if (filters.lessonFormat && !verifiedLessonFormats(item).includes(filters.lessonFormat)) return false;
     if (filters.q && !searchBlob(item).includes(cleanText(filters.q))) return false;
     if (filters.location) {
       const locations = item.locations || [];
       const online = locations.some(location => Boolean(location.is_online) && location.verified);
-      const borough = locations.some(location => location.borough === filters.location && location.verified);
-      const nyc = locations.some(location => location.city === 'New York' && location.verified);
-      if (filters.location === 'Online' ? !online : filters.location === 'NYC' ? !nyc : !borough) return false;
+      const borough = locations.some(location => location.verified && !location.is_online && (location.borough === filters.location || ('neighborhood:' + (location.borough || 'NYC') + ':' + location.neighborhood) === filters.location));
+      const nyc = locations.some(location => location.city === 'New York' && location.verified && !location.is_online);
+      if (filters.location === 'Online' ? !online : filters.location === 'NYC' ? !nyc : filters.location === NO_NYC_LOCATION ? nyc : !borough) return false;
     }
     if (filters.training && !(item.terms || []).some(term => ['training_type', 'specialty'].includes(term.taxonomy) && term.slug === filters.training && term.verification_status === 'verified')) return false;
     if (filters.technique && !(item.terms || []).some(term => term.taxonomy === 'technique' && term.slug === filters.technique && term.verification_status === 'verified')) return false;
@@ -111,6 +157,22 @@ export function filterListings(listings, filters) {
 
   if (filters.sort === 'price-low') results.sort((a, b) => (budgetFor(a) ?? Infinity) - (budgetFor(b) ?? Infinity));
   else if (filters.sort === 'price-high') results.sort((a, b) => (budgetFor(b) ?? -Infinity) - (budgetFor(a) ?? -Infinity));
+  else if (filters.sort === 'institute') {
+    const groups = new Map();
+    for (const item of results) {
+      const logo = item.logo;
+      if (logo?.status === 'verified' && logo.url) {
+        const label = logo.name || item.provider_name || item.name;
+        const previous = groups.get(logo.url);
+        if (!previous || label.localeCompare(previous) < 0) groups.set(logo.url, label);
+      }
+    }
+    const group = item => item.logo?.status === 'verified' && item.logo.url ? [0, groups.get(item.logo.url), item.logo.url] : [1, item.provider_name || item.providerName || item.affiliations?.[0]?.name || item.name, ''];
+    results.sort((a, b) => {
+      const left = group(a), right = group(b);
+      return left[0] - right[0] || left[1].localeCompare(right[1]) || left[2].localeCompare(right[2]) || a.name.localeCompare(b.name);
+    });
+  }
   else if (filters.sort === 'name') results.sort((a, b) => a.name.localeCompare(b.name));
   else if (filters.sort === 'relevance' && filters.q) {
     const query = cleanText(filters.q);
@@ -141,6 +203,7 @@ export function buildFilterChoices(listings) {
   const priceBases = PRICE_BASES.filter(([value]) => verifiedOffers.some(offering => offering.priceVerified && offering.price_min != null && offering.price_basis === value));
   return {
     locations,
+    neighborhoods: [...new Map(listings.flatMap(item => (item.locations || []).filter(location => location.verified && !location.is_online && location.neighborhood).map(location => ['neighborhood:' + (location.borough || 'NYC') + ':' + location.neighborhood, location.neighborhood + (location.borough ? ', ' + location.borough : '')]))).entries()].sort((a, b) => a[1].localeCompare(b[1])),
     training: [...new Map([...terms('training_type'), ...terms('specialty')].map(term => [term[0], term])).values()],
     techniques: terms('technique'),
     styles: terms('genre'),
@@ -158,7 +221,10 @@ export function cheapestVerifiedOffering(item, { verifiedOnly = true } = {}) {
 
 export function verifiedFormats(item) {
   if (item.kind === 'teacher') {
-    return (item.formats || []).filter(entry => entry.verification_status === 'verified').map(entry => entry.format).filter(Boolean);
+    return [...new Set([
+      ...(item.formats || []).filter(entry => entry.verification_status === 'verified').map(entry => entry.format),
+      ...(item.offerings || []).filter(offering => offering.formatVerified && offering.format).map(offering => offering.format),
+    ])];
   }
   if (item.kind === 'provider') {
     return (item.offerings || []).filter(offering => offering.formatVerified && offering.format).map(offering => offering.format);
@@ -180,7 +246,7 @@ export function priceLabel(item, { prefix = false } = {}) {
     return `${prefix ? 'From ' : ''}${formatPrice(cheapest.price_min, cheapest.currency)} ${basisLabel(cheapest.price_basis)}`.trim();
   }
   if (item.kind !== 'offering') {
-    const cheapest = cheapestVerifiedOffering(item, { verifiedOnly: false });
+    const cheapest = cheapestVerifiedOffering(item, { verifiedOnly: item.kind === 'provider' });
     if (!cheapest) return 'Contact for pricing';
     const verification = cheapest.priceVerified ? '' : ' · unverified';
     return `${prefix ? 'From ' : ''}${formatPrice(cheapest.price_min, cheapest.currency)} ${basisLabel(cheapest.price_basis)}${verification}`.trim();

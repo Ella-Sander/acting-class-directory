@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-11-17T16:14:27.881Z",
+  "checks": [
+    {
+      "path": "/api/admin/approval-emails",
+      "status": 401,
+      "private": true,
+      "result": {
+        "error": "Enter the review key."
+      }
+    },
+    {
+      "path": "/api/admin/approval-emails",
+      "status": 200,
+      "private": true,
+      "result": {
+        "outboxEntries": 0
+      }
+    },
+    {
+      "path": "/api/admin/approval-email-test",
+      "status": 200,
+      "private": true,
+      "result": {
+        "ok": true,
+        "providerMessageId": "<Ow9K0DBWgkYundHAEeYGkV4yR70YbkC9bLPU@vocalcatalog.com>",
+        "scope": "verified support destination only"
+      }
+    }
+  ]
+}

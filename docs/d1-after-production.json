@@ -1,0 +1,1146 @@
+{
+  "stage": "after",
+  "environment": "production D1 API",
+  "measuredAt": "2026-11-15T14:53:02.948Z",
+  "queries": {
+    "providers": {
+      "records": 22,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "ENAM",
+        "served_by_colo": "EWR",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 3.1941
+        },
+        "duration": 3.1941,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 1134592,
+        "rows_read": 584,
+        "rows_written": 0,
+        "total_attempts": 1
+      },
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH p USING INDEX idx_providers_public_name (listing_status=?)"
+        },
+        {
+          "id": 31,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 36,
+          "parent": 31,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 54,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 61,
+          "parent": 54,
+          "notused": 56,
+          "detail": "SEARCH pl USING COVERING INDEX sqlite_autoindex_provider_locations_1 (provider_id=?)"
+        },
+        {
+          "id": 66,
+          "parent": 54,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 79,
+          "parent": 54,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 83,
+          "parent": 79,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 104,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 112,
+          "parent": 104,
+          "notused": 62,
+          "detail": "SEARCH pt USING INDEX sqlite_autoindex_provider_terms_1 (provider_id=?)"
+        },
+        {
+          "id": 118,
+          "parent": 104,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 139,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 146,
+          "parent": 139,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 151,
+          "parent": 139,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 171,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 177,
+          "parent": 171,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 195,
+          "parent": 171,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 200,
+          "parent": 195,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 215,
+          "parent": 171,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 220,
+          "parent": 215,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ]
+    },
+    "offerings": {
+      "records": 29,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "ENAM",
+        "served_by_colo": "EWR",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 2.1386
+        },
+        "duration": 2.1386,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 1134592,
+        "rows_read": 388,
+        "rows_written": 0,
+        "total_attempts": 1
+      },
+      "plan": [
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_public_name (listing_status=?)"
+        },
+        {
+          "id": 11,
+          "parent": 0,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 56,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 61,
+          "parent": 56,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 79,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 86,
+          "parent": 79,
+          "notused": 56,
+          "detail": "SEARCH ol USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        },
+        {
+          "id": 91,
+          "parent": 79,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 104,
+          "parent": 79,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 108,
+          "parent": 104,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 129,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 137,
+          "parent": 129,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 143,
+          "parent": 129,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 164,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 171,
+          "parent": 164,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        },
+        {
+          "id": 176,
+          "parent": 164,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 196,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 201,
+          "parent": 196,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 216,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 221,
+          "parent": 216,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ]
+    },
+    "teachers": {
+      "records": 216,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "ENAM",
+        "served_by_colo": "EWR",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 9.227
+        },
+        "duration": 9.227,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 1134592,
+        "rows_read": 3730,
+        "rows_written": 0,
+        "total_attempts": 1
+      },
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 61,
+          "detail": "SEARCH i USING INDEX idx_instructors_public_name (profile_status=?)"
+        },
+        {
+          "id": 32,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 37,
+          "parent": 32,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 55,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 60,
+          "parent": 55,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 64,
+          "parent": 55,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX idx_provider_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 69,
+          "parent": 55,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 102,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 107,
+          "parent": 102,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 113,
+          "parent": 102,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX idx_offering_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 118,
+          "parent": 102,
+          "notused": 46,
+          "detail": "SEARCH o USING INDEX sqlite_autoindex_offerings_1 (id=?)"
+        },
+        {
+          "id": 125,
+          "parent": 102,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 158,
+          "parent": 102,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 163,
+          "parent": 158,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 178,
+          "parent": 102,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 183,
+          "parent": 178,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 218,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 226,
+          "parent": 218,
+          "notused": 62,
+          "detail": "SEARCH it USING INDEX sqlite_autoindex_instructor_terms_1 (instructor_id=?)"
+        },
+        {
+          "id": 232,
+          "parent": 218,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 253,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 259,
+          "parent": 253,
+          "notused": 62,
+          "detail": "SEARCH ifm USING INDEX sqlite_autoindex_instructor_formats_1 (instructor_id=?)"
+        },
+        {
+          "id": 278,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 9"
+        },
+        {
+          "id": 285,
+          "parent": 278,
+          "notused": 56,
+          "detail": "SEARCH il USING COVERING INDEX sqlite_autoindex_instructor_locations_1 (instructor_id=?)"
+        },
+        {
+          "id": 290,
+          "parent": 278,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 303,
+          "parent": 278,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 307,
+          "parent": 303,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        }
+      ]
+    }
+  },
+  "indexes": [
+    {
+      "name": "idx_claims_status_date",
+      "tbl_name": "claims",
+      "sql": "CREATE INDEX idx_claims_status_date ON claims(status, created_at)"
+    },
+    {
+      "name": "sqlite_autoindex_claims_1",
+      "tbl_name": "claims",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_d1_migrations_1",
+      "tbl_name": "d1_migrations",
+      "sql": null
+    },
+    {
+      "name": "idx_field_evidence_verified_entity_date",
+      "tbl_name": "field_evidence",
+      "sql": "CREATE INDEX idx_field_evidence_verified_entity_date\n  ON field_evidence(entity_type, entity_id, verification_status, verified_at DESC, field_name)"
+    },
+    {
+      "name": "sqlite_autoindex_field_evidence_1",
+      "tbl_name": "field_evidence",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_instructor_claims_1",
+      "tbl_name": "instructor_claims",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_instructor_claims_2",
+      "tbl_name": "instructor_claims",
+      "sql": null
+    },
+    {
+      "name": "idx_instructor_formats_verified",
+      "tbl_name": "instructor_formats",
+      "sql": "CREATE INDEX idx_instructor_formats_verified\n  ON instructor_formats(format, verification_status)"
+    },
+    {
+      "name": "sqlite_autoindex_instructor_formats_1",
+      "tbl_name": "instructor_formats",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_instructor_locations_1",
+      "tbl_name": "instructor_locations",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_instructor_terms_1",
+      "tbl_name": "instructor_terms",
+      "sql": null
+    },
+    {
+      "name": "idx_instructors_profile_status",
+      "tbl_name": "instructors",
+      "sql": "CREATE INDEX idx_instructors_profile_status ON instructors(profile_status, name)"
+    },
+    {
+      "name": "idx_instructors_public_name",
+      "tbl_name": "instructors",
+      "sql": "CREATE INDEX idx_instructors_public_name\n  ON instructors(profile_status, name COLLATE NOCASE)"
+    },
+    {
+      "name": "idx_instructors_slug",
+      "tbl_name": "instructors",
+      "sql": "CREATE UNIQUE INDEX idx_instructors_slug ON instructors(slug) WHERE slug IS NOT NULL"
+    },
+    {
+      "name": "sqlite_autoindex_instructors_1",
+      "tbl_name": "instructors",
+      "sql": null
+    },
+    {
+      "name": "idx_locations_city_borough",
+      "tbl_name": "locations",
+      "sql": "CREATE INDEX idx_locations_city_borough ON locations(city, borough)"
+    },
+    {
+      "name": "sqlite_autoindex_locations_1",
+      "tbl_name": "locations",
+      "sql": null
+    },
+    {
+      "name": "idx_offering_instructors_instructor",
+      "tbl_name": "offering_instructors",
+      "sql": "CREATE INDEX idx_offering_instructors_instructor\n  ON offering_instructors(instructor_id, offering_id)"
+    },
+    {
+      "name": "sqlite_autoindex_offering_instructors_1",
+      "tbl_name": "offering_instructors",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_offering_locations_1",
+      "tbl_name": "offering_locations",
+      "sql": null
+    },
+    {
+      "name": "idx_offering_terms_verified",
+      "tbl_name": "offering_terms",
+      "sql": "CREATE INDEX idx_offering_terms_verified ON offering_terms(term_id, verification_status)"
+    },
+    {
+      "name": "sqlite_autoindex_offering_terms_1",
+      "tbl_name": "offering_terms",
+      "sql": null
+    },
+    {
+      "name": "idx_offerings_price",
+      "tbl_name": "offerings",
+      "sql": "CREATE INDEX idx_offerings_price ON offerings(price_min, price_max, price_basis, currency)"
+    },
+    {
+      "name": "idx_offerings_public_name",
+      "tbl_name": "offerings",
+      "sql": "CREATE INDEX idx_offerings_public_name\n  ON offerings(listing_status, name COLLATE NOCASE)"
+    },
+    {
+      "name": "idx_offerings_status_provider",
+      "tbl_name": "offerings",
+      "sql": "CREATE INDEX idx_offerings_status_provider ON offerings(listing_status, provider_id)"
+    },
+    {
+      "name": "sqlite_autoindex_offerings_1",
+      "tbl_name": "offerings",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_offerings_2",
+      "tbl_name": "offerings",
+      "sql": null
+    },
+    {
+      "name": "idx_provider_instructors_instructor",
+      "tbl_name": "provider_instructors",
+      "sql": "CREATE INDEX idx_provider_instructors_instructor\n  ON provider_instructors(instructor_id, provider_id)"
+    },
+    {
+      "name": "sqlite_autoindex_provider_instructors_1",
+      "tbl_name": "provider_instructors",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_provider_locations_1",
+      "tbl_name": "provider_locations",
+      "sql": null
+    },
+    {
+      "name": "idx_provider_terms_verified",
+      "tbl_name": "provider_terms",
+      "sql": "CREATE INDEX idx_provider_terms_verified ON provider_terms(term_id, verification_status)"
+    },
+    {
+      "name": "sqlite_autoindex_provider_terms_1",
+      "tbl_name": "provider_terms",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_provider_update_suggestions_1",
+      "tbl_name": "provider_update_suggestions",
+      "sql": null
+    },
+    {
+      "name": "idx_providers_public_name",
+      "tbl_name": "providers",
+      "sql": "CREATE INDEX idx_providers_public_name\n  ON providers(listing_status, name COLLATE NOCASE)"
+    },
+    {
+      "name": "idx_providers_slug",
+      "tbl_name": "providers",
+      "sql": "CREATE INDEX idx_providers_slug ON providers(slug)"
+    },
+    {
+      "name": "idx_providers_status_type",
+      "tbl_name": "providers",
+      "sql": "CREATE INDEX idx_providers_status_type ON providers(listing_status, listing_type)"
+    },
+    {
+      "name": "sqlite_autoindex_providers_1",
+      "tbl_name": "providers",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_providers_2",
+      "tbl_name": "providers",
+      "sql": null
+    },
+    {
+      "name": "idx_research_sources_entity",
+      "tbl_name": "research_sources",
+      "sql": "CREATE INDEX idx_research_sources_entity ON research_sources(entity_type, entity_id, checked_at)"
+    },
+    {
+      "name": "sqlite_autoindex_research_sources_1",
+      "tbl_name": "research_sources",
+      "sql": null
+    },
+    {
+      "name": "idx_submissions_status_date",
+      "tbl_name": "submissions",
+      "sql": "CREATE INDEX idx_submissions_status_date ON submissions(status, submitted_at)"
+    },
+    {
+      "name": "sqlite_autoindex_submissions_1",
+      "tbl_name": "submissions",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_taxonomy_terms_1",
+      "tbl_name": "taxonomy_terms",
+      "sql": null
+    },
+    {
+      "name": "sqlite_autoindex_taxonomy_terms_2",
+      "tbl_name": "taxonomy_terms",
+      "sql": null
+    }
+  ],
+  "profiles": {
+    "providers": {
+      "slug": "92ny-school-of-music",
+      "records": 1,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "ENAM",
+        "served_by_colo": "EWR",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 0.6304
+        },
+        "duration": 0.6304,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 1134592,
+        "rows_read": 16,
+        "rows_written": 0,
+        "total_attempts": 1
+      },
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 39,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_2 (slug=?)"
+        },
+        {
+          "id": 35,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 40,
+          "parent": 35,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 58,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 65,
+          "parent": 58,
+          "notused": 56,
+          "detail": "SEARCH pl USING COVERING INDEX sqlite_autoindex_provider_locations_1 (provider_id=?)"
+        },
+        {
+          "id": 70,
+          "parent": 58,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 83,
+          "parent": 58,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 87,
+          "parent": 83,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 108,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 116,
+          "parent": 108,
+          "notused": 62,
+          "detail": "SEARCH pt USING INDEX sqlite_autoindex_provider_terms_1 (provider_id=?)"
+        },
+        {
+          "id": 122,
+          "parent": 108,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 143,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 150,
+          "parent": 143,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX sqlite_autoindex_provider_instructors_1 (provider_id=?)"
+        },
+        {
+          "id": 155,
+          "parent": 143,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 175,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 181,
+          "parent": 175,
+          "notused": 61,
+          "detail": "SEARCH o USING INDEX idx_offerings_status_provider (listing_status=? AND provider_id=?)"
+        },
+        {
+          "id": 199,
+          "parent": 175,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 204,
+          "parent": 199,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 219,
+          "parent": 175,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 224,
+          "parent": 219,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ]
+    },
+    "offerings": {
+      "slug": "bloomingdale-broadway-ensemble",
+      "records": 1,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "ENAM",
+        "served_by_colo": "EWR",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 0.5626
+        },
+        "duration": 0.5626,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 1134592,
+        "rows_read": 16,
+        "rows_written": 0,
+        "total_attempts": 1
+      },
+      "plan": [
+        {
+          "id": 6,
+          "parent": 0,
+          "notused": 46,
+          "detail": "SEARCH o USING INDEX sqlite_autoindex_offerings_2 (slug=?)"
+        },
+        {
+          "id": 15,
+          "parent": 0,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 60,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 65,
+          "parent": 60,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 83,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 90,
+          "parent": 83,
+          "notused": 56,
+          "detail": "SEARCH ol USING COVERING INDEX sqlite_autoindex_offering_locations_1 (offering_id=?)"
+        },
+        {
+          "id": 95,
+          "parent": 83,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 108,
+          "parent": 83,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 112,
+          "parent": 108,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 133,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 141,
+          "parent": 133,
+          "notused": 62,
+          "detail": "SEARCH ot USING INDEX sqlite_autoindex_offering_terms_1 (offering_id=?)"
+        },
+        {
+          "id": 147,
+          "parent": 133,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 168,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 175,
+          "parent": 168,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX sqlite_autoindex_offering_instructors_1 (offering_id=?)"
+        },
+        {
+          "id": 180,
+          "parent": 168,
+          "notused": 46,
+          "detail": "SEARCH i USING INDEX sqlite_autoindex_instructors_1 (id=?)"
+        },
+        {
+          "id": 200,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 205,
+          "parent": 200,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 220,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 225,
+          "parent": 220,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        }
+      ]
+    },
+    "teachers": {
+      "slug": "abby-payne-voice-teacher",
+      "records": 1,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "ENAM",
+        "served_by_colo": "EWR",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 1.7207
+        },
+        "duration": 1.7207,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 1134592,
+        "rows_read": 22,
+        "rows_written": 0,
+        "total_attempts": 1
+      },
+      "plan": [
+        {
+          "id": 4,
+          "parent": 0,
+          "notused": 45,
+          "detail": "SEARCH i USING INDEX idx_instructors_slug (slug=?)"
+        },
+        {
+          "id": 36,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 1"
+        },
+        {
+          "id": 41,
+          "parent": 36,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        },
+        {
+          "id": 59,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 2"
+        },
+        {
+          "id": 64,
+          "parent": 59,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 68,
+          "parent": 59,
+          "notused": 56,
+          "detail": "SEARCH pi USING COVERING INDEX idx_provider_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 73,
+          "parent": 59,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?)"
+        },
+        {
+          "id": 106,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 5"
+        },
+        {
+          "id": 111,
+          "parent": 106,
+          "notused": 0,
+          "detail": "USE TEMP B-TREE FOR json_group_array(ORDER BY)"
+        },
+        {
+          "id": 117,
+          "parent": 106,
+          "notused": 56,
+          "detail": "SEARCH oi USING COVERING INDEX idx_offering_instructors_instructor (instructor_id=?)"
+        },
+        {
+          "id": 122,
+          "parent": 106,
+          "notused": 46,
+          "detail": "SEARCH o USING INDEX sqlite_autoindex_offerings_1 (id=?)"
+        },
+        {
+          "id": 129,
+          "parent": 106,
+          "notused": 46,
+          "detail": "SEARCH p USING INDEX sqlite_autoindex_providers_1 (id=?) LEFT-JOIN"
+        },
+        {
+          "id": 162,
+          "parent": 106,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 3"
+        },
+        {
+          "id": 167,
+          "parent": 162,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 182,
+          "parent": 106,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 4"
+        },
+        {
+          "id": 187,
+          "parent": 182,
+          "notused": 39,
+          "detail": "SEARCH fe USING INDEX sqlite_autoindex_field_evidence_1 (entity_type=? AND entity_id=? AND field_name=?)"
+        },
+        {
+          "id": 222,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 6"
+        },
+        {
+          "id": 230,
+          "parent": 222,
+          "notused": 62,
+          "detail": "SEARCH it USING INDEX sqlite_autoindex_instructor_terms_1 (instructor_id=?)"
+        },
+        {
+          "id": 236,
+          "parent": 222,
+          "notused": 46,
+          "detail": "SEARCH tt USING INDEX sqlite_autoindex_taxonomy_terms_1 (id=?)"
+        },
+        {
+          "id": 257,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 7"
+        },
+        {
+          "id": 263,
+          "parent": 257,
+          "notused": 62,
+          "detail": "SEARCH ifm USING INDEX sqlite_autoindex_instructor_formats_1 (instructor_id=?)"
+        },
+        {
+          "id": 282,
+          "parent": 0,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 9"
+        },
+        {
+          "id": 289,
+          "parent": 282,
+          "notused": 56,
+          "detail": "SEARCH il USING COVERING INDEX sqlite_autoindex_instructor_locations_1 (instructor_id=?)"
+        },
+        {
+          "id": 294,
+          "parent": 282,
+          "notused": 46,
+          "detail": "SEARCH l USING INDEX sqlite_autoindex_locations_1 (id=?)"
+        },
+        {
+          "id": 307,
+          "parent": 282,
+          "notused": 0,
+          "detail": "CORRELATED SCALAR SUBQUERY 8"
+        },
+        {
+          "id": 311,
+          "parent": 307,
+          "notused": 54,
+          "detail": "SEARCH fe USING COVERING INDEX idx_field_evidence_verified_entity_date (entity_type=? AND entity_id=? AND verification_status=?)"
+        }
+      ]
+    }
+  }
+}

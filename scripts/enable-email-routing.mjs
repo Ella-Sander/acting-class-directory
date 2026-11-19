@@ -1,0 +1,10 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+const credentials = readFileSync(join(process.env.APPDATA, 'xdg.config', '.wrangler', 'config', 'default.toml'), 'utf8');
+const token = process.env.CLOUDFLARE_API_TOKEN || credentials.match(/^oauth_token\s*=\s*"([^"]+)"/m)?.[1];
+const dns = await (await fetch('https://cloudflare-dns.com/dns-query?name=vocalcatalog.com&type=MX', { headers: { Accept: 'application/dns-json' } })).json();
+if (dns.Status !== 0 || dns.Answer?.some(record => record.type === 15 && !record.data.endsWith('.mx.cloudflare.net.'))) throw new Error('An existing or indeterminate mail provider requires review. No DNS changes were made.');
+const response = await fetch('https://api.cloudflare.com/client/v4/zones/60459b5a267a0a158b536e37eea35690/email/routing/dns', { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: '{}' });
+const result = await response.json();
+console.log(JSON.stringify({ status: response.status, success: result.success, enabled: result.result?.enabled, errors: result.errors }));
+if (!result.success) process.exitCode = 1;
